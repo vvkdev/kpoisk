@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- blue theme = default -->
+    <color name="blue_primary">#408AF5</color>
+    <color name="blue_primary_variant">#83AEFC</color>
+
+    <!-- green theme -->
+    <color name="green_primary">#29BA2E</color>
+    <color name="green_primary_variant">#73EA75</color>
+
+    <!-- orange theme -->
+    <color name="orange_primary">#FF8959</color>
+    <color name="orange_primary_variant">#FDAF56</color>
+
+    <!-- lilac theme -->
+    <color name="lilac_primary">#8574FB</color>
+    <color name="lilac_primary_variant">#A983FB</color>
+
+    <!-- red theme -->
+    <color name="red_primary">#FC374E</color>
+    <color name="red_primary_variant">#F9807C</color>
+
+    <!-- yellow theme -->
+    <color name="yellow_primary">#fbb737</color>
+    <color name="yellow_primary_variant">#FFE363</color>
+
+    <!-- beige theme -->
+    <color name="beige_primary">#D0AB95</color>
+    <color name="beige_primary_variant">#F5DBC6</color>
+
+    <!-- grey theme -->
+    <color name="grey_primary">#7F7F7F</color>
+    <color name="grey_primary_variant">#C0C0C0</color>
+
+    <!-- common colors -->
+    <color name="secondary_day_pink">#FF674fa3</color>
+    <color name="secondary_night_pink">#FF5d3a62</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="grey">#7F7F7F</color>
+
+</resources>

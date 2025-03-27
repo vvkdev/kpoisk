@@ -1,0 +1,25 @@
+<resources>
+    <!-- Accent theme -->
+    <style name="Base.Accent.DayNight.V21.Theme.KPoisk" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/blue_primary</item>
+        <item name="colorPrimaryVariant">@color/blue_primary_variant</item>
+    </style>
+
+    <!-- Base application theme. -->
+    <style name="Base.DayNight.V21.Theme.KPoisk" parent="Base.Accent.DayNight.V21.Theme.KPoisk">
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="textInputStyle">@style/Widget.KPoisk.TextInputLayout</item>
+        <item name="materialButtonStyle">@style/Widget.KPoisk.Button</item>
+    </style>
+
+    <style name="Base.Day.V21.Theme.KPoisk" parent="Base.DayNight.V21.Theme.KPoisk">
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/secondary_day_pink</item>
+        <item name="colorOnSecondary">@color/white</item>
+    </style>
+
+    <style name="Base.V21.Theme.KPoisk" parent="Base.Day.V21.Theme.KPoisk" />
+
+    <style name="Theme.KPoisk" parent="Base.V21.Theme.KPoisk" />
+
+</resources>
