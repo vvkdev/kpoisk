@@ -18,3 +18,4 @@ rootProject.name = "kpoisk"
 include(":app")
 include(":theme")
 include(":presentation")
+include(":domain")
