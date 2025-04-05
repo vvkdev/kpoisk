@@ -24,14 +24,10 @@ android {
     kotlinOptions {
         jvmTarget = libs.versions.jvm.get()
     }
-
-    buildFeatures {
-        viewBinding = true
-    }
 }
 
 dependencies {
-    implementation(project(":theme"))
+    implementation(project(":presentation"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

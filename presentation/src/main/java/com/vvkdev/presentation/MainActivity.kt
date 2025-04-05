@@ -1,9 +1,9 @@
-package com.vvkdev.kpoisk
+package com.vvkdev.presentation
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
-import com.vvkdev.kpoisk.databinding.ActivityMainBinding
+import androidx.appcompat.app.AppCompatActivity
+import com.vvkdev.presentation.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 

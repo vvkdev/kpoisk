@@ -9,7 +9,7 @@
 
     <fragment
             android:id="@+id/filmsFragment"
-            android:name="com.vvkdev.kpoisk.FilmsFragment"
+            android:name="com.vvkdev.presentation.FilmsFragment"
             android:label="FilmsFragment"
             tools:layout="@layout/fragment_films"
             />
