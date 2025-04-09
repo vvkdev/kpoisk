@@ -5,10 +5,10 @@
         <item name="hintEnabled">false</item>
         <item name="boxStrokeWidth">1dp</item>
         <item name="boxStrokeWidthFocused">1dp</item>
-        <item name="materialThemeOverlay">@style/ThemeOverlay.KPoisk.TextInputEdit</item>
+        <item name="materialThemeOverlay">@style/ThemeOverlay.KPoisk.TextInputEditText</item>
     </style>
 
-    <style name="ThemeOverlay.KPoisk.TextInputEdit" parent="">
+    <style name="ThemeOverlay.KPoisk.TextInputEditText" parent="">
         <item name="editTextStyle">@style/Widget.KPoisk.TextInputEditText</item>
     </style>
 
