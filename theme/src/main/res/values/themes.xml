@@ -8,6 +8,7 @@
     <!-- Base application theme. -->
     <style name="Base.DayNight.V21.Theme.KPoisk" parent="Base.Accent.DayNight.V21.Theme.KPoisk">
         <item name="colorOnPrimary">@color/white</item>
+        <item name="fontFamily">sans-serif-light</item>
         <item name="textInputStyle">@style/Widget.KPoisk.TextInputLayout</item>
         <item name="materialButtonStyle">@style/Widget.KPoisk.Button</item>
     </style>
