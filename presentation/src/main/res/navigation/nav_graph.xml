@@ -9,8 +9,19 @@
 
     <fragment
             android:id="@+id/filmsFragment"
-            android:name="com.vvkdev.presentation.FilmsFragment"
+            android:name="com.vvkdev.presentation.screens.FilmsFragment"
             android:label="FilmsFragment"
             tools:layout="@layout/fragment_films"
+            >
+        <action
+                android:id="@+id/action_filmsFragment_to_filmDetailsFragment"
+                app:destination="@id/filmDetailsFragment"
+                />
+    </fragment>
+    <fragment
+            android:id="@+id/filmDetailsFragment"
+            android:name="com.vvkdev.presentation.screens.FilmDetailsFragment"
+            android:label="FilmDetailsFragment"
+            tools:layout="@layout/fragment_film_details"
             />
 </navigation>
