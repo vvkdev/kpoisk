@@ -5,7 +5,7 @@
         <item name="colorPrimaryVariant">@color/blue_primary_variant</item>
     </style>
 
-    <!-- Base application theme. -->
+    <!-- Base application theme -->
     <style name="Base.DayNight.V21.Theme.KPoisk" parent="Base.Accent.DayNight.V21.Theme.KPoisk">
         <!-- prevent color bars flickering on start app -->
         <item name="android:statusBarColor">@android:color/transparent</item>
@@ -18,8 +18,8 @@
         <item name="materialButtonStyle">@style/Widget.KPoisk.Button</item>
     </style>
 
+    <!-- Day theme -->
     <style name="Base.Day.V21.Theme.KPoisk" parent="Base.DayNight.V21.Theme.KPoisk">
-        <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/secondary_day_pink</item>
         <item name="colorOnSecondary">@color/white</item>
     </style>
