@@ -1,12 +1,12 @@
 <resources>
     <!-- Accent theme -->
-    <style name="Base.Accent.DayNight.V21.Theme.KPoisk" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Accent.DayNight.V21.Theme.App" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/blue_primary</item>
         <item name="colorPrimaryVariant">@color/blue_primary_variant</item>
     </style>
 
     <!-- Base application theme -->
-    <style name="Base.DayNight.V21.Theme.KPoisk" parent="Base.Accent.DayNight.V21.Theme.KPoisk">
+    <style name="Base.DayNight.V21.Theme.App" parent="Base.Accent.DayNight.V21.Theme.App">
         <!-- prevent color bars flickering on start app -->
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
@@ -14,18 +14,18 @@
         <item name="colorOnPrimary">@color/white</item>
         <item name="fontFamily">sans-serif-light</item>
         <!-- view custom styles -->
-        <item name="textInputStyle">@style/Widget.KPoisk.TextInputLayout</item>
-        <item name="materialButtonStyle">@style/Widget.KPoisk.Button</item>
+        <item name="textInputStyle">@style/Widget.App.TextInputLayout</item>
+        <item name="materialButtonStyle">@style/Widget.App.Button</item>
     </style>
 
     <!-- Day theme -->
-    <style name="Base.Day.V21.Theme.KPoisk" parent="Base.DayNight.V21.Theme.KPoisk">
+    <style name="Base.Day.V21.Theme.App" parent="Base.DayNight.V21.Theme.App">
         <item name="colorSecondary">@color/secondary_day_pink</item>
         <item name="colorOnSecondary">@color/white</item>
     </style>
 
-    <style name="Base.V21.Theme.KPoisk" parent="Base.Day.V21.Theme.KPoisk" />
+    <style name="Base.V21.Theme.App" parent="Base.Day.V21.Theme.App" />
 
-    <style name="Theme.KPoisk" parent="Base.V21.Theme.KPoisk" />
+    <style name="Theme.App" parent="Base.V21.Theme.App" />
 
 </resources>

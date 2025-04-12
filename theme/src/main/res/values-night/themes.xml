@@ -1,10 +1,10 @@
 <resources>
     <!-- Night theme -->
-    <style name="Base.Night.V21.Theme.KPoisk" parent="Base.DayNight.V21.Theme.KPoisk">
+    <style name="Base.Night.V21.Theme.App" parent="Base.DayNight.V21.Theme.App">
         <item name="colorSecondary">@color/secondary_night_pink</item>
         <item name="colorOnSecondary">@color/white</item>
     </style>
 
-    <style name="Base.V21.Theme.KPoisk" parent="Base.Night.V21.Theme.KPoisk" />
+    <style name="Base.V21.Theme.App" parent="Base.Night.V21.Theme.App" />
 
 </resources>
