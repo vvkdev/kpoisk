@@ -32,7 +32,9 @@ class FilmDetailsFragment :
                     when (state) {
                         FilmState.Loading -> showLoading()
                         is FilmState.Success -> showFilm(state.data)
-                        is FilmState.Error -> showError(state.message)
+                        is FilmState.Error -> showError(
+                            state.message ?: getString(R.string.unknown_error)
+                        )
                     }
                 }
             }

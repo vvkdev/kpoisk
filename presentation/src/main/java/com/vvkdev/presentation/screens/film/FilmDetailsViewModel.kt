@@ -35,7 +35,7 @@ class FilmDetailsViewModel @Inject constructor(
             _state.value = FilmState.Loading
             _state.value = when (val result = repository.getFilmById(filmId)) {
                 is LoadResult.Success -> FilmState.Success(result.data)
-                is LoadResult.Error -> FilmState.Error(result.message ?: "Unknown error")
+                is LoadResult.Error -> FilmState.Error(result.message)
             }
         }
     }
