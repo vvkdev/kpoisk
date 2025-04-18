@@ -4,7 +4,7 @@ data class Film(
     val id: Int,
     val name: String,
     val foreignName: String,
-    val rating: Float?,
+    val rating: Float,
     val votes: Int = 0,
     val year: String = "",
     val description: String = "",
