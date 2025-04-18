@@ -1,5 +1,6 @@
 package com.vvkdev.presentation.screens.film
 
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.vvkdev.domain.LoadResult
@@ -12,8 +13,11 @@ import javax.inject.Inject
 
 @HiltViewModel
 class FilmDetailsViewModel @Inject constructor(
+    private val savedStateHandle: SavedStateHandle,
     private val repository: FilmsRepository
 ) : ViewModel() {
+
+    private val filmId: Int = savedStateHandle.get<Int?>("film_id") ?: 0
 
     private val _state = MutableStateFlow<FilmState>(FilmState.Loading)
     val state: StateFlow<FilmState> = _state
@@ -25,7 +29,7 @@ class FilmDetailsViewModel @Inject constructor(
     private fun loadFilm() {
         viewModelScope.launch {
             _state.value = FilmState.Loading
-            _state.value = when (val result = repository.getFilmById(89540)) {
+            _state.value = when (val result = repository.getFilmById(filmId)) {
                 is LoadResult.Success -> FilmState.Success(result.data)
                 is LoadResult.Error -> FilmState.Error(result.message ?: "Unknown error")
             }
