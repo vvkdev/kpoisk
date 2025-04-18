@@ -98,6 +98,15 @@
                     android:layout_height="wrap_content"
                     tools:text="136 мин"
                     />
+
+            <TextView
+                    android:id="@+id/minutesTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/minutes"
+                    tools:text="min"
+                    />
+
         </LinearLayout>
 
         <TextView
@@ -150,7 +159,6 @@
                 android:id="@+id/errorLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:visibility="gone"
                 android:gravity="center"
                 android:orientation="vertical"
                 app:layout_constraintStart_toStartOf="parent"

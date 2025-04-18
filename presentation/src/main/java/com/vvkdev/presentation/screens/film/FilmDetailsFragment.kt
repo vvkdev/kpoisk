@@ -60,7 +60,7 @@ class FilmDetailsFragment :
             foreignNameTextView.text = film.foreignName
             descriptionTextView.text = film.description
             yearTextView.text = film.year
-            lengthTextView.text = getString(R.string.length_in_minutes, film.length)
+            lengthTextView.text = film.length.toString()
             ratingTextView.text =
                 getString(R.string.votes, film.rating, film.votes?.formatNumGroups())
             has3dImageView.isVisible = film.has3D

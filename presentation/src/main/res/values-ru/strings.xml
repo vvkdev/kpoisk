@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="unknown_error">Неизвестная ошибка</string>
-    <string name="length_in_minutes">%1$d мин</string>
+    <string name="minutes">" мин"</string>
     <string name="votes">%1$.1f (%2$s голосов)</string>
 </resources>
