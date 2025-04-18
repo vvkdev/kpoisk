@@ -34,7 +34,8 @@ private fun parseForeignName(alt: String?, en: String?): String {
     return alt?.takeIf { it.isNotBlank() } ?: en ?: ""
 }
 
-private fun parseYears(year: Int?, years: List<FilmYears?>?): String {
+@VisibleForTesting
+internal fun parseYears(year: Int?, years: List<FilmYears?>?): String {
     val start = listOfNotNull(
         year?.takeIf { it > 0 },
         years?.firstOrNull()?.start?.takeIf { it > 0 },
