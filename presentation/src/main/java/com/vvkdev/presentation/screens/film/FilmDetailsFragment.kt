@@ -2,16 +2,56 @@ package com.vvkdev.presentation.screens.film
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import com.vvkdev.domain.model.Film
 import com.vvkdev.presentation.BaseFragment
+import com.vvkdev.presentation.R
 import com.vvkdev.presentation.databinding.FragmentFilmDetailsBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
+import java.text.NumberFormat
+import java.util.Locale
 
 @AndroidEntryPoint
 class FilmDetailsFragment :
     BaseFragment<FragmentFilmDetailsBinding>(FragmentFilmDetailsBinding::inflate) {
 
+    private val viewModel: FilmDetailsViewModel by viewModels()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.state.collect { state ->
+                    when (state) {
+                        // FilmState.Loading -> showLoading()
+                        is FilmState.Success -> showFilm(state.data)
+                        // is FilmState.Error -> showError(state.message)
+                    }
+                }
+            }
+        }
+
     }
+
+    private fun showFilm(film: Film) {
+        with(binding) {
+            nameTextView.text = film.name
+            foreignNameTextView.text = film.foreignName
+            descriptionTextView.text = film.description
+            yearTextView.text = film.year
+            lengthTextView.text = getString(R.string.length_in_minutes, film.length)
+            ratingTextView.text =
+                getString(R.string.votes, film.rating, film.votes?.formatNumGroups())
+            has3dImageView.isVisible = film.has3D
+        }
+    }
+
+    private fun Int.formatNumGroups(): String =
+        NumberFormat.getNumberInstance(Locale.getDefault()).format(this)
 }
