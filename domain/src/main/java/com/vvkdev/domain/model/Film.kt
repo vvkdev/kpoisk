@@ -1,0 +1,16 @@
+package com.vvkdev.domain.model
+
+data class Film(
+    val id: Int,
+    val name: String,
+    val foreignName: String,
+    val rating: Float?,
+    val votes: Int? = null,
+    val year: String = "",
+    val description: String = "",
+    val poster: String = "",
+    val length: Int? = null,
+    val has3D: Boolean = false,
+    val genres: List<Genre> = emptyList(),
+    val countries: List<Country> = emptyList(),
+)
