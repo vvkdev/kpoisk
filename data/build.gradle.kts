@@ -24,6 +24,10 @@ android {
     }
 }
 
+ksp {
+    arg("room.schemaLocation", "$projectDir/schemas")
+}
+
 dependencies {
     implementation(project(":domain"))
 
@@ -35,6 +39,10 @@ dependencies {
     implementation(libs.kotlinx.serialization)
     implementation(libs.converter.kotlinx.serialization)
     implementation(libs.okhttp)
+    // room
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
+    ksp(libs.room.compiler)
 
     // testing
     testImplementation(libs.kotlin.test)
