@@ -30,7 +30,7 @@ class FilmDetailsFragment :
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.state.collect { state ->
                     when (state) {
-                        // FilmState.Loading -> showLoading()
+                        FilmState.Loading -> showLoading()
                         is FilmState.Success -> showFilm(state.data)
                         is FilmState.Error -> showError(state.message)
                     }
@@ -41,8 +41,15 @@ class FilmDetailsFragment :
         binding.retryButton.setOnClickListener { viewModel.retry() }
     }
 
+    private fun showLoading() {
+        binding.constraintLayout.setChildrenVisibility(View.GONE)
+        binding.errorLayout.visibility = View.GONE
+        binding.progressBar.visibility = View.VISIBLE
+    }
+
     private fun showFilm(film: Film) {
         binding.constraintLayout.setChildrenVisibility(View.VISIBLE)
+        binding.progressBar.visibility = View.GONE
         binding.errorLayout.visibility = View.GONE
         with(binding) {
             nameTextView.text = film.name
@@ -57,9 +64,10 @@ class FilmDetailsFragment :
     }
 
     private fun showError(message: String) {
-        binding.errorMessage.text = message
         binding.constraintLayout.setChildrenVisibility(View.GONE)
+        binding.progressBar.visibility = View.GONE
         binding.errorLayout.visibility = View.VISIBLE
+        binding.errorMessage.text = message
     }
 
     private fun Int.formatNumGroups(): String =
