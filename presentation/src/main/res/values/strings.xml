@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string name="unknown_sign">"?"</string>
     <string name="unknown_error">Unknown error</string>
     <string name="minutes">" min"</string>
 

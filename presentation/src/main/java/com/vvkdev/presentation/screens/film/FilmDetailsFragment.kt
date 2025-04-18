@@ -59,7 +59,7 @@ class FilmDetailsFragment :
             foreignNameTextView.text = film.foreignName
             descriptionTextView.text = film.description
             yearTextView.text = film.year
-            lengthTextView.text = film.length.toString()
+            lengthTextView.text = film.length?.toString() ?: getString(R.string.unknown_sign)
             ratingTextView.text = String.format(Locale.getDefault(), "%.1f", film.rating)
             votesTextView.text =
                 resources.getQuantityString(R.plurals.votes, film.votes, film.votes)
