@@ -2,9 +2,7 @@ package com.vvkdev.data.remote.mapper
 
 import com.vvkdev.data.remote.model.FilmResponse
 import com.vvkdev.data.remote.model.FilmYears
-import com.vvkdev.domain.model.Country
 import com.vvkdev.domain.model.Film
-import com.vvkdev.domain.model.Genre
 import org.jetbrains.annotations.VisibleForTesting
 
 fun FilmResponse.toFilm() = Film(
@@ -18,14 +16,8 @@ fun FilmResponse.toFilm() = Film(
     poster = poster?.previewUrl.toStringOrEmpty(),
     length = totalSeriesLength ?: movieLength,
     has3D = technology?.has3D ?: false,
-    genres = genres
-        ?.filterNotNull()
-        ?.mapNotNull { genre -> genre.name?.takeIf { it.isNotBlank() }?.let { Genre(it) } }
-        ?: emptyList(),
-    countries = countries
-        ?.filterNotNull()
-        ?.mapNotNull { country -> country.name?.takeIf { it.isNotBlank() }?.let { Country(it) } }
-        ?: emptyList(),
+    genres = mapListToString(genres) { genre -> genre.name },
+    countries = mapListToString(countries) { country -> country.name },
 )
 
 private fun String?.toStringOrEmpty() = this?.takeIf { it.isNotBlank() } ?: ""
@@ -43,4 +35,12 @@ internal fun parseYears(year: Int?, years: List<FilmYears?>?): String {
     val end = years?.lastOrNull()?.end?.takeIf { it > 0 }
 
     return listOfNotNull(start, end).joinToString("-")
+}
+
+fun <T> mapListToString(list: List<T?>?, mapper: (T) -> String?): String {
+    return list
+        ?.filterNotNull()
+        ?.mapNotNull { item -> mapper(item)?.takeIf { it.isNotBlank() } }
+        ?.joinToString(" • ")
+        ?: ""
 }

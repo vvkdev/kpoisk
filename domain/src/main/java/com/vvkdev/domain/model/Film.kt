@@ -11,6 +11,6 @@ data class Film(
     val poster: String = "",
     val length: Int? = null,
     val has3D: Boolean = false,
-    val genres: List<Genre> = emptyList(),
-    val countries: List<Country> = emptyList(),
+    val genres: String = "",
+    val countries: String = "",
 )

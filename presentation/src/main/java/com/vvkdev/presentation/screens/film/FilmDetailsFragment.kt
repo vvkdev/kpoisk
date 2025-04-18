@@ -62,6 +62,8 @@ class FilmDetailsFragment :
             ratingTextView.text =
                 getString(R.string.votes, film.rating, film.votes?.formatNumGroups())
             has3dImageView.isVisible = film.has3D
+            genresTextView.text = film.genres
+            countriesTextView.text = film.countries
         }
     }
 
