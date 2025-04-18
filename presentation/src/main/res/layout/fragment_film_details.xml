@@ -35,7 +35,7 @@
                 android:layout_height="180dp"
                 android:scaleType="centerCrop"
                 android:background="@drawable/poster_placeholder"
-                android:contentDescription="@string/poster_description"
+                android:contentDescription="@string/poster"
                 android:clickable="true"
                 android:focusable="true"
                 app:layout_constraintTop_toTopOf="parent"
