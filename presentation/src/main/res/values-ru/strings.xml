@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="unknown_error">Неизвестная ошибка</string>
     <string name="minutes">" мин"</string>
-    <string name="votes">%1$.1f (%2$s голосов)</string>
+
+    <plurals name="votes">
+        <item quantity="one">%,d голос</item>
+        <item quantity="few">%,d голоса</item>
+        <item quantity="many">%,d голосов</item>
+        <item quantity="other">%,d голосов</item>
+    </plurals>
+
 </resources>

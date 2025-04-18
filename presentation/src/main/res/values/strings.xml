@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="unknown_error">Unknown error</string>
     <string name="minutes">" min"</string>
-    <string name="votes">%1$.1f (%2$s votes)</string>
+
+    <plurals name="votes">
+        <item quantity="one">%,d vote</item>
+        <item quantity="other">%,d votes</item>
+    </plurals>
+
 </resources>

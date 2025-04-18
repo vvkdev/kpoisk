@@ -14,7 +14,6 @@ import com.vvkdev.presentation.R
 import com.vvkdev.presentation.databinding.FragmentFilmDetailsBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import java.text.NumberFormat
 import java.util.Locale
 
 @AndroidEntryPoint
@@ -61,8 +60,9 @@ class FilmDetailsFragment :
             descriptionTextView.text = film.description
             yearTextView.text = film.year
             lengthTextView.text = film.length.toString()
-            ratingTextView.text =
-                getString(R.string.votes, film.rating, film.votes?.formatNumGroups())
+            ratingTextView.text = String.format(Locale.getDefault(), "%.1f", film.rating)
+            votesTextView.text =
+                resources.getQuantityString(R.plurals.votes, film.votes, film.votes)
             has3dImageView.isVisible = film.has3D
             genresTextView.text = film.genres
             countriesTextView.text = film.countries
@@ -77,9 +77,6 @@ class FilmDetailsFragment :
             errorMessage.text = message
         }
     }
-
-    private fun Int.formatNumGroups(): String =
-        NumberFormat.getNumberInstance(Locale.getDefault()).format(this)
 
     private fun ViewGroup.setChildrenVisibility(visibility: Int) {
         for (i in 0 until childCount) {

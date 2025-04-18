@@ -75,7 +75,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintBottom_toTopOf="@+id/ratingTextView"
+                app:layout_constraintBottom_toTopOf="@+id/ratingLayout"
                 app:layout_constraintStart_toStartOf="@+id/foreignNameTextView"
                 >
 
@@ -109,14 +109,36 @@
 
         </LinearLayout>
 
-        <TextView
-                android:id="@+id/ratingTextView"
-                android:layout_width="wrap_content"
+        <LinearLayout
+                android:id="@+id/ratingLayout"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                tools:text="8.5 (755 888 votes)"
-                app:layout_constraintBottom_toBottomOf="@+id/posterImageView"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="@id/posterImageView"
                 app:layout_constraintStart_toStartOf="@+id/yearLengthLayout"
-                />
+                >
+
+            <TextView
+                    android:id="@+id/ratingTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="8.5"
+                    />
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" • "
+                    />
+
+            <TextView
+                    android:id="@+id/votesTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+
+        </LinearLayout>
+
 
         <ImageView
                 android:id="@+id/has3dImageView"
