@@ -5,6 +5,7 @@ import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class FilmDataMapperTest {
+    // parseYears
     @Test
     fun `parseYears with zero year and null years list returns empty string`() {
         val result = parseYears(0, null)
@@ -120,5 +121,43 @@ class FilmDataMapperTest {
         val years = listOf(FilmYears(start = 2018, end = 2022), FilmYears(start = 2023, end = 2025))
         val result = parseYears(2020, years)
         assertEquals("2018-2025", result)
+    }
+
+    // mapListToString
+    data class TestItem(val name: String?)
+
+    @Test
+    fun `mapListToString with normal items returns joined string`() {
+        val list = listOf(TestItem("A"), TestItem("B"), TestItem("C"))
+        assertEquals("A • B • C", mapListToString(list) { it.name })
+    }
+
+    @Test
+    fun `mapListToString with null list returns empty string`() {
+        assertEquals("", mapListToString<String>(null) { it })
+    }
+
+    @Test
+    fun `mapListToString with null items skips nulls`() {
+        val list = listOf(TestItem("A"), null, TestItem("B"))
+        assertEquals("A • B", mapListToString(list) { it?.name })
+    }
+
+    @Test
+    fun `mapListToString with all null items returns empty string`() {
+        val list = listOf<TestItem?>(null, null, null)
+        assertEquals("", mapListToString(list) { it?.name })
+    }
+
+    @Test
+    fun `mapListToString with blank names skips blanks`() {
+        val list = listOf(TestItem("A"), TestItem(""), TestItem(" "), TestItem("B"))
+        assertEquals("A • B", mapListToString(list) { it.name })
+    }
+
+    @Test
+    fun `mapListToString with all blank or null names returns empty string`() {
+        val list = listOf(TestItem(""), TestItem(" "), TestItem(null))
+        assertEquals("", mapListToString(list) { it.name })
     }
 }
