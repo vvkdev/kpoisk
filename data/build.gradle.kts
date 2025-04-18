@@ -35,4 +35,7 @@ dependencies {
     implementation(libs.kotlinx.serialization)
     implementation(libs.converter.kotlinx.serialization)
     implementation(libs.okhttp)
+
+    // testing
+    testImplementation(libs.kotlin.test)
 }
