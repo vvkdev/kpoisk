@@ -26,6 +26,10 @@ class FilmDetailsViewModel @Inject constructor(
         loadFilm()
     }
 
+    fun retry() {
+        loadFilm()
+    }
+
     private fun loadFilm() {
         viewModelScope.launch {
             _state.value = FilmState.Loading

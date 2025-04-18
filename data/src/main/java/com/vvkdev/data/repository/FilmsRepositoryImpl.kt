@@ -1,10 +1,12 @@
 package com.vvkdev.data.repository
 
 import com.vvkdev.data.remote.mapper.toFilm
+import com.vvkdev.data.remote.model.ErrorResponse
 import com.vvkdev.data.remote.service.FilmsService
 import com.vvkdev.domain.LoadResult
 import com.vvkdev.domain.model.Film
 import com.vvkdev.domain.repository.FilmsRepository
+import kotlinx.serialization.json.Json
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -19,7 +21,11 @@ class FilmsRepositoryImpl @Inject constructor(
             if (response.isSuccessful) {
                 LoadResult.Success(response.body()!!.toFilm())
             } else {
-                LoadResult.Error(message = "HTTP error: ${response.code()}")
+                val errorBody = response.errorBody()?.string()
+                val json = Json { ignoreUnknownKeys = true }
+                val errors = errorBody?.let { json.decodeFromString<ErrorResponse>(it).messages }
+                    ?: listOf("Empty error body")
+                LoadResult.Error(errors.joinToString("\n"))
             }
         } catch (e: Exception) {
             LoadResult.Error(e.message)

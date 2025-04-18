@@ -2,6 +2,7 @@ package com.vvkdev.presentation.screens.film
 
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -31,15 +32,18 @@ class FilmDetailsFragment :
                     when (state) {
                         // FilmState.Loading -> showLoading()
                         is FilmState.Success -> showFilm(state.data)
-                        // is FilmState.Error -> showError(state.message)
+                        is FilmState.Error -> showError(state.message)
                     }
                 }
             }
         }
 
+        binding.retryButton.setOnClickListener { viewModel.retry() }
     }
 
     private fun showFilm(film: Film) {
+        binding.constraintLayout.setChildrenVisibility(View.VISIBLE)
+        binding.errorLayout.visibility = View.GONE
         with(binding) {
             nameTextView.text = film.name
             foreignNameTextView.text = film.foreignName
@@ -52,6 +56,19 @@ class FilmDetailsFragment :
         }
     }
 
+    private fun showError(message: String) {
+        binding.errorMessage.text = message
+        binding.constraintLayout.setChildrenVisibility(View.GONE)
+        binding.errorLayout.visibility = View.VISIBLE
+    }
+
     private fun Int.formatNumGroups(): String =
         NumberFormat.getNumberInstance(Locale.getDefault()).format(this)
+
+    private fun ViewGroup.setChildrenVisibility(visibility: Int) {
+        for (i in 0 until childCount) {
+            getChildAt(i).visibility = visibility
+        }
+    }
+
 }
