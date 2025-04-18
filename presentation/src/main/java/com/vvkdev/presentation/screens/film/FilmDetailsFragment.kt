@@ -44,16 +44,18 @@ class FilmDetailsFragment :
     }
 
     private fun showLoading() {
-        binding.constraintLayout.setChildrenVisibility(View.GONE)
-        binding.errorLayout.visibility = View.GONE
-        binding.progressBar.visibility = View.VISIBLE
+        with(binding) {
+            constraintLayout.setChildrenVisibility(View.GONE)
+            errorLayout.visibility = View.GONE
+            progressBar.visibility = View.VISIBLE
+        }
     }
 
     private fun showFilm(film: Film) {
-        binding.constraintLayout.setChildrenVisibility(View.VISIBLE)
-        binding.progressBar.visibility = View.GONE
-        binding.errorLayout.visibility = View.GONE
         with(binding) {
+            constraintLayout.setChildrenVisibility(View.VISIBLE)
+            progressBar.visibility = View.GONE
+            errorLayout.visibility = View.GONE
             nameTextView.text = film.name
             foreignNameTextView.text = film.foreignName
             descriptionTextView.text = film.description
@@ -68,10 +70,12 @@ class FilmDetailsFragment :
     }
 
     private fun showError(message: String) {
-        binding.constraintLayout.setChildrenVisibility(View.GONE)
-        binding.progressBar.visibility = View.GONE
-        binding.errorLayout.visibility = View.VISIBLE
-        binding.errorMessage.text = message
+        with(binding) {
+            constraintLayout.setChildrenVisibility(View.GONE)
+            progressBar.visibility = View.GONE
+            errorLayout.visibility = View.VISIBLE
+            errorMessage.text = message
+        }
     }
 
     private fun Int.formatNumGroups(): String =
