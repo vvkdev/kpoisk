@@ -4,8 +4,20 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/nav_graph"
-        app:startDestination="@id/filmsFragment"
+        app:startDestination="@id/apiKeyFragment"
         >
+
+    <fragment
+            android:id="@+id/apiKeyFragment"
+            android:name="com.vvkdev.presentation.screens.apikey.ApiKeyFragment"
+            android:label="fragment_api_key"
+            tools:layout="@layout/fragment_api_key"
+            >
+        <action
+                android:id="@+id/action_apiKeyFragment_to_filmsFragment"
+                app:destination="@id/filmsFragment"
+                />
+    </fragment>
 
     <fragment
             android:id="@+id/filmsFragment"
@@ -18,6 +30,7 @@
                 app:destination="@id/filmDetailsFragment"
                 />
     </fragment>
+
     <fragment
             android:id="@+id/filmDetailsFragment"
             android:name="com.vvkdev.presentation.screens.film.FilmDetailsFragment"
@@ -29,4 +42,5 @@
                 app:argType="integer"
                 />
     </fragment>
+
 </navigation>
