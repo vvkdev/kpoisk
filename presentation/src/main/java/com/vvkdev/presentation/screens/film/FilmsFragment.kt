@@ -13,7 +13,7 @@ class FilmsFragment : BaseFragment<FragmentFilmsBinding>(FragmentFilmsBinding::i
         super.onViewCreated(view, savedInstanceState)
 
         with(binding) {
-            btnOpen.setOnClickListener {
+            openButton.setOnClickListener {
                 val filmId = filmIdEditText.text.toString().toIntOrNull() ?: 0
                 val args = Bundle().apply { putInt("film_id", filmId) }
                 findNavController().navigate(R.id.action_filmsFragment_to_filmDetailsFragment, args)
