@@ -4,6 +4,7 @@
     <string name="unknown_sign">"?"</string>
     <string name="unknown_error">Неизвестная ошибка</string>
     <string name="minutes">" мин"</string>
+    <string name="save">Сохранить</string>
 
     <plurals name="votes">
         <item quantity="one">%,d голос</item>
