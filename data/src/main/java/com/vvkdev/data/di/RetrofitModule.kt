@@ -15,20 +15,7 @@ import javax.inject.Singleton
 interface RetrofitConfig {
     val baseUrl: String
     val mediaType: MediaType
-    val jsonConfig: Json
-}
-
-@Module
-@InstallIn(SingletonComponent::class)
-object DefaultRetrofitConfig : RetrofitConfig {
-    override val baseUrl = "https://api.kinopoisk.dev/v1.4/"
-    override val mediaType = "application/json".toMediaType()
-    override val jsonConfig = Json {
-        ignoreUnknownKeys = true
-        isLenient = true
-        coerceInputValues = true
-        explicitNulls = false
-    }
+    val json: Json
 }
 
 @Module
@@ -36,14 +23,19 @@ object DefaultRetrofitConfig : RetrofitConfig {
 object NetworkModule {
     @Provides
     @Singleton
-    fun provideRetrofitConfig(): RetrofitConfig = DefaultRetrofitConfig
+    fun provideRetrofitConfig(json: Json): RetrofitConfig =
+        object : RetrofitConfig {
+            override val baseUrl = "https://api.kinopoisk.dev/v1.4/"
+            override val mediaType = "application/json".toMediaType()
+            override val json = json
+        }
 
     @Provides
     @Singleton
     fun provideFilmsService(config: RetrofitConfig): FilmsService {
         return Retrofit.Builder()
             .baseUrl(config.baseUrl)
-            .addConverterFactory(config.jsonConfig.asConverterFactory(config.mediaType))
+            .addConverterFactory(config.json.asConverterFactory(config.mediaType))
             .build()
             .create(FilmsService::class.java)
     }
