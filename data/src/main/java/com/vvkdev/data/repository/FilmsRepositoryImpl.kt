@@ -1,5 +1,8 @@
 package com.vvkdev.data.repository
 
+import com.vvkdev.data.local.dao.FilmDao
+import com.vvkdev.data.local.mapper.toEntity
+import com.vvkdev.data.local.mapper.toFilm
 import com.vvkdev.data.remote.mapper.toFilm
 import com.vvkdev.data.remote.model.ErrorResponse
 import com.vvkdev.data.remote.service.FilmsService
@@ -12,23 +15,28 @@ import javax.inject.Singleton
 
 @Singleton
 class FilmsRepositoryImpl @Inject constructor(
-    private val filmService: FilmsService
+    private val filmService: FilmsService,
+    private val filmDao: FilmDao,
+    private val json: Json,
 ) : FilmsRepository {
 
     override suspend fun getFilmById(id: Int): LoadResult<Film> {
-        return try {
-            val response = filmService.getFilmById(id)
-            if (response.isSuccessful) {
-                LoadResult.Success(response.body()!!.toFilm())
-            } else {
-                val errorBody = response.errorBody()?.string()
-                val json = Json { ignoreUnknownKeys = true }
-                val errors = errorBody?.let { json.decodeFromString<ErrorResponse>(it).messages }
-                    ?: listOf("Empty error body")
-                LoadResult.Error(errors.joinToString("\n"))
+        return filmDao.getById(id)?.let { LoadResult.Success(it.toFilm()) }
+            ?: try {
+                val response = filmService.getFilmById(id)
+                if (response.isSuccessful) {
+                    val film = response.body()!!.toFilm()
+                    filmDao.insert(film.toEntity())
+                    LoadResult.Success(film)
+                } else {
+                    val errorBody = response.errorBody()?.string()
+                    val errors =
+                        errorBody?.let { json.decodeFromString<ErrorResponse>(it).messages }
+                            ?: listOf("Empty error body")
+                    LoadResult.Error(errors.joinToString("\n"))
+                }
+            } catch (e: Exception) {
+                LoadResult.Error(e.message)
             }
-        } catch (e: Exception) {
-            LoadResult.Error(e.message)
-        }
     }
 }
