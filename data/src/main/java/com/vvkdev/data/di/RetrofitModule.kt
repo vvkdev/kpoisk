@@ -1,4 +1,4 @@
-package com.vvkdev.kpoisk.di
+package com.vvkdev.data.di
 
 import com.vvkdev.data.remote.service.FilmsService
 import dagger.Module

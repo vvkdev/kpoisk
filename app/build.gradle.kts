@@ -42,9 +42,4 @@ dependencies {
     // hilt
     ksp(libs.hilt.compiler)
     implementation(libs.hilt.android)
-    // retrofit
-    implementation(libs.retrofit)
-    implementation(libs.kotlinx.serialization)
-    implementation(libs.converter.kotlinx.serialization)
-    implementation(libs.okhttp)
 }
