@@ -7,20 +7,20 @@ import org.jetbrains.annotations.VisibleForTesting
 
 fun FilmResponse.toFilm() = Film(
     id = id,
-    name = name.toStringOrEmpty(),
+    name = name.orEmpty(),
     foreignName = parseForeignName(alternativeName, enName),
     rating = rating?.kp ?: 0f,
     votes = votes?.kp ?: 0,
     year = parseYears(year, releaseYears),
-    description = description.toStringOrEmpty(),
-    poster = poster?.previewUrl.toStringOrEmpty(),
+    description = description.orEmpty(),
+    poster = poster?.previewUrl.orEmpty(),
     length = totalSeriesLength ?: movieLength,
     has3D = technology?.has3D ?: false,
     genres = mapListToString(genres) { genre -> genre.name },
     countries = mapListToString(countries) { country -> country.name },
 )
 
-private fun String?.toStringOrEmpty() = this?.takeIf { it.isNotBlank() } ?: ""
+private fun String?.orEmpty() = this?.takeIf { it.isNotBlank() } ?: ""
 
 private fun parseForeignName(alt: String?, en: String?): String {
     return alt?.takeIf { it.isNotBlank() } ?: en ?: ""
