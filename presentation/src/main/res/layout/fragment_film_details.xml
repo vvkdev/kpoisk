@@ -75,8 +75,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintBottom_toTopOf="@+id/ratingLayout"
-                app:layout_constraintStart_toStartOf="@+id/foreignNameTextView"
+                app:layout_constraintBottom_toTopOf="@id/ratingLayout"
+                app:layout_constraintStart_toStartOf="@id/foreignNameTextView"
                 >
 
             <TextView
@@ -115,7 +115,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="@id/posterImageView"
-                app:layout_constraintStart_toStartOf="@+id/yearLengthLayout"
+                app:layout_constraintStart_toStartOf="@id/yearLengthLayout"
                 >
 
             <TextView
@@ -146,7 +146,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                app:layout_constraintBottom_toBottomOf="@+id/ratingTextView"
+                app:layout_constraintBottom_toBottomOf="@id/ratingTextView"
                 app:layout_constraintEnd_toEndOf="parent"
                 />
 
