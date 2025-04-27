@@ -15,7 +15,7 @@ import javax.inject.Singleton
 
 @Singleton
 class FilmsRepositoryImpl @Inject constructor(
-    private val filmService: FilmsService,
+    private val filmsService: FilmsService,
     private val filmDao: FilmDao,
     private val json: Json,
 ) : FilmsRepository {
@@ -23,16 +23,16 @@ class FilmsRepositoryImpl @Inject constructor(
     override suspend fun getFilmById(id: Int): LoadResult<Film> {
         return filmDao.getById(id)?.let { LoadResult.Success(it.toFilm()) }
             ?: try {
-                val response = filmService.getFilmById(id)
+                val response = filmsService.getFilmById(id)
                 if (response.isSuccessful) {
                     val film = response.body()!!.toFilm()
                     filmDao.insert(film.toEntity())
                     LoadResult.Success(film)
                 } else {
                     val errorBody = response.errorBody()?.string()
-                    val errors =
-                        errorBody?.let { json.decodeFromString<ErrorResponse>(it).messages }
-                            ?: listOf("Empty error body")
+                    val errors = errorBody
+                        ?.let { json.decodeFromString<ErrorResponse>(it).messages }
+                        ?: listOf("Empty error body")
                     LoadResult.Error(errors.joinToString("\n"))
                 }
             } catch (e: Exception) {
