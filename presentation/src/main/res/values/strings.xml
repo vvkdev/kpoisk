@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="unknown_sign">"?"</string>
     <string name="unknown_error">Unknown error</string>
+    <string name="unknown_sign">"?"</string>
+    <string name="point_sign">" • "</string>
     <string name="minutes">" min"</string>
     <string name="save">Save</string>
     <string name="apikey_hint" translatable="false">XXXXXXX-XXXXXXX-XXXXXXX-XXXXXXX</string>
+    <string name="retry">Retry</string>
 
     <plurals name="votes">
         <item quantity="one">%,d vote</item>

@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="unknown_sign">"?"</string>
     <string name="unknown_error">Неизвестная ошибка</string>
+    <string name="unknown_sign">"?"</string>
+    <string name="point_sign">" • "</string>
     <string name="minutes">" мин"</string>
     <string name="save">Сохранить</string>
+    <string name="retry">Повторить</string>
 
     <plurals name="votes">
         <item quantity="one">%,d голос</item>

@@ -89,7 +89,7 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=" • "
+                    android:text="@string/point_sign"
                     />
 
             <TextView
@@ -128,7 +128,7 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=" • "
+                    android:text="@string/point_sign"
                     />
 
             <TextView
@@ -146,7 +146,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                app:layout_constraintBottom_toBottomOf="@id/ratingTextView"
+                app:layout_constraintBottom_toBottomOf="@id/ratingLayout"
                 app:layout_constraintEnd_toEndOf="parent"
                 />
 
@@ -179,6 +179,7 @@
 
         <LinearLayout
                 android:id="@+id/errorLayout"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -202,7 +203,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="Retry"
+                    android:text="@string/retry"
                     />
         </LinearLayout>
 
