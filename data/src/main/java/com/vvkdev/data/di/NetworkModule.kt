@@ -1,10 +1,12 @@
 package com.vvkdev.data.di
 
 import com.vvkdev.data.remote.service.FilmsService
+import com.vvkdev.domain.repository.SettingsRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
@@ -17,10 +19,24 @@ import javax.inject.Singleton
 object NetworkModule {
 
     private const val BASE_URL = "https://api.kinopoisk.dev/v1.4/"
+    private const val API_KEY_HEADER = "X-API-KEY"
 
     @Provides
     @Singleton
-    fun provideOkHttpClient(): OkHttpClient = OkHttpClient.Builder().build()
+    fun provideApiKey(settingsRepository: SettingsRepository): String =
+        runBlocking { settingsRepository.getApiKey() ?: "" }
+
+    @Provides
+    @Singleton
+    fun provideOkHttpClient(apiKey: String): OkHttpClient = OkHttpClient.Builder()
+        .addInterceptor { chain ->
+            chain.proceed(
+                chain.request().newBuilder()
+                    .addHeader(API_KEY_HEADER, apiKey)
+                    .build()
+            )
+        }
+        .build()
 
     @Provides
     @Singleton
