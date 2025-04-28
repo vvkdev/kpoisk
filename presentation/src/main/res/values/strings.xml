@@ -8,6 +8,7 @@
     <string name="save">Save</string>
     <string name="apikey_hint" translatable="false">XXXXXXX-XXXXXXX-XXXXXXX-XXXXXXX</string>
     <string name="retry">Retry</string>
+    <string name="updated">updated</string>
 
     <plurals name="votes">
         <item quantity="one">%,d vote</item>

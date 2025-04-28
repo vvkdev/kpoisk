@@ -66,6 +66,7 @@ class FilmDetailsFragment :
             has3dImageView.isVisible = film.has3D
             genresTextView.text = film.genres
             countriesTextView.text = film.countries
+            updatedTextView.text = film.updated
         }
     }
 

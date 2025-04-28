@@ -18,6 +18,7 @@ fun FilmResponse.toFilm() = Film(
     has3D = technology?.has3D ?: false,
     genres = mapListToString(genres) { genre -> genre.name },
     countries = mapListToString(countries) { country -> country.name },
+    updated = getNowAsString(),
 )
 
 private fun parseForeignName(alt: String?, en: String?): String {

@@ -13,4 +13,5 @@ data class Film(
     val has3D: Boolean = false,
     val genres: String = "",
     val countries: String = "",
+    val updated: String,
 )

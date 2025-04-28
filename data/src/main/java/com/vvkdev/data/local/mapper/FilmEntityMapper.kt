@@ -16,6 +16,7 @@ fun Film.toEntity() = FilmEntity(
     has3D,
     genres,
     countries,
+    updated,
 )
 
 fun FilmEntity.toFilm() = Film(
@@ -31,4 +32,5 @@ fun FilmEntity.toFilm() = Film(
     has3D,
     genres,
     countries,
+    updated,
 )
