@@ -20,8 +20,6 @@ fun FilmResponse.toFilm() = Film(
     countries = mapListToString(countries) { country -> country.name },
 )
 
-private fun String?.orEmpty() = this?.takeIf { it.isNotBlank() } ?: ""
-
 private fun parseForeignName(alt: String?, en: String?): String {
     return alt?.takeIf { it.isNotBlank() } ?: en ?: ""
 }
