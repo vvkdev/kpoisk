@@ -62,7 +62,6 @@
                 android:layout_height="wrap_content"
                 app:autoSizeTextType="uniform"
                 android:maxLines="3"
-                android:textColor="?attr/colorOnSurfaceVariant"
                 app:layout_constraintTop_toBottomOf="@id/nameTextView"
                 app:layout_constraintStart_toStartOf="@id/nameTextView"
                 app:layout_constraintEnd_toEndOf="@id/nameTextView"
@@ -96,7 +95,7 @@
                     android:id="@+id/lengthTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:text="136 мин"
+                    tools:text="136"
                     />
 
             <TextView
@@ -135,6 +134,7 @@
                     android:id="@+id/votesTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    tools:text="1 780 560 votes"
                     />
 
         </LinearLayout>
