@@ -17,7 +17,8 @@ class FilmDetailsViewModel @Inject constructor(
     private val repository: FilmsRepository
 ) : ViewModel() {
 
-    private val filmId: Int = savedStateHandle.get<Int?>("film_id") ?: 0
+    private val args = FilmDetailsFragmentArgs.fromSavedStateHandle(savedStateHandle)
+    private val filmId: Int = args.filmId
 
     private val _state = MutableStateFlow<FilmState>(FilmState.Loading)
     val state: StateFlow<FilmState> = _state
