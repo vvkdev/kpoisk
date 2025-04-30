@@ -36,11 +36,5 @@
             android:name="com.vvkdev.presentation.screens.film.FilmDetailsFragment"
             android:label="FilmDetailsFragment"
             tools:layout="@layout/fragment_film_details"
-            >
-        <argument
-                android:name="film_id"
-                app:argType="integer"
-                />
-    </fragment>
-
+            />
 </navigation>
