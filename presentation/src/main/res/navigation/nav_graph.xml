@@ -10,7 +10,6 @@
     <fragment
             android:id="@+id/apiKeyFragment"
             android:name="com.vvkdev.presentation.screens.apikey.ApiKeyFragment"
-            android:label="fragment_api_key"
             tools:layout="@layout/fragment_api_key"
             >
         <action
@@ -22,7 +21,6 @@
     <fragment
             android:id="@+id/filmsFragment"
             android:name="com.vvkdev.presentation.screens.films.FilmsFragment"
-            android:label="FilmsFragment"
             tools:layout="@layout/fragment_films"
             >
         <action
@@ -34,7 +32,6 @@
     <fragment
             android:id="@+id/filmDetailsFragment"
             android:name="com.vvkdev.presentation.screens.films.FilmDetailsFragment"
-            android:label="FilmDetailsFragment"
             tools:layout="@layout/fragment_film_details"
             >
         <argument
