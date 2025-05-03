@@ -1,4 +1,4 @@
-package com.vvkdev.presentation.screens.film
+package com.vvkdev.presentation.screens.films
 
 import com.vvkdev.domain.model.Film
 

@@ -21,7 +21,7 @@
 
     <fragment
             android:id="@+id/filmsFragment"
-            android:name="com.vvkdev.presentation.screens.film.FilmsFragment"
+            android:name="com.vvkdev.presentation.screens.films.FilmsFragment"
             android:label="FilmsFragment"
             tools:layout="@layout/fragment_films"
             >
@@ -33,7 +33,7 @@
 
     <fragment
             android:id="@+id/filmDetailsFragment"
-            android:name="com.vvkdev.presentation.screens.film.FilmDetailsFragment"
+            android:name="com.vvkdev.presentation.screens.films.FilmDetailsFragment"
             android:label="FilmDetailsFragment"
             tools:layout="@layout/fragment_film_details"
             >

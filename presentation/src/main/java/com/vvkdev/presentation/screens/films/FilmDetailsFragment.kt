@@ -1,4 +1,4 @@
-package com.vvkdev.presentation.screens.film
+package com.vvkdev.presentation.screens.films
 
 import android.os.Bundle
 import android.view.View

@@ -1,4 +1,4 @@
-package com.vvkdev.presentation.screens.film
+package com.vvkdev.presentation.screens.films
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
