@@ -8,20 +8,6 @@
         >
 
     <fragment
-            android:id="@+id/apiKeyFragment"
-            android:name="com.vvkdev.presentation.fragments.ApiKeyFragment"
-            tools:layout="@layout/fragment_api_key"
-            >
-        <action
-                android:id="@+id/action_apiKeyFragment_to_filmsFragment"
-                app:destination="@id/filmsFragment"
-                app:launchSingleTop="true"
-                app:popUpTo="@id/apiKeyFragment"
-                app:popUpToInclusive="true"
-                />
-    </fragment>
-
-    <fragment
             android:id="@+id/filmsFragment"
             android:name="com.vvkdev.presentation.screens.films.FilmsFragment"
             tools:layout="@layout/fragment_films"

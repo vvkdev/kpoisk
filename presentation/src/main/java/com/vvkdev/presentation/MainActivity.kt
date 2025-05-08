@@ -1,7 +1,6 @@
 package com.vvkdev.presentation
 
 import android.os.Bundle
-import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -9,8 +8,11 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.vvkdev.domain.repository.SettingsRepository
 import com.vvkdev.presentation.databinding.ActivityMainBinding
+import com.vvkdev.presentation.dialogs.ApiKeyDialog
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -31,23 +33,16 @@ class MainActivity : AppCompatActivity() {
             .findFragmentById(R.id.fragmentContainer) as NavHostFragment
 
         val navController = navHostFragment.navController
-
-        lifecycleScope.launch {
-            val apiKeyExists = settingsRepository.getApiKey() != null
-            val navGraph = navController.navInflater.inflate(R.navigation.nav_graph).apply {
-                this.setStartDestination(if (apiKeyExists) R.id.filmsFragment else R.id.apiKeyFragment)
-            }
-            navController.graph = navGraph
-        }
-
         binding.bottomNavView.setupWithNavController(navController)
 
-        navController.addOnDestinationChangedListener { _, destination, _ ->
-            if (destination.id == R.id.apiKeyFragment) {
-                binding.bottomNavView.visibility = View.GONE
-            } else {
-                binding.bottomNavView.visibility = View.VISIBLE
+        lifecycleScope.launch {
+            if (settingsRepository.getApiKey() == null) {
+                withContext(Dispatchers.Main) {
+                    ApiKeyDialog().show(supportFragmentManager, ApiKeyDialog.TAG)
+                }
             }
         }
+
+
     }
 }

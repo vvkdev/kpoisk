@@ -27,8 +27,4 @@ class SettingsRepositoryImpl @Inject constructor(
         return dataStore.data.first()[API_KEY]
     }
 
-    override suspend fun clearApiKey() {
-        dataStore.edit { it.remove(API_KEY) }
-    }
-
 }
