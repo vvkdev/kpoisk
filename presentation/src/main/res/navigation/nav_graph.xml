@@ -4,17 +4,20 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/nav_graph"
-        app:startDestination="@id/apiKeyFragment"
+        app:startDestination="@id/filmsFragment"
         >
 
     <fragment
             android:id="@+id/apiKeyFragment"
-            android:name="com.vvkdev.presentation.screens.apikey.ApiKeyFragment"
+            android:name="com.vvkdev.presentation.fragments.ApiKeyFragment"
             tools:layout="@layout/fragment_api_key"
             >
         <action
                 android:id="@+id/action_apiKeyFragment_to_filmsFragment"
                 app:destination="@id/filmsFragment"
+                app:launchSingleTop="true"
+                app:popUpTo="@id/apiKeyFragment"
+                app:popUpToInclusive="true"
                 />
     </fragment>
 
