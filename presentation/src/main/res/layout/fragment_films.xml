@@ -13,6 +13,7 @@
             android:id="@+id/filmIdTextInputLayout"
             android:layout_width="96dp"
             android:layout_height="wrap_content"
+            app:hintEnabled="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -27,7 +28,6 @@
                 android:maxLines="1"
                 android:inputType="number"
                 android:text="251733"
-                android:hint="Edit text hint"
                 />
 
     </com.google.android.material.textfield.TextInputLayout>

@@ -2,7 +2,6 @@
 <resources>
 
     <style name="Widget.App.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-        <item name="hintEnabled">false</item>
         <item name="boxStrokeWidth">1dp</item>
         <item name="boxStrokeWidthFocused">1dp</item>
         <item name="materialThemeOverlay">@style/ThemeOverlay.App.TextInputEditText</item>
