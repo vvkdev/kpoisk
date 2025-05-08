@@ -1,10 +1,12 @@
 package com.vvkdev.presentation
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import com.vvkdev.domain.repository.SettingsRepository
 import com.vvkdev.presentation.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -38,5 +40,14 @@ class MainActivity : AppCompatActivity() {
             navController.graph = navGraph
         }
 
+        binding.bottomNavView.setupWithNavController(navController)
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            if (destination.id == R.id.apiKeyFragment) {
+                binding.bottomNavView.visibility = View.GONE
+            } else {
+                binding.bottomNavView.visibility = View.VISIBLE
+            }
+        }
     }
 }

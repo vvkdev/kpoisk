@@ -43,4 +43,10 @@
                 />
     </fragment>
 
+    <fragment
+            android:id="@+id/settingsFragment"
+            android:name="com.vvkdev.presentation.fragments.SettingsFragment"
+            tools:layout="@layout/fragment_settings"
+            />
+
 </navigation>
