@@ -4,30 +4,37 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/nav_graph"
-        app:startDestination="@id/filmsFragment"
+        app:startDestination="@id/nav_graph_films"
         >
 
-    <fragment
-            android:id="@+id/filmsFragment"
-            android:name="com.vvkdev.presentation.screens.films.FilmsFragment"
-            tools:layout="@layout/fragment_films"
+    <navigation
+            android:id="@+id/nav_graph_films"
+            app:startDestination="@id/filmsFragment"
             >
-        <action
-                android:id="@+id/action_filmsFragment_to_filmDetailsFragment"
-                app:destination="@id/filmDetailsFragment"
-                />
-    </fragment>
 
-    <fragment
-            android:id="@+id/filmDetailsFragment"
-            android:name="com.vvkdev.presentation.screens.films.FilmDetailsFragment"
-            tools:layout="@layout/fragment_film_details"
-            >
-        <argument
-                android:name="film_id"
-                app:argType="integer"
-                />
-    </fragment>
+        <fragment
+                android:id="@+id/filmsFragment"
+                android:name="com.vvkdev.presentation.screens.films.FilmsFragment"
+                tools:layout="@layout/fragment_films"
+                >
+            <action
+                    android:id="@+id/action_filmsFragment_to_filmDetailsFragment"
+                    app:destination="@id/filmDetailsFragment"
+                    />
+        </fragment>
+
+        <fragment
+                android:id="@+id/filmDetailsFragment"
+                android:name="com.vvkdev.presentation.screens.films.FilmDetailsFragment"
+                tools:layout="@layout/fragment_film_details"
+                >
+            <argument
+                    android:name="film_id"
+                    app:argType="integer"
+                    />
+        </fragment>
+
+    </navigation>
 
     <fragment
             android:id="@+id/settingsFragment"
