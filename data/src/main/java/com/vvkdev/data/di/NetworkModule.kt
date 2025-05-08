@@ -23,20 +23,14 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideApiKey(settingsRepository: SettingsRepository): String =
-        runBlocking { settingsRepository.getApiKey() ?: "" }
-
-    @Provides
-    @Singleton
-    fun provideOkHttpClient(apiKey: String): OkHttpClient = OkHttpClient.Builder()
-        .addInterceptor { chain ->
-            chain.proceed(
-                chain.request().newBuilder()
-                    .addHeader(API_KEY_HEADER, apiKey)
-                    .build()
-            )
-        }
-        .build()
+    fun provideOkHttpClient(settingsRepository: SettingsRepository): OkHttpClient =
+        OkHttpClient.Builder().addInterceptor { chain ->
+            val apiKey = runBlocking { settingsRepository.getApiKey() ?: "" }
+            val request = chain.request().newBuilder()
+                .addHeader(API_KEY_HEADER, apiKey)
+                .build()
+            chain.proceed(request)
+        }.build()
 
     @Provides
     @Singleton
