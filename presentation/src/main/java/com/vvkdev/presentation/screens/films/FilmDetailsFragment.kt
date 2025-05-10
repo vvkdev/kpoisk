@@ -11,6 +11,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.vvkdev.domain.model.Film
 import com.vvkdev.presentation.BaseFragment
 import com.vvkdev.presentation.R
+import com.vvkdev.presentation.UiState
 import com.vvkdev.presentation.databinding.FragmentFilmDetailsBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -29,9 +30,9 @@ class FilmDetailsFragment :
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.state.collect { state ->
                     when (state) {
-                        FilmState.Loading -> showLoading()
-                        is FilmState.Success -> showFilm(state.data)
-                        is FilmState.Error -> showError(
+                        UiState.Loading -> showLoading()
+                        is UiState.Success -> showFilm(state.data)
+                        is UiState.Error -> showError(
                             state.message ?: getString(R.string.unknown_error)
                         )
                     }
