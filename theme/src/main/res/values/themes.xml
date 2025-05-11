@@ -16,6 +16,7 @@
         <!-- view custom styles -->
         <item name="textInputStyle">@style/Widget.App.TextInputLayout</item>
         <item name="materialButtonStyle">@style/Widget.App.Button</item>
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog</item>
     </style>
 
     <!-- Day theme -->

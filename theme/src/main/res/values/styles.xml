@@ -21,4 +21,16 @@
         <item name="android:background">@drawable/button_gradient</item>
     </style>
 
+    <style name="ThemeOverlay.App.MaterialAlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="alertDialogStyle">@style/App.MaterialAlertDialog</item>
+    </style>
+
+    <style name="App.MaterialAlertDialog" parent="MaterialAlertDialog.Material3">
+        <item name="shapeAppearance">@style/ShapeAppearance.App.MaterialAlertDialog</item>
+    </style>
+
+    <style name="ShapeAppearance.App.MaterialAlertDialog" parent="ShapeAppearance.Material3.MediumComponent">
+        <item name="cornerSize">8dp</item>
+    </style>
+
 </resources>
