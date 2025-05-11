@@ -23,6 +23,7 @@
 
     <style name="ThemeOverlay.App.MaterialAlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
         <item name="alertDialogStyle">@style/App.MaterialAlertDialog</item>
+        <item name="materialAlertDialogTitleTextStyle">@style/App.MaterialAlertDialog.Title</item>
     </style>
 
     <style name="App.MaterialAlertDialog" parent="MaterialAlertDialog.Material3">
@@ -31,6 +32,10 @@
 
     <style name="ShapeAppearance.App.MaterialAlertDialog" parent="ShapeAppearance.Material3.MediumComponent">
         <item name="cornerSize">8dp</item>
+    </style>
+
+    <style name="App.MaterialAlertDialog.Title" parent="MaterialAlertDialog.Material3.Title.Text">
+        <item name="android:textAppearance">@style/TextAppearance.Material3.TitleMedium</item>
     </style>
 
 </resources>
