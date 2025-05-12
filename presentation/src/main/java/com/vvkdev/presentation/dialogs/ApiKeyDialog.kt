@@ -3,6 +3,7 @@ package com.vvkdev.presentation.dialogs
 import android.app.Dialog
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -17,16 +18,23 @@ class ApiKeyDialog : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val binding = DialogApikeyBinding.inflate(layoutInflater)
-        return MaterialAlertDialogBuilder(requireContext())
+
+        val dialog = MaterialAlertDialogBuilder(requireContext())
             .setTitle("Enter API key")
             .setView(binding.root)
             .setCancelable(true)
-            .setPositiveButton("Save") { _, _ ->
+            .setNegativeButton("Cancel", null)
+            .setPositiveButton("Save", null)
+            .create()
+
+        dialog.setOnShowListener {
+            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
                 viewModel.saveApiKey(binding.apiKeyEditText.text.toString())
                 Toast.makeText(requireContext(), "Saved", Toast.LENGTH_SHORT).show()
+                dialog.dismiss()
             }
-            .setNegativeButton("Cancel", null)
-            .create()
+        }
+        return dialog
     }
 
     companion object {
