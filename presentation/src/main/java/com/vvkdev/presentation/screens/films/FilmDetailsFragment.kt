@@ -45,7 +45,7 @@ class FilmDetailsFragment :
 
     private fun showLoading() {
         with(binding) {
-            constraintLayout.setChildrenVisibility(View.GONE)
+            rootLayout.setChildrenVisibility(View.GONE)
             errorLayout.visibility = View.GONE
             progressBar.visibility = View.VISIBLE
         }
@@ -53,18 +53,20 @@ class FilmDetailsFragment :
 
     private fun showFilm(film: Film) {
         with(binding) {
-            constraintLayout.setChildrenVisibility(View.VISIBLE)
+            rootLayout.setChildrenVisibility(View.VISIBLE)
             progressBar.visibility = View.GONE
             errorLayout.visibility = View.GONE
+            idTextView.text = film.id.toString()
             nameTextView.text = film.name
             foreignNameTextView.text = film.foreignName
             descriptionTextView.text = film.description
+            descriptionTextView.visibility = if (film.description == "") View.GONE else View.VISIBLE
             yearTextView.text = film.year
             lengthTextView.text = film.length?.toString() ?: getString(R.string.unknown_sign)
             ratingTextView.text = String.format(Locale.getDefault(), "%.1f", film.rating)
             votesTextView.text =
                 resources.getQuantityString(R.plurals.votes, film.votes, film.votes)
-            has3dImageView.isVisible = film.has3D
+            has3dTextView.isVisible = film.has3D
             genresTextView.text = film.genres
             countriesTextView.text = film.countries
             updatedTextView.text = film.updated
@@ -73,7 +75,7 @@ class FilmDetailsFragment :
 
     private fun showError(message: String) {
         with(binding) {
-            constraintLayout.setChildrenVisibility(View.GONE)
+            rootLayout.setChildrenVisibility(View.GONE)
             progressBar.visibility = View.GONE
             errorLayout.visibility = View.VISIBLE
             errorMessage.text = message

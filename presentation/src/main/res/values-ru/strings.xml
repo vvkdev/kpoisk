@@ -7,7 +7,9 @@
     <string name="minutes">" мин"</string>
     <string name="save">Сохранить</string>
     <string name="retry">Повторить</string>
-    <string name="updated">обновлено</string>
+    <string name="updated">Обновлено</string>
+    <string name="id">ID</string>
+    <string name="_3d">3D</string>
 
     <plurals name="votes">
         <item quantity="one">%,d голос</item>
