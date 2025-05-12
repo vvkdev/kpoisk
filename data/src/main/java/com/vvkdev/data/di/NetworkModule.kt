@@ -1,12 +1,11 @@
 package com.vvkdev.data.di
 
 import com.vvkdev.data.remote.service.FilmsService
-import com.vvkdev.domain.repository.SettingsRepository
+import com.vvkdev.domain.repository.ApiKeyRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
@@ -23,11 +22,12 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpClient(settingsRepository: SettingsRepository): OkHttpClient =
+    fun provideOkHttpClient(apiKeyRepository: ApiKeyRepository): OkHttpClient =
         OkHttpClient.Builder().addInterceptor { chain ->
-            val apiKey = runBlocking { settingsRepository.getApiKey() ?: "" }
-            val request = chain.request().newBuilder()
-                .addHeader(API_KEY_HEADER, apiKey)
+            val request = chain
+                .request()
+                .newBuilder()
+                .addHeader(API_KEY_HEADER, apiKeyRepository.getApiKey() ?: "")
                 .build()
             chain.proceed(request)
         }.build()

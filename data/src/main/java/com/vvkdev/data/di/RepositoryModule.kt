@@ -1,7 +1,9 @@
 package com.vvkdev.data.di
 
+import com.vvkdev.data.repository.ApiKeyRepositoryImpl
 import com.vvkdev.data.repository.FilmsRepositoryImpl
 import com.vvkdev.data.repository.SettingsRepositoryImpl
+import com.vvkdev.domain.repository.ApiKeyRepository
 import com.vvkdev.domain.repository.FilmsRepository
 import com.vvkdev.domain.repository.SettingsRepository
 import dagger.Binds
@@ -15,6 +17,9 @@ interface RepositoryModule {
 
     @Binds
     fun bindSettingsRepository(impl: SettingsRepositoryImpl): SettingsRepository
+
+    @Binds
+    fun bindApiKeyRepository(impl: ApiKeyRepositoryImpl): ApiKeyRepository
 
     @Binds
     fun provideFilmsRepository(impl: FilmsRepositoryImpl): FilmsRepository

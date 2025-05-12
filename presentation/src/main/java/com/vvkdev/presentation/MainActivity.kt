@@ -6,13 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import com.vvkdev.domain.repository.SettingsRepository
+import com.vvkdev.domain.repository.ApiKeyRepository
 import com.vvkdev.presentation.databinding.ActivityMainBinding
 import com.vvkdev.presentation.dialogs.ApiKeyDialog
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -21,7 +19,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     @Inject
-    lateinit var settingsRepository: SettingsRepository
+    lateinit var apiKeyRepository: ApiKeyRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
@@ -36,13 +34,10 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavView.setupWithNavController(navController)
 
         lifecycleScope.launch {
-            if (settingsRepository.getApiKey() == null) {
-                withContext(Dispatchers.Main) {
-                    ApiKeyDialog().show(supportFragmentManager, ApiKeyDialog.TAG)
-                }
+            apiKeyRepository.loadApiKeyToCache()
+            if (apiKeyRepository.getApiKey() == null) {
+                ApiKeyDialog().show(supportFragmentManager, ApiKeyDialog.TAG)
             }
         }
-
-
     }
 }
