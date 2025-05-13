@@ -9,7 +9,7 @@
         android:orientation="vertical"
         android:padding="8dp"
         android:fitsSystemWindows="true"
-        tools:context=".screens.films.FilmDetailsFragment"
+        tools:context=".fragments.FilmDetailsFragment"
         >
 
     <ProgressBar

@@ -1,4 +1,4 @@
-package com.vvkdev.presentation.screens.films
+package com.vvkdev.presentation.fragments
 
 import android.os.Bundle
 import android.view.View
@@ -13,6 +13,7 @@ import com.vvkdev.presentation.BaseFragment
 import com.vvkdev.presentation.R
 import com.vvkdev.presentation.UiState
 import com.vvkdev.presentation.databinding.FragmentFilmDetailsBinding
+import com.vvkdev.presentation.viewmodels.FilmDetailsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.util.Locale

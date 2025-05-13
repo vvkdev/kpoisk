@@ -1,4 +1,4 @@
-package com.vvkdev.presentation.screens.films
+package com.vvkdev.presentation.viewmodels
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
@@ -7,6 +7,7 @@ import com.vvkdev.domain.LoadResult
 import com.vvkdev.domain.model.Film
 import com.vvkdev.domain.repository.FilmsRepository
 import com.vvkdev.presentation.UiState
+import com.vvkdev.presentation.fragments.FilmDetailsFragmentArgs
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -16,7 +17,7 @@ import javax.inject.Inject
 @HiltViewModel
 class FilmDetailsViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle,
-    private val repository: FilmsRepository
+    private val repository: FilmsRepository,
 ) : ViewModel() {
 
     private val args = FilmDetailsFragmentArgs.fromSavedStateHandle(savedStateHandle)
@@ -43,5 +44,3 @@ class FilmDetailsViewModel @Inject constructor(
         }
     }
 }
-
-
