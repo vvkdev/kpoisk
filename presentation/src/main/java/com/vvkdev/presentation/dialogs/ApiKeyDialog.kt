@@ -3,7 +3,6 @@ package com.vvkdev.presentation.dialogs
 import android.app.Dialog
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.DialogFragment
@@ -15,6 +14,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.vvkdev.presentation.R
 import com.vvkdev.presentation.UiState
 import com.vvkdev.presentation.databinding.DialogApikeyBinding
+import com.vvkdev.presentation.utils.showToast
 import com.vvkdev.presentation.viewmodels.ApiKeyViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -28,10 +28,10 @@ class ApiKeyDialog : DialogFragment() {
         val binding = DialogApikeyBinding.inflate(layoutInflater)
 
         val dialog = MaterialAlertDialogBuilder(requireContext())
-            .setTitle("Enter API key")
+            .setTitle(R.string.enter_api_key)
             .setView(binding.root)
-            .setNegativeButton("Cancel", null)
-            .setPositiveButton("Save", null)
+            .setNegativeButton(R.string.cancel, null)
+            .setPositiveButton(R.string.save, null)
             .create()
 
         dialog.setOnShowListener {
@@ -39,13 +39,11 @@ class ApiKeyDialog : DialogFragment() {
             val saveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE)
 
             with(binding) {
-
                 apiKeyEditText.doAfterTextChanged {
                     if (apiKeyEditText.text.toString().isNotBlank()) setCancelable(false)
                 }
 
                 cancelButton.setOnClickListener { dismiss() }
-
                 saveButton.setOnClickListener { viewModel.saveApiKey(apiKeyEditText.text.toString()) }
 
                 lifecycleScope.launch {
@@ -61,8 +59,7 @@ class ApiKeyDialog : DialogFragment() {
                                 }
 
                                 is UiState.Success -> {
-                                    Toast.makeText(requireContext(), "Saved", Toast.LENGTH_SHORT)
-                                        .show()
+                                    showToast(R.string.saved)
                                     dismiss()
                                 }
 

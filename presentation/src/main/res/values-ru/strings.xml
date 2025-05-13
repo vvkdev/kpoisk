@@ -3,13 +3,17 @@
 
     <string name="unknown_error">Неизвестная ошибка</string>
     <string name="unknown_sign">"?"</string>
-    <string name="point_sign">" • "</string>
     <string name="minutes">" мин"</string>
+    <string name="cancel">Отмена</string>
     <string name="save">Сохранить</string>
     <string name="retry">Повторить</string>
     <string name="updated">Обновлено</string>
     <string name="id">ID</string>
     <string name="_3d">3D</string>
+    <string name="enter_api_key">Введите API ключ</string>
+    <string name="saved">Сохранено</string>
+    <string name="films">Фильмы</string>
+    <string name="settings">Настройки</string>
 
     <plurals name="votes">
         <item quantity="one">%,d голос</item>
