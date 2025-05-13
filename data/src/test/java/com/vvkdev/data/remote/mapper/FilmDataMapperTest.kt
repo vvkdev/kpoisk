@@ -140,13 +140,13 @@ class FilmDataMapperTest {
     @Test
     fun `mapListToString with null items skips nulls`() {
         val list = listOf(TestItem("A"), null, TestItem("B"))
-        assertEquals("A • B", mapListToString(list) { it?.name })
+        assertEquals("A • B", mapListToString(list) { it.name })
     }
 
     @Test
     fun `mapListToString with all null items returns empty string`() {
         val list = listOf<TestItem?>(null, null, null)
-        assertEquals("", mapListToString(list) { it?.name })
+        assertEquals("", mapListToString(list) { it.name })
     }
 
     @Test
