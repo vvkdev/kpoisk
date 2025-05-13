@@ -58,20 +58,23 @@ class FilmDetailsFragment :
             rootLayout.setChildrenVisibility(View.VISIBLE)
             progressBar.visibility = View.GONE
             errorLayout.visibility = View.GONE
+
             idTextView.text = film.id.toString()
+            updatedTextView.text = film.updated
             nameTextView.text = film.name
             foreignNameTextView.text = film.foreignName
-            descriptionTextView.text = film.description
-            descriptionTextView.visibility = if (film.description == "") View.GONE else View.VISIBLE
             yearTextView.text = film.year
             lengthTextView.text = film.length?.toString() ?: getString(R.string.unknown_sign)
             ratingTextView.text = String.format(Locale.getDefault(), "%.1f", film.rating)
             votesTextView.text =
                 resources.getQuantityString(R.plurals.votes, film.votes, film.votes)
-            has3dTextView.isVisible = film.has3D
             genresTextView.text = film.genres
             countriesTextView.text = film.countries
-            updatedTextView.text = film.updated
+            has3dTextView.isVisible = film.has3D
+            descriptionTextView.text = film.description
+            descriptionTextView.visibility =
+                if (film.description.isBlank()) View.GONE else View.VISIBLE
+            descriptionLine.visibility = descriptionTextView.visibility
         }
     }
 

@@ -237,15 +237,21 @@
 
         </LinearLayout>
 
-    </LinearLayout>
+        <View
+                android:id="@+id/descriptionLine"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_margin="4dp"
+                android:background="?attr/colorOutlineVariant"
+                />
 
-    <TextView
-            android:id="@+id/descriptionTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:background="@drawable/rectangle_rounded"
-            tools:text="XML Description"
-            />
+        <TextView
+                android:id="@+id/descriptionTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="XML Description"
+                />
+
+    </LinearLayout>
 
 </androidx.appcompat.widget.LinearLayoutCompat>
