@@ -3,6 +3,7 @@ package com.vvkdev.presentation.dialogs
 import android.app.Dialog
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.EditorInfo
 import androidx.appcompat.app.AlertDialog
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.DialogFragment
@@ -44,7 +45,15 @@ class ApiKeyDialog : DialogFragment() {
                 }
 
                 cancelButton.setOnClickListener { dismiss() }
-                saveButton.setOnClickListener { viewModel.saveApiKey(apiKeyEditText.text.toString()) }
+                saveButton.setOnClickListener { saveApiKey(apiKeyEditText.text.toString()) }
+                apiKeyEditText.setOnEditorActionListener { _, actionId, _ ->
+                    if (actionId == EditorInfo.IME_ACTION_DONE) {
+                        saveApiKey(apiKeyEditText.text.toString())
+                        true
+                    } else {
+                        false
+                    }
+                }
 
                 lifecycleScope.launch {
                     repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -78,6 +87,10 @@ class ApiKeyDialog : DialogFragment() {
             }
         }
         return dialog
+    }
+
+    private fun saveApiKey(key: String) {
+        viewModel.saveApiKey(key)
     }
 
     companion object {
