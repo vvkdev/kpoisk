@@ -30,6 +30,7 @@ class FilmDetailsFragment :
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.state.collect { state ->
                     when (state) {
+                        UiState.Default -> {}
                         UiState.Loading -> showLoading()
                         is UiState.Success -> showFilm(state.data)
                         is UiState.Error -> showError(

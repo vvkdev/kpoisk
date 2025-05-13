@@ -22,7 +22,7 @@ class FilmDetailsViewModel @Inject constructor(
     private val args = FilmDetailsFragmentArgs.fromSavedStateHandle(savedStateHandle)
     private val filmId: Int = args.filmId
 
-    private val _state = MutableStateFlow<UiState<Film>>(UiState.Loading)
+    private val _state = MutableStateFlow<UiState<Film>>(UiState.Default)
     val state: StateFlow<UiState<Film>> = _state
 
     init {
