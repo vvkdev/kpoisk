@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -22,12 +23,16 @@ class ApiKeyDialog : DialogFragment() {
         val dialog = MaterialAlertDialogBuilder(requireContext())
             .setTitle("Enter API key")
             .setView(binding.root)
-            .setCancelable(true)
             .setNegativeButton("Cancel", null)
             .setPositiveButton("Save", null)
             .create()
 
         dialog.setOnShowListener {
+
+                apiKeyEditText.doAfterTextChanged {
+                    if (apiKeyEditText.text.toString().isNotBlank()) setCancelable(false)
+                }
+
             dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
                 viewModel.saveApiKey(binding.apiKeyEditText.text.toString())
                 Toast.makeText(requireContext(), "Saved", Toast.LENGTH_SHORT).show()
