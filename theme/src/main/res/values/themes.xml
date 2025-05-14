@@ -1,12 +1,6 @@
 <resources>
-    <!-- Accent theme -->
-    <style name="Base.Accent.DayNight.V21.Theme.App" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/blue_primary</item>
-        <item name="colorPrimaryVariant">@color/blue_primary_variant</item>
-    </style>
-
     <!-- Base application theme -->
-    <style name="Base.DayNight.V21.Theme.App" parent="Base.Accent.DayNight.V21.Theme.App">
+    <style name="BaseTheme" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- prevent color bars flickering on start app -->
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
@@ -19,14 +13,45 @@
         <item name="materialAlertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog</item>
     </style>
 
-    <!-- Day theme -->
-    <style name="Base.Day.V21.Theme.App" parent="Base.DayNight.V21.Theme.App">
-        <item name="colorSecondary">@color/secondary_day_pink</item>
-        <item name="colorOnSecondary">@color/white</item>
+    <!-- Accent theme -->
+    <style name="ThemeBlue" parent="BaseTheme">
+        <item name="colorPrimary">@color/blue_primary</item>
+        <item name="colorPrimaryVariant">@color/blue_primary_variant</item>
     </style>
 
-    <style name="Base.V21.Theme.App" parent="Base.Day.V21.Theme.App" />
+    <style name="ThemeGreen" parent="BaseTheme">
+        <item name="colorPrimary">@color/green_primary</item>
+        <item name="colorPrimaryVariant">@color/green_primary_variant</item>
+    </style>
 
-    <style name="Theme.App" parent="Base.V21.Theme.App" />
+    <style name="ThemeOrange" parent="BaseTheme">
+        <item name="colorPrimary">@color/orange_primary</item>
+        <item name="colorPrimaryVariant">@color/orange_primary_variant</item>
+    </style>
+
+    <style name="ThemeLilac" parent="BaseTheme">
+        <item name="colorPrimary">@color/lilac_primary</item>
+        <item name="colorPrimaryVariant">@color/lilac_primary_variant</item>
+    </style>
+
+    <style name="ThemeRed" parent="BaseTheme">
+        <item name="colorPrimary">@color/red_primary</item>
+        <item name="colorPrimaryVariant">@color/red_primary_variant</item>
+    </style>
+
+    <style name="ThemeYellow" parent="BaseTheme">
+        <item name="colorPrimary">@color/yellow_primary</item>
+        <item name="colorPrimaryVariant">@color/yellow_primary_variant</item>
+    </style>
+
+    <style name="ThemeBeige" parent="BaseTheme">
+        <item name="colorPrimary">@color/beige_primary</item>
+        <item name="colorPrimaryVariant">@color/beige_primary_variant</item>
+    </style>
+
+    <style name="ThemeGrey" parent="BaseTheme">
+        <item name="colorPrimary">@color/grey_primary</item>
+        <item name="colorPrimaryVariant">@color/grey_primary_variant</item>
+    </style>
 
 </resources>

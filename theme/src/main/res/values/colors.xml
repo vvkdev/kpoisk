@@ -39,7 +39,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="black">#FF000000</color>
     <color name="grey">#7F7F7F</color>
-    <color name="secondary_day_pink">#FF674fa3</color>
-    <color name="secondary_night_pink">#FF5d3a62</color>
 
 </resources>
