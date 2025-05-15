@@ -3,13 +3,11 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:color="@color/ripple"
         >
-
     <item>
         <inset
                 android:insetTop="4dp"
                 android:insetBottom="4dp"
                 >
-
             <shape android:shape="rectangle">
                 <gradient
                         android:startColor="?attr/colorPrimary"
