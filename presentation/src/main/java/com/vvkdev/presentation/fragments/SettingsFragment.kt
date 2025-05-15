@@ -5,13 +5,18 @@ import android.view.View
 import com.vvkdev.presentation.BaseFragment
 import com.vvkdev.presentation.databinding.FragmentSettingsBinding
 import com.vvkdev.presentation.dialogs.ApiKeyDialog
+import com.vvkdev.presentation.dialogs.ColorDialog
 
 class SettingsFragment : BaseFragment<FragmentSettingsBinding>(FragmentSettingsBinding::inflate) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.apiKeyButton.setOnClickListener {
+        binding.colorTextView.setOnClickListener {
+            ColorDialog().show(childFragmentManager, ColorDialog.TAG)
+        }
+
+        binding.apikeyTextView.setOnClickListener {
             ApiKeyDialog().show(childFragmentManager, ApiKeyDialog.TAG)
         }
     }
