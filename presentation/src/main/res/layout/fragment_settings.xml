@@ -1,20 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat
         xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:gravity="center"
+        android:layout_gravity="bottom"
+        android:layout_margin="16dp"
+        android:background="@drawable/rectangle_rounded"
         android:fitsSystemWindows="true"
         tools:context=".fragments.SettingsFragment"
         >
 
-    <com.google.android.material.button.MaterialButton
-            android:id="@+id/apiKeyButton"
-            android:layout_width="wrap_content"
+    <TextView
+            android:id="@+id/colorTextView"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Change API key"
+            android:text="@string/change_accent_color"
+            android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+            android:background="?attr/selectableItemBackground"
+            app:drawableLeftCompat="@drawable/ic_palette"
+            android:drawablePadding="8dp"
+            android:padding="8dp"
+            android:clickable="true"
+            android:focusable="true"
+            />
+
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="8dp"
+            android:background="?attr/colorOutlineVariant"
+            />
+
+    <TextView
+            android:id="@+id/apikeyTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/change_api_key"
+            android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+            android:background="?attr/selectableItemBackground"
+            app:drawableLeftCompat="@drawable/ic_key"
+            android:drawablePadding="8dp"
+            android:padding="8dp"
+            android:clickable="true"
+            android:focusable="true"
             />
 
 </androidx.appcompat.widget.LinearLayoutCompat>

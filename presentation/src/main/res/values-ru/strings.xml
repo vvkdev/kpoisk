@@ -10,6 +10,8 @@
     <string name="updated">Обновлено</string>
     <string name="id">ID</string>
     <string name="_3d">3D</string>
+    <string name="change_accent_color">Изменить цвет акцента</string>
+    <string name="change_api_key">Изменить API ключ</string>
     <string name="enter_api_key">Введите API ключ</string>
     <string name="saved">Сохранено</string>
     <string name="films">Фильмы</string>
