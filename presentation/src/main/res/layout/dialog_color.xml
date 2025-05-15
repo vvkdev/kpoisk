@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="20dp"
+        >
+
+    <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="24dp"
+            android:layout_height="match_parent"
+            android:indeterminate="true"
+            android:indeterminateTint="?attr/colorPrimary"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            />
+
+    <GridLayout
+            android:id="@+id/gridLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:columnCount="4"
+            >
+
+        <com.google.android.material.button.MaterialButton
+                android:id="@+id/blueButton"
+                android:tag="blue"
+                android:backgroundTint="@color/blue_primary"
+                style="@style/Widget.App.CircleButton"
+                />
+
+        <com.google.android.material.button.MaterialButton
+                android:id="@+id/lilacButton"
+                android:tag="lilac"
+                android:backgroundTint="@color/lilac_primary"
+                style="@style/Widget.App.CircleButton"
+                />
+
+        <com.google.android.material.button.MaterialButton
+                android:id="@+id/redButton"
+                android:tag="red"
+                android:backgroundTint="@color/red_primary"
+                style="@style/Widget.App.CircleButton"
+                />
+
+        <com.google.android.material.button.MaterialButton
+                android:id="@+id/orangeButton"
+                android:tag="orange"
+                android:backgroundTint="@color/orange_primary"
+                style="@style/Widget.App.CircleButton"
+                />
+
+        <com.google.android.material.button.MaterialButton
+                android:id="@+id/greenButton"
+                android:tag="green"
+                android:backgroundTint="@color/green_primary"
+                style="@style/Widget.App.CircleButton"
+                />
+
+        <com.google.android.material.button.MaterialButton
+                android:id="@+id/yellowButton"
+                android:tag="yellow"
+                android:backgroundTint="@color/yellow_primary"
+                style="@style/Widget.App.CircleButton"
+                />
+
+        <com.google.android.material.button.MaterialButton
+                android:id="@+id/beigeButton"
+                android:tag="beige"
+                android:backgroundTint="@color/beige_primary"
+                style="@style/Widget.App.CircleButton"
+                />
+
+        <com.google.android.material.button.MaterialButton
+                android:id="@+id/greyButton"
+                android:tag="grey"
+                android:backgroundTint="@color/grey_primary"
+                style="@style/Widget.App.CircleButton"
+                />
+
+    </GridLayout>
+
+    <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="16dp"
+            android:visibility="invisible"
+            />
+
+</LinearLayout>

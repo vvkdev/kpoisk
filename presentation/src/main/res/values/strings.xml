@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string name="apikey_hint" translatable="false">XXXXXXX-XXXXXXX-XXXXXXX-XXXXXXX</string>
+    <string name="point_sign" translatable="false">" • "</string>
+    <string name="checkmark" translatable="false">✓</string>
     <string name="unknown_error">Unknown error</string>
     <string name="unknown_sign">"?"</string>
-    <string name="point_sign" translatable="false">" • "</string>
     <string name="minutes">" min"</string>
     <string name="cancel">Cancel</string>
     <string name="save">Save</string>
-    <string name="apikey_hint" translatable="false">XXXXXXX-XXXXXXX-XXXXXXX-XXXXXXX</string>
     <string name="retry">Retry</string>
     <string name="updated">Updated</string>
     <string name="id">ID</string>
     <string name="_3d">3D</string>
     <string name="change_accent_color">Change accent color</string>
+    <string name="select_color">Select color</string>
     <string name="change_api_key">Change API key</string>
     <string name="enter_api_key">Enter API key</string>
     <string name="saved">Saved</string>
     <string name="films">Films</string>
     <string name="settings">Settings</string>
+    <string name="app_will_be_restarted">Application will be restarted</string>
+    <string name="color_is_not_selected">Color is not selected</string>
 
     <plurals name="votes">
         <item quantity="one">%,d vote</item>
