@@ -1,11 +1,15 @@
 package com.vvkdev.presentation.dialogs
 
+import ColoredTheme
 import android.app.Dialog
+import android.graphics.Typeface
+import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.view.View
 import android.widget.GridLayout
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -35,7 +39,7 @@ class ColorDialog : DialogFragment() {
             val cancelButton = dialog.getButton(AlertDialog.BUTTON_NEGATIVE)
             val saveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE)
 
-            setupColorButtonsListeners(binding)
+            setupColorButtons(binding)
             cancelButton.setOnClickListener { dismiss() }
             saveButton.setOnClickListener {
                 if (selectedColor.isBlank()) {
@@ -55,19 +59,33 @@ class ColorDialog : DialogFragment() {
         return dialog
     }
 
-    private fun setupColorButtonsListeners(binding: DialogColorBinding) {
-        with(binding) {
-            val colorButtons = listOf(
-                blueButton, lilacButton, redButton, orangeButton,
-                greenButton, yellowButton, beigeButton, greyButton
-            )
-            colorButtons.forEach {
-                it.setOnClickListener { button ->
-                    selectColor(button as MaterialButton, gridLayout)
-                    textView.text = getString(R.string.app_will_be_restarted)
-                    textView.visibility = View.VISIBLE
+    private fun setupColorButtons(binding: DialogColorBinding) {
+        binding.gridLayout.removeAllViews()
+
+        ColoredTheme.entries.forEach { theme ->
+            val button = MaterialButton(requireContext()).apply {
+                tag = theme.name
+                textSize = 20F
+                typeface = Typeface.DEFAULT_BOLD
+
+                layoutParams = GridLayout.LayoutParams().apply {
+                    width = 48.dp()
+                    height = 48.dp()
+                    setMargins(8.dp(), 8.dp(), 8.dp(), 8.dp())
+                }
+
+                background = GradientDrawable().apply {
+                    shape = GradientDrawable.OVAL
+                    color = ContextCompat.getColorStateList(context, theme.colorRes)
+                }
+
+                setOnClickListener { button ->
+                    selectColor(button as MaterialButton, binding.gridLayout)
+                    binding.textView.text = getString(R.string.app_will_be_restarted)
+                    binding.textView.visibility = View.VISIBLE
                 }
             }
+            binding.gridLayout.addView(button)
         }
     }
 
@@ -81,6 +99,8 @@ class ColorDialog : DialogFragment() {
         button.setText(R.string.checkmark)
         selectedColor = button.tag.toString()
     }
+
+    private fun Int.dp() = (this * requireContext().resources.displayMetrics.density).toInt()
 
     companion object {
         const val TAG = "ColorDialog"

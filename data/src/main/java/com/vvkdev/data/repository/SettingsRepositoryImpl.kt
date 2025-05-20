@@ -15,11 +15,10 @@ class SettingsRepositoryImpl @Inject constructor(
         sharedPreferences.edit { putString(ACCENT_COLOR, color) }
     }
 
-    override fun getColorAccent(): String =
-        sharedPreferences.getString(ACCENT_COLOR, DEFAULT_COLOR) ?: DEFAULT_COLOR
+    override fun getColorAccent(): String? =
+        sharedPreferences.getString(ACCENT_COLOR, null)
 
     companion object {
         private const val ACCENT_COLOR = "accent_color"
-        private const val DEFAULT_COLOR = "blue"
     }
 }

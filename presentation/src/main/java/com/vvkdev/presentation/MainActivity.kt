@@ -1,5 +1,6 @@
 package com.vvkdev.presentation
 
+import ColoredTheme
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -28,18 +29,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
-        val theme = when (settingsRepository.getColorAccent()) {
-            "blue" -> com.vvkdev.theme.R.style.ThemeBlue
-            "lilac" -> com.vvkdev.theme.R.style.ThemeLilac
-            "red" -> com.vvkdev.theme.R.style.ThemeRed
-            "orange" -> com.vvkdev.theme.R.style.ThemeOrange
-            "green" -> com.vvkdev.theme.R.style.ThemeGreen
-            "yellow" -> com.vvkdev.theme.R.style.ThemeYellow
-            "beige" -> com.vvkdev.theme.R.style.ThemeBeige
-            "grey" -> com.vvkdev.theme.R.style.ThemeGrey
-            else -> throw IllegalArgumentException()
-        }
-        setTheme(theme)
+        val color = settingsRepository.getColorAccent() ?: ColoredTheme.BLUE.name
+        setTheme(ColoredTheme.fromName(color).themeRes)
 
         binding = ActivityMainBinding.inflate(layoutInflater).also { setContentView(it.root) }
 
