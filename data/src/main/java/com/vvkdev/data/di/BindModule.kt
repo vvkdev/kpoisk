@@ -1,5 +1,7 @@
 package com.vvkdev.data.di
 
+import com.vvkdev.data.crypto.CryptoService
+import com.vvkdev.data.crypto.CryptoServiceImpl
 import com.vvkdev.data.repository.ApiKeyRepositoryImpl
 import com.vvkdev.data.repository.FilmsRepositoryImpl
 import com.vvkdev.data.repository.SettingsRepositoryImpl
@@ -13,13 +15,16 @@ import dagger.hilt.components.SingletonComponent
 
 @Module
 @InstallIn(SingletonComponent::class)
-interface RepositoryModule {
+interface BindModule {
 
     @Binds
-    fun bindSettingsRepository(impl: SettingsRepositoryImpl): SettingsRepository
+    fun bindCryptoService(impl: CryptoServiceImpl): CryptoService
 
     @Binds
     fun bindApiKeyRepository(impl: ApiKeyRepositoryImpl): ApiKeyRepository
+
+    @Binds
+    fun bindSettingsRepository(impl: SettingsRepositoryImpl): SettingsRepository
 
     @Binds
     fun provideFilmsRepository(impl: FilmsRepositoryImpl): FilmsRepository
