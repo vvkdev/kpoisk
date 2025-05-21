@@ -27,12 +27,7 @@
             android:focusable="true"
             />
 
-    <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_margin="8dp"
-            android:background="?attr/colorOutlineVariant"
-            />
+    <View style="@style/Widget.App.Divider" />
 
     <TextView
             android:id="@+id/apikeyTextView"

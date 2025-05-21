@@ -147,12 +147,7 @@
                 tools:text="Night of the Day of the Dawn of the Son of the Bride of the Return of the Revenge of the Terror of the Attack of the Evil, Mutant, Alien, Flesh Eating, Hellbound, Zombified Living Dead Part 2: In Shocking 2-D"
                 />
 
-        <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_margin="4dp"
-                android:background="?attr/colorOutlineVariant"
-                />
+        <View style="@style/Widget.App.Divider" />
 
         <TextView
                 android:id="@+id/countriesTextView"
@@ -168,12 +163,7 @@
                 tools:text="France • USA • Great Britain"
                 />
 
-        <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_margin="4dp"
-                android:background="?attr/colorOutlineVariant"
-                />
+        <View style="@style/Widget.App.Divider" />
 
         <LinearLayout
                 android:layout_width="match_parent"
@@ -239,10 +229,7 @@
 
         <View
                 android:id="@+id/descriptionLine"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_margin="4dp"
-                android:background="?attr/colorOutlineVariant"
+                style="@style/Widget.App.Divider"
                 />
 
         <TextView
