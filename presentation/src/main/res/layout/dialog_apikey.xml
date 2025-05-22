@@ -5,7 +5,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingTop="24dp"
+        android:paddingTop="@dimen/indent_large"
         >
 
     <TextView
@@ -13,14 +13,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="@dimen/indent_normal"
             android:text="@string/keystore_warning"
             />
 
     <ProgressBar
             android:id="@+id/progressBar"
-            android:layout_width="24dp"
-            android:layout_height="match_parent"
+            android:layout_width="@dimen/icon_small"
+            android:layout_height="@dimen/icon_small"
             android:indeterminate="true"
             android:indeterminateTint="?attr/colorPrimary"
             android:layout_gravity="center"

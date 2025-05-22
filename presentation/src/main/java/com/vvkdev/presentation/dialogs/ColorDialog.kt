@@ -69,9 +69,13 @@ class ColorDialog : DialogFragment() {
                 typeface = Typeface.DEFAULT_BOLD
 
                 layoutParams = GridLayout.LayoutParams().apply {
-                    width = 48.dp()
-                    height = 48.dp()
-                    setMargins(8.dp(), 8.dp(), 8.dp(), 8.dp())
+                    val size =
+                        resources.getDimensionPixelSize(com.vvkdev.theme.R.dimen.icon_medium)
+                    width = size
+                    height = size
+                    val margin =
+                        resources.getDimensionPixelSize(com.vvkdev.theme.R.dimen.indent_medium)
+                    setMargins(margin, margin, margin, margin)
                 }
 
                 background = GradientDrawable().apply {
@@ -99,8 +103,6 @@ class ColorDialog : DialogFragment() {
         button.setText(R.string.checkmark)
         selectedColor = button.tag.toString()
     }
-
-    private fun Int.dp() = (this * requireContext().resources.displayMetrics.density).toInt()
 
     companion object {
         const val TAG = "ColorDialog"

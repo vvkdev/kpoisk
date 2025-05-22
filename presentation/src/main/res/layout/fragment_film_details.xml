@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="8dp"
+        android:padding="@dimen/indent_medium"
         android:fitsSystemWindows="true"
         tools:context=".fragments.FilmDetailsFragment"
         >
@@ -36,7 +36,7 @@
                 android:id="@+id/errorMessage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="32dp"
+                android:layout_marginHorizontal="@dimen/indent_large"
                 android:gravity="center"
                 tools:text="Error message"
                 />
@@ -45,7 +45,7 @@
                 android:id="@+id/retryButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="@dimen/indent_normal"
                 android:text="@string/retry"
                 />
     </LinearLayout>
@@ -77,8 +77,8 @@
                 />
 
         <Space
-                android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_width="@dimen/zero_size"
+                android:layout_height="@dimen/zero_size"
                 android:layout_weight="1"
                 />
 
@@ -107,7 +107,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="@dimen/indent_small"
             android:background="@drawable/rectangle_rounded"
             >
 
@@ -119,7 +119,7 @@
 
             <TextView
                     android:id="@+id/nameTextView"
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/zero_size"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
@@ -131,7 +131,7 @@
                     android:id="@+id/has3dTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
+                    android:layout_marginStart="@dimen/indent_small"
                     android:textStyle="bold"
                     android:textColor="?attr/colorPrimary"
                     android:text="@string/_3d"
@@ -143,7 +143,7 @@
                 android:id="@+id/foreignNameTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="@dimen/indent_small"
                 tools:text="Night of the Day of the Dawn of the Son of the Bride of the Return of the Revenge of the Terror of the Attack of the Evil, Mutant, Alien, Flesh Eating, Hellbound, Zombified Living Dead Part 2: In Shocking 2-D"
                 />
 
@@ -200,8 +200,8 @@
                     />
 
             <Space
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
+                    android:layout_width="@dimen/zero_size"
+                    android:layout_height="@dimen/zero_size"
                     android:layout_weight="1"
                     />
 

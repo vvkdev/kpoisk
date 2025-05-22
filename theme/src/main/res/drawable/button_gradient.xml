@@ -5,8 +5,8 @@
         >
     <item>
         <inset
-                android:insetTop="4dp"
-                android:insetBottom="4dp"
+                android:insetTop="@dimen/indent_small"
+                android:insetBottom="@dimen/indent_small"
                 >
             <shape android:shape="rectangle">
                 <gradient
@@ -14,7 +14,7 @@
                         android:endColor="?attr/colorPrimaryVariant"
                         android:angle="0"
                         />
-                <corners android:radius="4dp" />
+                <corners android:radius="@dimen/corner_small" />
             </shape>
         </inset>
     </item>
