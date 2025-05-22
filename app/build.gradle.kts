@@ -22,7 +22,7 @@ android {
         sourceCompatibility = JavaVersion.toVersion(libs.versions.jvm.get())
         targetCompatibility = JavaVersion.toVersion(libs.versions.jvm.get())
     }
-
+    
     kotlinOptions {
         jvmTarget = libs.versions.jvm.get()
     }
@@ -33,12 +33,6 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":data"))
 
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    // navigation
-    implementation(libs.androidx.navigation.fragment.ktx)
-    implementation(libs.androidx.navigation.ui.ktx)
     // hilt
     ksp(libs.hilt.compiler)
     implementation(libs.hilt.android)
