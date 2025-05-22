@@ -12,21 +12,21 @@ coreKtx = "1.16.0"
 appcompat = "1.7.0"
 material = "1.12.0"
 navigation = "2.8.9"
+datastore = "1.2.0-alpha02"
 hilt = "2.56.2"
 room = "2.7.1"
 retrofit = "2.11.0"
 kotlinxSerialization = "1.8.1"
 okhttp = "4.12.0"
-datastore = "1.2.0-alpha02"
 tinkAndroid = "1.17.0"
 
 [libraries]
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
-androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastore" }
 material = { module = "com.google.android.material:material", version.ref = "material" }
-androidx-navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigation" }
-androidx-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigation" }
+navigation-fragment = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigation" }
+navigation-ui = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigation" }
+androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastore" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
 hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }
 room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
