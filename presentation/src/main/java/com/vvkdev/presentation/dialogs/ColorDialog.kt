@@ -18,6 +18,7 @@ import com.vvkdev.presentation.R
 import com.vvkdev.presentation.databinding.DialogColorBinding
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
+import com.vvkdev.theme.R as ThemeR
 
 @AndroidEntryPoint
 class ColorDialog : DialogFragment() {
@@ -68,12 +69,10 @@ class ColorDialog : DialogFragment() {
                 typeface = Typeface.DEFAULT_BOLD
 
                 layoutParams = GridLayout.LayoutParams().apply {
-                    val size =
-                        resources.getDimensionPixelSize(com.vvkdev.theme.R.dimen.icon_medium)
+                    val size = resources.getDimensionPixelSize(ThemeR.dimen.icon_medium)
+                    val margin = resources.getDimensionPixelSize(ThemeR.dimen.indent_medium)
                     width = size
                     height = size
-                    val margin =
-                        resources.getDimensionPixelSize(com.vvkdev.theme.R.dimen.indent_medium)
                     setMargins(margin, margin, margin, margin)
                 }
 
