@@ -33,7 +33,6 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_marginTop="@dimen/indent_normal"
-            android:visibility="invisible"
             />
 
 </LinearLayout>

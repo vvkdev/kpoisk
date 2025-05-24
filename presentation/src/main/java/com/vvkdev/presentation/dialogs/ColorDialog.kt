@@ -44,7 +44,6 @@ class ColorDialog : DialogFragment() {
             saveButton.setOnClickListener {
                 if (selectedColor.isBlank()) {
                     binding.textView.text = getString(R.string.color_is_not_selected)
-                    binding.textView.visibility = View.VISIBLE
                 } else {
                     saveButton.isEnabled = false
                     cancelButton.isEnabled = false
@@ -86,7 +85,6 @@ class ColorDialog : DialogFragment() {
                 setOnClickListener { button ->
                     selectColor(button as MaterialButton, binding.gridLayout)
                     binding.textView.text = getString(R.string.app_will_be_restarted)
-                    binding.textView.visibility = View.VISIBLE
                 }
             }
             binding.gridLayout.addView(button)
