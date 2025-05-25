@@ -2,7 +2,6 @@ package com.vvkdev.presentation.dialogs
 
 import ColoredTheme
 import android.app.Dialog
-import android.graphics.Typeface
 import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.view.View
@@ -63,12 +62,10 @@ class ColorDialog : DialogFragment() {
     private fun setupColorButtons(binding: DialogColorBinding) {
         val size = resources.getDimensionPixelSize(ThemeR.dimen.icon_medium)
         val margin = resources.getDimensionPixelSize(ThemeR.dimen.indent_medium)
-        
+
         ColoredTheme.entries.forEach { theme ->
             val button = MaterialButton(requireContext()).apply {
                 tag = theme.name
-                textSize = 20F
-                typeface = Typeface.DEFAULT_BOLD
 
                 layoutParams = GridLayout.LayoutParams().apply {
                     width = size
@@ -80,6 +77,11 @@ class ColorDialog : DialogFragment() {
                     shape = GradientDrawable.OVAL
                     color = ContextCompat.getColorStateList(context, theme.colorRes)
                 }
+
+                icon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_check)
+                icon.alpha = 0
+                iconPadding = 0
+                iconGravity = MaterialButton.ICON_GRAVITY_TEXT_TOP
 
                 setOnClickListener { button ->
                     selectColor(button as MaterialButton, binding.gridLayout)
@@ -94,10 +96,10 @@ class ColorDialog : DialogFragment() {
         for (i in 0 until gridLayout.childCount) {
             val child = gridLayout.getChildAt(i)
             if (child is MaterialButton) {
-                child.text = ""
+                child.icon.alpha = 0
             }
         }
-        button.setText(R.string.checkmark)
+        button.icon.alpha = 255
         selectedColor = button.tag.toString()
     }
 
