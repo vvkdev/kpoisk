@@ -29,6 +29,8 @@ class ColorDialog : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val binding = DialogColorBinding.inflate(layoutInflater)
 
+        setupColorButtons(binding)
+
         val dialog = MaterialAlertDialogBuilder(requireContext())
             .setTitle(R.string.select_color)
             .setView(binding.root)
@@ -40,7 +42,6 @@ class ColorDialog : DialogFragment() {
             val cancelButton = dialog.getButton(AlertDialog.BUTTON_NEGATIVE)
             val saveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE)
 
-            setupColorButtons(binding)
             cancelButton.setOnClickListener { dismiss() }
             saveButton.setOnClickListener {
                 if (selectedColor.isBlank()) {
