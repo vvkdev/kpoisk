@@ -38,7 +38,7 @@
         <item name="android:textAppearance">@style/TextAppearance.Material3.TitleMedium</item>
     </style>
 
-    <style name="Widget.App.Divider" parent="">
+    <style name="Widget.App.DividerHorizontal" parent="Widget.Material3.MaterialDivider">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/stroke_thickness</item>
         <item name="android:layout_margin">@dimen/indent_small</item>
