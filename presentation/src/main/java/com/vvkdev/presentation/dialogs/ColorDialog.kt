@@ -61,8 +61,9 @@ class ColorDialog : DialogFragment() {
     }
 
     private fun setupColorButtons(binding: DialogColorBinding) {
-        binding.gridLayout.removeAllViews()
-
+        val size = resources.getDimensionPixelSize(ThemeR.dimen.icon_medium)
+        val margin = resources.getDimensionPixelSize(ThemeR.dimen.indent_medium)
+        
         ColoredTheme.entries.forEach { theme ->
             val button = MaterialButton(requireContext()).apply {
                 tag = theme.name
@@ -70,8 +71,6 @@ class ColorDialog : DialogFragment() {
                 typeface = Typeface.DEFAULT_BOLD
 
                 layoutParams = GridLayout.LayoutParams().apply {
-                    val size = resources.getDimensionPixelSize(ThemeR.dimen.icon_medium)
-                    val margin = resources.getDimensionPixelSize(ThemeR.dimen.indent_medium)
                     width = size
                     height = size
                     setMargins(margin, margin, margin, margin)
