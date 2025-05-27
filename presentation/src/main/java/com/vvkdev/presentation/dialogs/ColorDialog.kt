@@ -4,7 +4,6 @@ import ColoredTheme
 import android.app.Dialog
 import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
-import android.view.View
 import android.widget.GridLayout
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
@@ -38,18 +37,11 @@ class ColorDialog : DialogFragment() {
             .create()
 
         dialog.setOnShowListener {
-            val cancelButton = dialog.getButton(AlertDialog.BUTTON_NEGATIVE)
-            val saveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE)
-
-            cancelButton.setOnClickListener { dismiss() }
-            saveButton.setOnClickListener {
+            dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setOnClickListener { dismiss() }
+            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
                 if (selectedColor.isBlank()) {
                     binding.textView.text = getString(R.string.color_is_not_selected)
                 } else {
-                    saveButton.isEnabled = false
-                    cancelButton.isEnabled = false
-                    binding.gridLayout.visibility = View.GONE
-                    binding.progressBar.visibility = View.VISIBLE
                     settingsRepository.setColorAccent(selectedColor)
                     ActivityCompat.recreate(requireActivity())
                     dismiss()
