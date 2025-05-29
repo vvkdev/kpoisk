@@ -14,5 +14,6 @@ enum class AccentColor(@StyleRes val themeRes: Int, @ColorRes val colorRes: Int)
 
     companion object {
         fun fromName(name: String): AccentColor = entries.first { it.name == name }
+        fun default(): AccentColor = BLUE
     }
 }
