@@ -1,6 +1,6 @@
 package com.vvkdev.presentation.dialogs
 
-import ColoredTheme
+import AccentColor
 import android.app.Dialog
 import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
@@ -55,7 +55,7 @@ class ColorDialog : DialogFragment() {
         val size = resources.getDimensionPixelSize(ThemeR.dimen.icon_medium)
         val margin = resources.getDimensionPixelSize(ThemeR.dimen.indent_medium)
 
-        ColoredTheme.entries.forEach { theme ->
+        AccentColor.entries.forEach { theme ->
             val button = MaterialButton(requireContext()).apply {
                 tag = theme.name
 

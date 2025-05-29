@@ -2,7 +2,7 @@ import androidx.annotation.ColorRes
 import androidx.annotation.StyleRes
 import com.vvkdev.theme.R
 
-enum class ColoredTheme(@StyleRes val themeRes: Int, @ColorRes val colorRes: Int) {
+enum class AccentColor(@StyleRes val themeRes: Int, @ColorRes val colorRes: Int) {
     BLUE(R.style.ThemeBlue, R.color.blue_primary),
     LILAC(R.style.ThemeLilac, R.color.lilac_primary),
     RED(R.style.ThemeRed, R.color.red_primary),
@@ -13,7 +13,6 @@ enum class ColoredTheme(@StyleRes val themeRes: Int, @ColorRes val colorRes: Int
     GREY(R.style.ThemeGrey, R.color.grey_primary);
 
     companion object {
-        fun fromName(name: String): ColoredTheme =
-            entries.firstOrNull { it.name == name } ?: BLUE
+        fun fromName(name: String): AccentColor = entries.first { it.name == name }
     }
 }
