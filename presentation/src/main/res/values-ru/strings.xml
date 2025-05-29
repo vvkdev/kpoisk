@@ -18,7 +18,6 @@
     <string name="films">Фильмы</string>
     <string name="settings">Настройки</string>
     <string name="app_will_be_restarted">Приложение будет перезапущено</string>
-    <string name="color_is_not_selected">Не выбран цвет</string>
     <string name="keystore_warning">Ключ хранится в защищённом хранилище устройства.\nПри изменении PIN или отпечатков\nможет потребоваться ввести ключ заново.</string>
 
     <plurals name="votes">

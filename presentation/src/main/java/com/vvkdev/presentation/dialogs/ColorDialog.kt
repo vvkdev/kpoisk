@@ -20,13 +20,16 @@ import com.vvkdev.theme.R as ThemeR
 
 @AndroidEntryPoint
 class ColorDialog : DialogFragment() {
+
     private val viewModel: ColorViewModel by viewModels()
-    private var selectedColor = ""
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val binding = DialogColorBinding.inflate(layoutInflater)
 
         setupColorButtons(binding)
+        if (viewModel.showRestartMessage) {
+            binding.textView.text = getString(R.string.app_will_be_restarted)
+        }
 
         val dialog = MaterialAlertDialogBuilder(requireContext())
             .setTitle(R.string.select_color)
@@ -38,13 +41,9 @@ class ColorDialog : DialogFragment() {
         dialog.setOnShowListener {
             dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setOnClickListener { dismiss() }
             dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
-                if (selectedColor.isBlank()) {
-                    binding.textView.text = getString(R.string.color_is_not_selected)
-                } else {
-                    viewModel.saveAccentColor(selectedColor)
-                    ActivityCompat.recreate(requireActivity())
-                    dismiss()
-                }
+                viewModel.saveAccentColor()
+                ActivityCompat.recreate(requireActivity())
+                dismiss()
             }
         }
         return dialog
@@ -70,28 +69,27 @@ class ColorDialog : DialogFragment() {
                 }
 
                 icon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_check)
-                icon.alpha = 0
+                icon.alpha = if (tag.toString() == viewModel.color) 255 else 0
                 iconPadding = 0
                 iconGravity = MaterialButton.ICON_GRAVITY_TEXT_TOP
 
-                setOnClickListener { button ->
-                    selectColor(button as MaterialButton, binding.gridLayout)
-                    binding.textView.text = getString(R.string.app_will_be_restarted)
-                }
+                setOnClickListener { button -> selectColor(button as MaterialButton, binding) }
             }
             binding.gridLayout.addView(button)
         }
     }
 
-    private fun selectColor(button: MaterialButton, gridLayout: GridLayout) {
-        for (i in 0 until gridLayout.childCount) {
-            val child = gridLayout.getChildAt(i)
+    private fun selectColor(button: MaterialButton, binding: DialogColorBinding) {
+        for (i in 0 until binding.gridLayout.childCount) {
+            val child = binding.gridLayout.getChildAt(i)
             if (child is MaterialButton) {
                 child.icon.alpha = 0
             }
         }
         button.icon.alpha = 255
-        selectedColor = button.tag.toString()
+        viewModel.color = button.tag.toString()
+        binding.textView.text = getString(R.string.app_will_be_restarted)
+        viewModel.showRestartMessage = true
     }
 
     companion object {
