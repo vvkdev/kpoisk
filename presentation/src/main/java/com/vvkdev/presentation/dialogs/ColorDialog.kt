@@ -9,19 +9,18 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.viewModels
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.vvkdev.domain.repository.SettingsRepository
 import com.vvkdev.presentation.R
 import com.vvkdev.presentation.databinding.DialogColorBinding
+import com.vvkdev.presentation.viewmodels.ColorViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 import com.vvkdev.theme.R as ThemeR
 
 @AndroidEntryPoint
 class ColorDialog : DialogFragment() {
-    @Inject
-    lateinit var settingsRepository: SettingsRepository
+    private val viewModel: ColorViewModel by viewModels()
     private var selectedColor = ""
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -42,7 +41,7 @@ class ColorDialog : DialogFragment() {
                 if (selectedColor.isBlank()) {
                     binding.textView.text = getString(R.string.color_is_not_selected)
                 } else {
-                    settingsRepository.setColorAccent(selectedColor)
+                    viewModel.saveAccentColor(selectedColor)
                     ActivityCompat.recreate(requireActivity())
                     dismiss()
                 }
