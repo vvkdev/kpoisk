@@ -3,6 +3,7 @@ package com.vvkdev.presentation.fragments
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -26,6 +27,11 @@ class FilmDetailsFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        if (resources.configuration.fontScale > FONT_SCALE_THRESHOLD) {
+            binding.idLinearLayout.orientation = LinearLayout.VERTICAL
+            binding.timeLinearLayout.orientation = LinearLayout.VERTICAL
+        }
 
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -58,16 +64,24 @@ class FilmDetailsFragment :
             rootLayout.setChildrenVisibility(View.VISIBLE)
             progressBar.visibility = View.GONE
             errorLayout.visibility = View.GONE
-
-            idTextView.text = film.id.toString()
-            updatedTextView.text = film.updated
+            idTextView.text = getString(R.string.id, film.id)
+            updatedTextView.text = getString(R.string.updated, film.updated)
             nameTextView.text = film.name
             foreignNameTextView.text = film.foreignName
-            yearTextView.text = film.year
-            lengthTextView.text = film.length?.toString() ?: getString(R.string.unknown_sign)
-            ratingTextView.text = String.format(Locale.getDefault(), "%.1f", film.rating)
-            votesTextView.text =
+            foreignNameTextView.visibility =
+                if (film.foreignName.isBlank()) View.GONE else View.VISIBLE
+
+            timeTextView.text = getString(
+                R.string.time,
+                film.year,
+                film.length?.toString() ?: getString(R.string.unknown_sign)
+            )
+            ratingTextView.text = getString(
+                R.string.rating,
+                String.format(Locale.getDefault(), "%.1f", film.rating),
                 resources.getQuantityString(R.plurals.votes, film.votes, film.votes)
+            )
+
             genresTextView.text = film.genres
             countriesTextView.text = film.countries
             has3dTextView.isVisible = film.has3D
@@ -93,4 +107,7 @@ class FilmDetailsFragment :
         }
     }
 
+    companion object {
+        private const val FONT_SCALE_THRESHOLD = 1.3f
+    }
 }

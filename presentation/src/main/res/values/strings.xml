@@ -2,16 +2,16 @@
 <resources>
 
     <string name="apikey_hint" translatable="false">XXXXXXX-XXXXXXX-XXXXXXX-XXXXXXX</string>
-    <string name="point_sign" translatable="false">" • "</string>
     <string name="unknown_error">Unknown error</string>
     <string name="unknown_sign">"?"</string>
-    <string name="minutes">" min"</string>
+    <string name="id">ID • %d</string>
+    <string name="updated">Updated • %s</string>
+    <string name="time">%s • %s min</string>
+    <string name="rating" translatable="false">%s • %s</string>
+    <string name="_3d">3D</string>
+    <string name="retry">Retry</string>
     <string name="cancel">Cancel</string>
     <string name="save">Save</string>
-    <string name="retry">Retry</string>
-    <string name="updated">Updated</string>
-    <string name="id">ID</string>
-    <string name="_3d">3D</string>
     <string name="change_accent_color">Change accent color</string>
     <string name="select_color">Select color</string>
     <string name="change_api_key">Change API key</string>
