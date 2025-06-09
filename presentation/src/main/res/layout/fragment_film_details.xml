@@ -17,170 +17,169 @@
             android:orientation="vertical"
             >
 
-    <ProgressBar
-            android:id="@+id/progressBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:indeterminate="true"
-            android:indeterminateTint="?attr/colorPrimary"
-            android:visibility="gone"
-            />
-
-    <LinearLayout
-            android:id="@+id/errorLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:visibility="gone"
-            >
-
-        <TextView
-                android:id="@+id/errorMessage"
+        <ProgressBar
+                android:id="@+id/progressBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/indent_large"
-                android:gravity="center"
-                tools:text="Error message"
-                />
-
-        <Button
-                android:id="@+id/retryButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/indent_normal"
-                android:text="@string/retry"
-                />
-    </LinearLayout>
-
-    <LinearLayout
-                android:id="@+id/idLinearLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="@drawable/rectangle_rounded"
-            >
-
-        <TextView
-                android:id="@+id/idTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_weight="1"
+                android:indeterminate="true"
+                android:indeterminateTint="?attr/colorPrimary"
+                android:visibility="gone"
+                />
+
+        <LinearLayout
+                android:id="@+id/errorLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone"
+                >
+
+            <TextView
+                    android:id="@+id/errorMessage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/indent_large"
+                    android:gravity="center"
+                    tools:text="Error message"
+                    />
+
+            <Button
+                    android:id="@+id/retryButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/indent_normal"
+                    android:text="@string/retry"
+                    />
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/idLinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/rectangle_rounded"
+                >
+
+            <TextView
+                    android:id="@+id/idTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:layout_marginEnd="@dimen/indent_medium"
                     tools:text="ID • 253765"
-                />
-
-        <TextView
-                android:id="@+id/updatedTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                    tools:text="Обновлено • 2025-04-28 14:17"
-                />
-
-    </LinearLayout>
-
-    <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="@dimen/indent_small"
-            android:background="@drawable/rectangle_rounded"
-            >
-
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                >
-
-            <TextView
-                    android:id="@+id/nameTextView"
-                    android:layout_width="@dimen/zero_size"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
-                    app:lineHeight="16sp"
-                    tools:text="Ночь дня рассвета сына невесты возвращения мести ужаса атаки злобных мутировавших чужих плотоядных восставших из ада зомбированных живых мертвецов. Часть 2: в шокирующем 2-D формате (1991)"
                     />
 
             <TextView
-                    android:id="@+id/has3dTextView"
+                    android:id="@+id/updatedTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/indent_small"
-                    android:textStyle="bold"
-                    android:textColor="?attr/colorPrimary"
-                    android:text="@string/_3d"
+                    tools:text="Обновлено • 2025-04-28 14:17"
                     />
 
         </LinearLayout>
 
-        <TextView
-                android:id="@+id/foreignNameTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/indent_small"
-                tools:text="Night of the Day of the Dawn of the Son of the Bride of the Return of the Revenge of the Terror of the Attack of the Evil, Mutant, Alien, Flesh Eating, Hellbound, Zombified Living Dead Part 2: In Shocking 2-D"
-                />
-
-        <View style="@style/Widget.App.DividerHorizontal" />
-
-        <TextView
-                android:id="@+id/countriesTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="criminal • drama • biopic"
-                />
-
-        <TextView
-                android:id="@+id/genresTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="France • USA • Great Britain"
-                />
-
-        <View style="@style/Widget.App.DividerHorizontal" />
-
         <LinearLayout
-                    android:id="@+id/timeLinearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/indent_small"
+                android:background="@drawable/rectangle_rounded"
                 >
 
-            <TextView
-                        android:id="@+id/timeTextView"
-                    android:layout_width="wrap_content"
+            <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    >
+
+                <TextView
+                        android:id="@+id/nameTextView"
+                        android:layout_width="@dimen/zero_size"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAppearance="?attr/textAppearanceTitleMedium"
+                        tools:text="Ночь дня рассвета сына невесты возвращения мести ужаса атаки злобных мутировавших чужих плотоядных восставших из ада зомбированных живых мертвецов. Часть 2: в шокирующем 2-D формате (1991)"
+                        />
+
+                <TextView
+                        android:id="@+id/has3dTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/indent_small"
+                        android:textStyle="bold"
+                        android:textColor="?attr/colorPrimary"
+                        android:text="@string/_3d"
+                        />
+
+            </LinearLayout>
+
+            <TextView
+                    android:id="@+id/foreignNameTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/indent_small"
+                    tools:text="Night of the Day of the Dawn of the Son of the Bride of the Return of the Revenge of the Terror of the Attack of the Evil, Mutant, Alien, Flesh Eating, Hellbound, Zombified Living Dead Part 2: In Shocking 2-D"
+                    />
+
+            <View style="@style/Widget.App.DividerHorizontal" />
+
+            <TextView
+                    android:id="@+id/countriesTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="criminal • drama • biopic"
+                    />
+
+            <TextView
+                    android:id="@+id/genresTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="France • USA • Great Britain"
+                    />
+
+            <View style="@style/Widget.App.DividerHorizontal" />
+
+            <LinearLayout
+                    android:id="@+id/timeLinearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+
+                <TextView
+                        android:id="@+id/timeTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:layout_marginEnd="@dimen/indent_medium"
                         tools:text="1999-2007 • 999 min"
+                        />
+
+                <TextView
+                        android:id="@+id/ratingTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="8.9 • 1 780 560 votes"
+                        />
+
+            </LinearLayout>
+
+            <View
+                    android:id="@+id/descriptionLine"
+                    style="@style/Widget.App.DividerHorizontal"
                     />
 
             <TextView
-                    android:id="@+id/ratingTextView"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/descriptionTextView"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                        tools:text="8.9 • 1 780 560 votes"
+                    tools:text="XML Description"
                     />
 
         </LinearLayout>
-
-        <View
-                android:id="@+id/descriptionLine"
-                style="@style/Widget.App.DividerHorizontal"
-                />
-
-        <TextView
-                android:id="@+id/descriptionTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="XML Description"
-                />
-
-    </LinearLayout>
 
     </LinearLayout>
 
