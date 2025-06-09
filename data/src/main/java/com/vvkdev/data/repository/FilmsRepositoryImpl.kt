@@ -9,6 +9,9 @@ import com.vvkdev.data.remote.service.FilmsService
 import com.vvkdev.domain.LoadResult
 import com.vvkdev.domain.model.Film
 import com.vvkdev.domain.repository.FilmsRepository
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -26,7 +29,7 @@ class FilmsRepositoryImpl @Inject constructor(
                 val response = filmsService.getFilmById(id)
                 if (response.isSuccessful) {
                     val film = response.body()!!.toFilm()
-                    filmDao.insert(film.toEntity())
+                    CoroutineScope(Dispatchers.IO).launch { filmDao.insert(film.toEntity()) }
                     LoadResult.Success(film)
                 } else {
                     val errorBody = response.errorBody()?.string()
