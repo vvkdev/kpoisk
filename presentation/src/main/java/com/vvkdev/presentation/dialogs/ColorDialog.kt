@@ -69,7 +69,7 @@ class ColorDialog : DialogFragment() {
                 }
 
                 icon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_check)
-                icon.alpha = if (tag.toString() == viewModel.color) 255 else 0
+                icon.alpha = if (theme.name == viewModel.color) ALPHA_VISIBLE else ALPHA_INVISIBLE
                 iconPadding = 0
                 iconGravity = MaterialButton.ICON_GRAVITY_TEXT_TOP
 
@@ -83,10 +83,10 @@ class ColorDialog : DialogFragment() {
         for (i in 0 until binding.gridLayout.childCount) {
             val child = binding.gridLayout.getChildAt(i)
             if (child is MaterialButton) {
-                child.icon.alpha = 0
+                child.icon.alpha = ALPHA_INVISIBLE
             }
         }
-        button.icon.alpha = 255
+        button.icon.alpha = ALPHA_VISIBLE
         viewModel.color = button.tag.toString()
         binding.textView.text = getString(R.string.app_will_be_restarted)
         viewModel.showRestartMessage = true
@@ -94,5 +94,7 @@ class ColorDialog : DialogFragment() {
 
     companion object {
         const val TAG = "ColorDialog"
+        private const val ALPHA_INVISIBLE = 0
+        private const val ALPHA_VISIBLE = 255
     }
 }
