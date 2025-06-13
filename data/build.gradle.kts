@@ -45,8 +45,6 @@ dependencies {
     ksp(libs.room.compiler)
     // tink
     implementation(libs.tink.android)
-    // datastore
-    implementation(libs.androidx.datastore.preferences)
     // testing
     testImplementation(libs.kotlin.test)
 }
