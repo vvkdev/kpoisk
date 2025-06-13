@@ -5,6 +5,8 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.vvkdev.domain.repository.SettingsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import javax.inject.Inject
 
 @HiltViewModel
@@ -13,22 +15,27 @@ class ColorViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
 
-    var color: String
-        get() = savedStateHandle.get<String>(SELECTED_COLOR)
-            ?: settingsRepository.getColorAccent()
-            ?: AccentColor.default().name
-        set(value) = savedStateHandle.set(SELECTED_COLOR, value)
+    private val initialColor: AccentColor = settingsRepository.getColorAccent()
+        ?.let { AccentColor.valueOf(it) }
+        ?: AccentColor.default()
 
-    var showRestartMessage: Boolean
-        get() = savedStateHandle.get<Boolean>(SHOW_RESTART_MSG) ?: false
-        set(value) = savedStateHandle.set(SHOW_RESTART_MSG, value)
+    var selectedColor: AccentColor = savedStateHandle.get<String>(SELECTED_COLOR)
+        ?.let { AccentColor.valueOf(it) }
+        ?: initialColor
+        set(color) {
+            field = color
+            savedStateHandle[SELECTED_COLOR] = color.name
+            _shouldRestart.value = color != initialColor
+        }
+
+    private val _shouldRestart = MutableStateFlow(selectedColor != initialColor)
+    val shouldRestart = _shouldRestart.asStateFlow()
 
     fun saveAccentColor() {
-        settingsRepository.setColorAccent(color)
+        settingsRepository.setColorAccent(selectedColor.name)
     }
 
     companion object {
         private const val SELECTED_COLOR = "selected_color"
-        private const val SHOW_RESTART_MSG = "show_restart_msg"
     }
 }

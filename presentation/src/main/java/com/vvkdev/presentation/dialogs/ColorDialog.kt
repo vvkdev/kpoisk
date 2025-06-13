@@ -8,14 +8,19 @@ import android.widget.GridLayout
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.view.children
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.vvkdev.presentation.R
 import com.vvkdev.presentation.databinding.DialogColorBinding
 import com.vvkdev.presentation.viewmodels.ColorViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import com.vvkdev.theme.R as ThemeR
 
 @AndroidEntryPoint
@@ -26,10 +31,16 @@ class ColorDialog : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val binding = DialogColorBinding.inflate(layoutInflater)
 
-        setupColorButtons(binding)
-        if (viewModel.showRestartMessage) {
-            binding.textView.text = getString(R.string.app_will_be_restarted)
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.shouldRestart.collect {
+                    binding.textView.text =
+                        if (it) getString(R.string.app_will_be_restarted) else ""
+                }
+            }
         }
+
+        setupColorButtons(binding)
 
         val dialog = MaterialAlertDialogBuilder(requireContext())
             .setTitle(R.string.select_color)
@@ -41,8 +52,10 @@ class ColorDialog : DialogFragment() {
         dialog.setOnShowListener {
             dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setOnClickListener { dismiss() }
             dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
-                viewModel.saveAccentColor()
-                ActivityCompat.recreate(requireActivity())
+                if (viewModel.shouldRestart.value) {
+                    viewModel.saveAccentColor()
+                    ActivityCompat.recreate(requireActivity())
+                }
                 dismiss()
             }
         }
@@ -69,9 +82,10 @@ class ColorDialog : DialogFragment() {
                 }
 
                 icon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_check)
-                icon.alpha = if (theme.name == viewModel.color) ALPHA_VISIBLE else ALPHA_INVISIBLE
                 iconPadding = 0
                 iconGravity = MaterialButton.ICON_GRAVITY_TEXT_TOP
+                icon.alpha =
+                    if (theme == viewModel.selectedColor) ALPHA_VISIBLE else ALPHA_INVISIBLE
 
                 setOnClickListener { button -> selectColor(button as MaterialButton, binding) }
             }
@@ -84,9 +98,7 @@ class ColorDialog : DialogFragment() {
             if (view is MaterialButton) view.icon.alpha = ALPHA_INVISIBLE
         }
         button.icon.alpha = ALPHA_VISIBLE
-        viewModel.color = button.tag.toString()
-        binding.textView.text = getString(R.string.app_will_be_restarted)
-        viewModel.showRestartMessage = true
+        viewModel.selectedColor = AccentColor.valueOf(button.tag.toString())
     }
 
     companion object {
