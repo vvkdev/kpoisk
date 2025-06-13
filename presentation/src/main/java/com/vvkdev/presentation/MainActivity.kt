@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
         val color = settingsRepository.getColorAccent() ?: AccentColor.default().name
-        setTheme(AccentColor.fromName(color).themeRes)
+        setTheme(AccentColor.valueOf(color).themeRes)
 
         binding = ActivityMainBinding.inflate(layoutInflater).also { setContentView(it.root) }
 

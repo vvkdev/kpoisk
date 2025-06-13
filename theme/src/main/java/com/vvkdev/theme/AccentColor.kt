@@ -13,7 +13,6 @@ enum class AccentColor(@StyleRes val themeRes: Int, @ColorRes val colorRes: Int)
     GREY(R.style.ThemeGrey, R.color.grey_primary);
 
     companion object {
-        fun fromName(name: String): AccentColor = entries.first { it.name == name }
         fun default(): AccentColor = BLUE
     }
 }
