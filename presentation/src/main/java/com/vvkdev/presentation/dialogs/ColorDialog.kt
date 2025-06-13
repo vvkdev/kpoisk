@@ -80,11 +80,8 @@ class ColorDialog : DialogFragment() {
     }
 
     private fun selectColor(button: MaterialButton, binding: DialogColorBinding) {
-        for (i in 0 until binding.gridLayout.childCount) {
-            val child = binding.gridLayout.getChildAt(i)
-            if (child is MaterialButton) {
-                child.icon.alpha = ALPHA_INVISIBLE
-            }
+        binding.gridLayout.children.forEach { view ->
+            if (view is MaterialButton) view.icon.alpha = ALPHA_INVISIBLE
         }
         button.icon.alpha = ALPHA_VISIBLE
         viewModel.color = button.tag.toString()
