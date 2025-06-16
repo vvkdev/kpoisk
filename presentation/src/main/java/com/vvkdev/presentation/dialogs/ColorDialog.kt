@@ -4,6 +4,7 @@ import AccentColor
 import android.app.Dialog
 import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
+import android.view.View
 import android.widget.GridLayout
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
@@ -34,8 +35,7 @@ class ColorDialog : DialogFragment() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.shouldRestart.collect {
-                    binding.textView.text =
-                        if (it) getString(R.string.app_will_be_restarted) else ""
+                    binding.restartTextView.visibility = if (it) View.VISIBLE else View.INVISIBLE
                 }
             }
         }

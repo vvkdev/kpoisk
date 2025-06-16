@@ -18,11 +18,13 @@
     </GridLayout>
 
     <TextView
-            android:id="@+id/textView"
+            android:id="@+id/restartTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_marginTop="@dimen/indent_normal"
+            android:text="@string/app_will_be_restarted"
+            android:visibility="invisible"
             />
 
 </LinearLayout>
