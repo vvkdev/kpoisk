@@ -1,7 +1,5 @@
-package com.vvkdev.data.di
+package com.vvkdev.kpoisk.di
 
-import com.vvkdev.data.crypto.CryptoService
-import com.vvkdev.data.crypto.CryptoServiceImpl
 import com.vvkdev.data.repository.ApiKeyRepositoryImpl
 import com.vvkdev.data.repository.FilmsRepositoryImpl
 import com.vvkdev.data.repository.SettingsRepositoryImpl
@@ -16,9 +14,6 @@ import dagger.hilt.components.SingletonComponent
 @Module
 @InstallIn(SingletonComponent::class)
 interface BindModule {
-
-    @Binds
-    fun bindCryptoService(impl: CryptoServiceImpl): CryptoService
 
     @Binds
     fun bindApiKeyRepository(impl: ApiKeyRepositoryImpl): ApiKeyRepository

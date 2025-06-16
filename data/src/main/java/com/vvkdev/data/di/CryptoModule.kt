@@ -7,6 +7,9 @@ import com.google.crypto.tink.aead.AeadConfig
 import com.google.crypto.tink.aead.AesGcmKeyManager
 import com.google.crypto.tink.integration.android.AndroidKeysetManager
 import com.vvkdev.data.constants.PrefsConstants
+import com.vvkdev.data.crypto.CryptoService
+import com.vvkdev.data.crypto.CryptoServiceImpl
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,7 +19,15 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object CryptoModule {
+interface CryptoBindModule {
+
+    @Binds
+    fun bindCryptoService(impl: CryptoServiceImpl): CryptoService
+}
+
+@Module
+@InstallIn(SingletonComponent::class)
+object CryptoProvideModule {
 
     private const val KEYSET_NAME = "apikey_keyset"
     private const val MASTER_KEY_URI = "android-keystore://kpoisk_masterkey"
