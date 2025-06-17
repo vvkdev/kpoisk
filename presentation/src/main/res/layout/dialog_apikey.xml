@@ -12,8 +12,9 @@
             android:id="@+id/noticeTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_marginBottom="@dimen/indent_normal"
+            android:padding="@dimen/indent_normal"
+            android:gravity="center"
             android:text="@string/apikey_notice"
             />
 
@@ -28,10 +29,11 @@
         <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/apiKeyEditText"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:textSize="14sp"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/indent_medium"
+                android:paddingEnd="@dimen/indent_medium"
+                android:lines="1"
                 android:gravity="center"
-                android:maxLines="1"
                 android:inputType="textCapCharacters|text"
                 android:imeOptions="actionDone"
                 android:hint="@string/apikey_hint"
@@ -49,6 +51,5 @@
                 />
 
     </com.google.android.material.textfield.TextInputLayout>
-
 
 </LinearLayout>

@@ -2,6 +2,7 @@ package com.vvkdev.presentation.dialogs
 
 import android.app.Dialog
 import android.os.Bundle
+import android.util.TypedValue
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import androidx.appcompat.app.AlertDialog
@@ -26,6 +27,16 @@ class ApiKeyDialog : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val binding = DialogApikeyBinding.inflate(layoutInflater)
+
+        val textSize = when (resources.configuration.fontScale) {
+            1.15f -> 13f
+            1.3f -> 12f
+            1.5f -> 11f
+            1.8f -> 9f
+            2.0f -> 8f
+            else -> null
+        }
+        textSize?.let { binding.apiKeyEditText.setTextSize(TypedValue.COMPLEX_UNIT_SP, textSize) }
 
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
