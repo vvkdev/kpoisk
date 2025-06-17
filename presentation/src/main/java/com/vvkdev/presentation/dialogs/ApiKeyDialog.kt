@@ -2,17 +2,22 @@ package com.vvkdev.presentation.dialogs
 
 import android.app.Dialog
 import android.os.Bundle
+import android.view.View
 import android.view.inputmethod.EditorInfo
 import androidx.appcompat.app.AlertDialog
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.vvkdev.presentation.R
 import com.vvkdev.presentation.databinding.DialogApikeyBinding
 import com.vvkdev.presentation.utils.showToast
 import com.vvkdev.presentation.viewmodels.ApiKeyViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class ApiKeyDialog : DialogFragment() {
@@ -21,6 +26,14 @@ class ApiKeyDialog : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val binding = DialogApikeyBinding.inflate(layoutInflater)
+
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.showError.collect {
+                    binding.errorTextView.visibility = if (it) View.VISIBLE else View.INVISIBLE
+                }
+            }
+        }
 
         val dialog = MaterialAlertDialogBuilder(requireContext())
             .setTitle(R.string.enter_api_key)
@@ -35,14 +48,15 @@ class ApiKeyDialog : DialogFragment() {
 
             with(binding) {
                 apiKeyEditText.doAfterTextChanged {
-                    if (apiKeyEditText.text.toString().isNotBlank()) setCancelable(false)
+                    viewModel.showError(false)
+                    setCancelable(false)
                 }
 
                 cancelButton.setOnClickListener { dismiss() }
-                saveButton.setOnClickListener { saveApiKeyAndClose(apiKeyEditText.text.toString()) }
+                saveButton.setOnClickListener { saveApiKey(apiKeyEditText.text.toString()) }
                 apiKeyEditText.setOnEditorActionListener { _, actionId, _ ->
                     if (actionId == EditorInfo.IME_ACTION_DONE) {
-                        saveApiKeyAndClose(apiKeyEditText.text.toString())
+                        saveApiKey(apiKeyEditText.text.toString())
                         true
                     } else {
                         false
@@ -53,10 +67,11 @@ class ApiKeyDialog : DialogFragment() {
         return dialog
     }
 
-    private fun saveApiKeyAndClose(key: String) {
-        viewModel.saveApiKey(key)
-        showToast(R.string.saved)
-        dismiss()
+    private fun saveApiKey(key: String) {
+        if (viewModel.saveApiKey(key)) {
+            showToast(R.string.saved)
+            dismiss()
+        }
     }
 
     companion object {

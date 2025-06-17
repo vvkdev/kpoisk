@@ -14,11 +14,12 @@
     <string name="select_color">Выберите цвет</string>
     <string name="change_api_key">Изменить API ключ</string>
     <string name="enter_api_key">Введите API ключ</string>
+    <string name="invalid_format">Неверный формат</string>
     <string name="saved">Сохранено</string>
     <string name="films">Фильмы</string>
     <string name="settings">Настройки</string>
     <string name="app_will_be_restarted">Приложение будет перезапущено</string>
-    <string name="keystore_warning">Ключ хранится в защищённом хранилище устройства.\nПри изменении PIN или отпечатков\nможет потребоваться ввести ключ заново.</string>
+    <string name="apikey_notice">Ключ хранится в защищённом хранилище устройства.\nПри изменении PIN или отпечатков\nможет потребоваться ввести ключ заново.\n\nТолько цифры и заглавные латинские буквы.</string>
 
     <plurals name="votes">
         <item quantity="one">%,d голос</item>
