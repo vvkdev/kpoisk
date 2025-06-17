@@ -18,7 +18,7 @@
 
     <style name="Widget.App.TextInputEditText" parent="Widget.MaterialComponents.TextInputEditText.OutlinedBox">
         <item name="android:minHeight">@dimen/button_height</item>
-        <item name="android:padding">@dimen/zero_size</item>
+        <item name="android:padding">@dimen/indent_small</item>
     </style>
 
     <style name="Widget.App.Button" parent="Widget.MaterialComponents.Button">
