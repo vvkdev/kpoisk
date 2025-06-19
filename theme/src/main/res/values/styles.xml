@@ -32,6 +32,10 @@
     </style>
 
     <style name="App.MaterialAlertDialog" parent="MaterialAlertDialog.Material3">
+        <item name="backgroundInsetTop">@dimen/zero_size</item>
+        <item name="backgroundInsetBottom">@dimen/indent_medium</item>
+        <item name="backgroundInsetStart">@dimen/indent_medium</item>
+        <item name="backgroundInsetEnd">@dimen/indent_medium</item>
         <item name="shapeAppearance">@style/ShapeAppearance.App.MaterialAlertDialog</item>
     </style>
 
