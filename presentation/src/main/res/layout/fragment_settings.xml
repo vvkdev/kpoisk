@@ -27,7 +27,7 @@
             android:focusable="true"
             />
 
-    <View style="@style/Widget.App.DividerHorizontal" />
+    <View style="@style/App.DividerHorizontal" />
 
     <TextView
             android:id="@+id/apikeyTextView"
