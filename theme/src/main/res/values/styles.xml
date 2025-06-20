@@ -29,6 +29,7 @@
     <style name="App.MaterialDialog.ThemeOverlay" parent="ThemeOverlay.Material3.MaterialAlertDialog">
         <item name="alertDialogStyle">@style/App.MaterialDialog</item>
         <item name="materialAlertDialogTitleTextStyle">@style/App.MaterialDialog.TitleText</item>
+        <item name="materialAlertDialogTitlePanelStyle">@style/App.MaterialDialog.TitlePanel</item>
     </style>
 
     <style name="App.MaterialDialog" parent="MaterialAlertDialog.Material3">
@@ -45,6 +46,13 @@
 
     <style name="App.MaterialDialog.TitleText" parent="MaterialAlertDialog.Material3.Title.Text">
         <item name="android:textAppearance">@style/App.TitleMedium.TextAppearance</item>
+    </style>
+
+    <style name="App.MaterialDialog.TitlePanel" parent="MaterialAlertDialog.Material3.Title.Panel">
+        <item name="android:paddingTop">@dimen/indent_medium</item>
+        <item name="android:paddingBottom">@dimen/indent_medium</item>
+        <item name="android:paddingStart">@dimen/indent_normal</item>
+        <item name="android:paddingEnd">@dimen/indent_normal</item>
     </style>
 
     <style name="App.DividerHorizontal" parent="Widget.Material3.MaterialDivider">
