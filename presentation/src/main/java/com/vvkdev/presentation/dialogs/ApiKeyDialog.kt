@@ -15,7 +15,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.vvkdev.presentation.R
 import com.vvkdev.presentation.databinding.DialogApikeyBinding
-import com.vvkdev.presentation.utils.showShortToast
+import com.vvkdev.presentation.extensions.showShortToast
 import com.vvkdev.presentation.viewmodels.ApiKeyViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch

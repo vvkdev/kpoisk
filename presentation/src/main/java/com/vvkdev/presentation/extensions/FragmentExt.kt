@@ -1,4 +1,4 @@
-package com.vvkdev.presentation.utils
+package com.vvkdev.presentation.extensions
 
 import android.widget.Toast
 import androidx.annotation.StringRes
