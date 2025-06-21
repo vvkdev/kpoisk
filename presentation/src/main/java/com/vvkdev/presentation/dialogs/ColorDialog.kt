@@ -4,24 +4,21 @@ import AccentColor
 import android.app.Dialog
 import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
-import android.view.View
 import android.widget.GridLayout
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.children
+import androidx.core.view.isInvisible
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.vvkdev.presentation.R
 import com.vvkdev.presentation.databinding.DialogColorBinding
+import com.vvkdev.presentation.extensions.collectWhenStarted
 import com.vvkdev.presentation.viewmodels.ColorViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 import com.vvkdev.theme.R as ThemeR
 
 @AndroidEntryPoint
@@ -32,13 +29,7 @@ class ColorDialog : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val binding = DialogColorBinding.inflate(layoutInflater)
 
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.shouldRestart.collect {
-                    binding.restartTextView.visibility = if (it) View.VISIBLE else View.INVISIBLE
-                }
-            }
-        }
+        collectWhenStarted(viewModel.shouldRestart) { binding.restartTextView.isInvisible = !it }
 
         setupColorButtons(binding)
 

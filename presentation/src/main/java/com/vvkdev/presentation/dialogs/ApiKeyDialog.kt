@@ -3,22 +3,19 @@ package com.vvkdev.presentation.dialogs
 import android.app.Dialog
 import android.os.Bundle
 import android.util.TypedValue
-import android.view.View
 import android.view.inputmethod.EditorInfo
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.isInvisible
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.vvkdev.presentation.R
 import com.vvkdev.presentation.databinding.DialogApikeyBinding
+import com.vvkdev.presentation.extensions.collectWhenStarted
 import com.vvkdev.presentation.extensions.showShortToast
 import com.vvkdev.presentation.viewmodels.ApiKeyViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class ApiKeyDialog : DialogFragment() {
@@ -38,13 +35,7 @@ class ApiKeyDialog : DialogFragment() {
         }
         textSize?.let { binding.apiKeyEditText.setTextSize(TypedValue.COMPLEX_UNIT_SP, textSize) }
 
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.showError.collect {
-                    binding.errorTextView.visibility = if (it) View.VISIBLE else View.INVISIBLE
-                }
-            }
-        }
+        collectWhenStarted(viewModel.showError) { binding.errorTextView.isInvisible = !it }
 
         val dialog = MaterialAlertDialogBuilder(requireContext())
             .setTitle(R.string.enter_api_key)
