@@ -61,9 +61,7 @@ class FilmDetailsFragment :
             updatedTextView.text = getString(R.string.updated, film.updated)
             nameTextView.text = film.name
             foreignNameTextView.text = film.foreignName
-            foreignNameTextView.visibility =
-                if (film.foreignName.isBlank()) View.GONE else View.VISIBLE
-
+            foreignNameTextView.isGone = film.foreignName.isBlank()
             timeTextView.text = getString(
                 R.string.time,
                 film.year,
@@ -74,13 +72,11 @@ class FilmDetailsFragment :
                 String.format(Locale.getDefault(), "%.1f", film.rating),
                 resources.getQuantityString(R.plurals.votes, film.votes, film.votes)
             )
-
             genresTextView.text = film.genres
             countriesTextView.text = film.countries
             has3dTextView.isVisible = film.has3D
             descriptionTextView.text = film.description
-            descriptionTextView.visibility =
-                if (film.description.isBlank()) View.GONE else View.VISIBLE
+            descriptionTextView.isGone = film.description.isBlank()
             descriptionLine.visibility = descriptionTextView.visibility
         }
     }
