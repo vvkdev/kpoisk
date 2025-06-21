@@ -2,7 +2,7 @@ package com.vvkdev.presentation.fragments
 
 import android.os.Bundle
 import android.view.View
-import com.vvkdev.presentation.BaseFragment
+import com.vvkdev.presentation.base.BaseFragment
 import com.vvkdev.presentation.databinding.FragmentSettingsBinding
 import com.vvkdev.presentation.dialogs.ApiKeyDialog
 import com.vvkdev.presentation.dialogs.ColorDialog

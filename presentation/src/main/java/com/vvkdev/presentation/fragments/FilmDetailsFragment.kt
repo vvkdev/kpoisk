@@ -7,9 +7,9 @@ import android.widget.LinearLayout
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import com.vvkdev.domain.model.Film
-import com.vvkdev.presentation.BaseFragment
 import com.vvkdev.presentation.R
 import com.vvkdev.presentation.UiState
+import com.vvkdev.presentation.base.BaseFragment
 import com.vvkdev.presentation.databinding.FragmentFilmDetailsBinding
 import com.vvkdev.presentation.extensions.collectWhenStarted
 import com.vvkdev.presentation.viewmodels.FilmDetailsViewModel

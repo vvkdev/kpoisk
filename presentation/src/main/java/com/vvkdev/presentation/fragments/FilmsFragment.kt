@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import androidx.navigation.fragment.findNavController
-import com.vvkdev.presentation.BaseFragment
+import com.vvkdev.presentation.base.BaseFragment
 import com.vvkdev.presentation.databinding.FragmentFilmsBinding
 
 class FilmsFragment : BaseFragment<FragmentFilmsBinding>(FragmentFilmsBinding::inflate) {
