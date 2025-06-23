@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
+<FrameLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:padding="@dimen/indent_medium"
+        android:fitsSystemWindows="true"
         >
+
+    <ViewStub
+            android:id="@+id/contentLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
 
     <ProgressBar
             android:id="@+id/progressBar"
@@ -45,4 +53,4 @@
 
     </LinearLayout>
 
-</merge>
+</FrameLayout>

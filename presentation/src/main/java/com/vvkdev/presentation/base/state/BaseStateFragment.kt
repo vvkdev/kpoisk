@@ -1,9 +1,9 @@
 package com.vvkdev.presentation.base.state
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.annotation.LayoutRes
+import androidx.core.view.children
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.viewbinding.ViewBinding
@@ -12,43 +12,62 @@ import com.vvkdev.presentation.base.BaseFragment
 import com.vvkdev.presentation.databinding.StateLayoutBinding
 import com.vvkdev.presentation.extensions.collectWhenStarted
 
-abstract class BaseStateFragment<VB : ViewBinding, T>(
-    inflate: (LayoutInflater, ViewGroup?, Boolean) -> VB,
-) : BaseFragment<VB>(inflate) {
+abstract class BaseStateFragment<CVB : ViewBinding, D>(
+    private val contentBindingBind: (View) -> CVB,
+    @LayoutRes private val contentLayoutRes: Int,
+) : BaseFragment<StateLayoutBinding>(StateLayoutBinding::inflate) {
 
-    protected abstract val viewModel: BaseStateViewModel<T>
+    protected abstract val viewModel: BaseStateViewModel<D>
 
-    protected abstract fun onSuccess(data: T)
+    private var _contentBinding: CVB? = null
+    protected val contentBinding get() = _contentBinding!!
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    final override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val contentLayout = view.findViewById<View>(R.id.contentLayout)
-        val stateBinding = StateLayoutBinding.bind(view)
-        stateBinding.retryButton.setOnClickListener { viewModel.retry() }
+        setStateObservers()
+    }
+
+    override fun onDestroyView() {
+        _contentBinding = null
+        super.onDestroyView()
+    }
+
+    protected abstract fun onContentViewCreated()
+    protected abstract fun fillContentViews(data: D)
+
+    private fun setStateObservers() {
+        binding.retryButton.setOnClickListener { viewModel.retry() }
 
         collectWhenStarted(viewModel.uiState) { state ->
-
-            contentLayout.isGone = true
-            stateBinding.progressBar.isGone = true
-            stateBinding.errorLayout.isGone = true
-
+            binding.root.children.forEach { it.isGone = true }
             when (state) {
                 is UiState.Default -> {}
-                is UiState.Loading -> {
-                    stateBinding.progressBar.isVisible = true
-                }
-
-                is UiState.Success -> {
-                    onSuccess(state.data)
-                    contentLayout.isVisible = true
-                }
-
-                is UiState.Error -> {
-                    stateBinding.errorMessage.text =
-                        state.message ?: getString(R.string.unknown_error)
-                    stateBinding.errorLayout.isVisible = true
-                }
+                is UiState.Loading -> showLoading()
+                is UiState.Error -> showError(state.message)
+                is UiState.Success -> showContent(state.data)
             }
         }
+    }
+
+    private fun showLoading() {
+        binding.progressBar.isVisible = true
+    }
+
+    private fun showError(message: String?) {
+        binding.errorMessage.text = message ?: getString(R.string.unknown_error)
+        binding.errorLayout.isVisible = true
+    }
+
+    private fun showContent(data: D) {
+        if (_contentBinding == null) {
+            binding.contentLayout.layoutResource = contentLayoutRes
+            binding.contentLayout.setOnInflateListener { _, inflated ->
+                _contentBinding = contentBindingBind(inflated)
+                onContentViewCreated()
+            }
+            binding.contentLayout.inflate()
+        }
+        fillContentViews(data)
+        binding.contentLayout.isVisible = true
     }
 }

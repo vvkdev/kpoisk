@@ -1,7 +1,5 @@
 package com.vvkdev.presentation.fragments
 
-import android.os.Bundle
-import android.view.View
 import android.widget.LinearLayout
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
@@ -9,28 +7,29 @@ import androidx.fragment.app.viewModels
 import com.vvkdev.domain.model.Film
 import com.vvkdev.presentation.R
 import com.vvkdev.presentation.base.state.BaseStateFragment
-import com.vvkdev.presentation.databinding.FragmentFilmDetailsBinding
+import com.vvkdev.presentation.databinding.ContentFilmDetailsBinding
 import com.vvkdev.presentation.viewmodels.FilmDetailsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.Locale
 
 @AndroidEntryPoint
-class FilmDetailsFragment :
-    BaseStateFragment<FragmentFilmDetailsBinding, Film>(FragmentFilmDetailsBinding::inflate) {
+class FilmDetailsFragment : BaseStateFragment<ContentFilmDetailsBinding, Film>(
+    ContentFilmDetailsBinding::bind,
+    R.layout.content_film_details,
+) {
 
     override val viewModel: FilmDetailsViewModel by viewModels()
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
+    override fun onContentViewCreated() {
         if (resources.configuration.fontScale > FONT_SCALE_THRESHOLD) {
-            binding.idLinearLayout.orientation = LinearLayout.VERTICAL
-            binding.timeLinearLayout.orientation = LinearLayout.VERTICAL
+            contentBinding.idLinearLayout.orientation = LinearLayout.VERTICAL
+            contentBinding.timeLinearLayout.orientation = LinearLayout.VERTICAL
         }
     }
 
-    override fun onSuccess(film: Film) {
-        with(binding) {
+    override fun fillContentViews(data: Film) {
+        val film: Film = data
+        with(contentBinding) {
             idTextView.text = getString(R.string.id, film.id)
             updatedTextView.text = getString(R.string.updated, film.updated)
             nameTextView.text = film.name
@@ -53,7 +52,6 @@ class FilmDetailsFragment :
             descriptionTextView.isGone = film.description.isBlank()
             descriptionLine.visibility = descriptionTextView.visibility
         }
-
     }
 
     companion object {
