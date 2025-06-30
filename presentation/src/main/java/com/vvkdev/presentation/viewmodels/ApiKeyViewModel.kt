@@ -5,9 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.vvkdev.domain.repository.ApiKeyRepository
 import com.vvkdev.domain.validation.ApiKeyValidator
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import javax.inject.Inject
 
 @HiltViewModel
@@ -17,8 +15,7 @@ class ApiKeyViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
 
-    private val _showError = MutableStateFlow(savedStateHandle.get<Boolean>(SHOW_ERROR) ?: false)
-    val showError: StateFlow<Boolean> = _showError.asStateFlow()
+    val showError: StateFlow<Boolean> = savedStateHandle.getStateFlow(SHOW_ERROR, false)
 
     fun saveApiKey(key: String): Boolean {
         return if (apiKeyValidator.isValid(key)) {
@@ -31,7 +28,6 @@ class ApiKeyViewModel @Inject constructor(
     }
 
     fun showError(shouldShow: Boolean) {
-        _showError.value = shouldShow
         savedStateHandle[SHOW_ERROR] = shouldShow
     }
 
