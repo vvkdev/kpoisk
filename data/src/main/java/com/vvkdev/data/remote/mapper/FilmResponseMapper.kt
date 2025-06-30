@@ -4,42 +4,46 @@ import com.vvkdev.data.remote.model.FilmResponse
 import com.vvkdev.data.remote.model.FilmYears
 import com.vvkdev.domain.model.Film
 import org.jetbrains.annotations.VisibleForTesting
+import java.util.Date
 
 fun FilmResponse.toFilm() = Film(
     id = id,
-    name = name.orEmpty(),
-    foreignName = parseForeignName(alternativeName, enName),
+    name = name.orPlaceholderIfNullOrBlank("-"),
+    foreignName = mapForeignName(alternativeName, enName),
     rating = rating?.kp ?: 0f,
     votes = votes?.kp ?: 0,
-    year = parseYears(year, releaseYears),
-    description = description.orEmpty(),
-    poster = poster?.previewUrl.orEmpty(),
-    length = totalSeriesLength ?: movieLength,
+    year = mapYears(year, releaseYears),
+    description = description.orEmptyIfNullOrBlank(),
+    poster = poster?.previewUrl.orEmptyIfNullOrBlank(),
+    length = totalSeriesLength?.toString() ?: movieLength?.toString() ?: "-",
     has3D = technology?.has3D ?: false,
-    genres = mapListToString(genres) { genre -> genre.name },
-    countries = mapListToString(countries) { country -> country.name },
-    updated = getNowAsString(),
+    genres = listToBulletedString(genres) { genre -> genre.name },
+    countries = listToBulletedString(countries) { country -> country.name },
+    updated = Date().toIsoString(),
 )
 
-private fun parseForeignName(alt: String?, en: String?): String {
-    return alt?.takeIf { it.isNotBlank() } ?: en ?: ""
-}
+private fun mapForeignName(alt: String?, en: String?): String =
+    alt?.takeIf { it.isNotBlank() } ?: en?.takeIf { it.isNotBlank() } ?: ""
 
 @VisibleForTesting
-internal fun parseYears(year: Int?, years: List<FilmYears?>?): String {
+internal fun mapYears(year: Int?, years: List<FilmYears?>?): String {
     val start = listOfNotNull(
         year?.takeIf { it > 0 },
         years?.firstOrNull()?.start?.takeIf { it > 0 },
     ).minOrNull()
     val end = years?.lastOrNull()?.end?.takeIf { it > 0 }
 
-    return listOfNotNull(start, end).joinToString("-")
+    return listOfNotNull(start, end)
+        .joinToString("-")
+        .orPlaceholderIfNullOrBlank("-")
 }
 
-fun <T> mapListToString(list: List<T?>?, mapper: (T) -> String?): String {
-    return list
-        ?.filterNotNull()
-        ?.mapNotNull { item -> mapper(item)?.takeIf { it.isNotBlank() } }
-        ?.joinToString(" • ")
-        ?: ""
-}
+@VisibleForTesting
+internal fun <T> listToBulletedString(
+    list: List<T?>?,
+    transform: (T) -> String?,
+): String = list
+    ?.filterNotNull()
+    ?.mapNotNull { item -> transform(item).takeUnless { it.isNullOrBlank() } }
+    ?.joinToString(" • ")
+    ?: ""

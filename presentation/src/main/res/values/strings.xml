@@ -3,7 +3,6 @@
 
     <string name="apikey_hint" translatable="false">XXXXXXX-XXXXXXX-XXXXXXX-XXXXXXX</string>
     <string name="unknown_error">Unknown error</string>
-    <string name="unknown_sign">"?"</string>
     <string name="id">ID • %d</string>
     <string name="updated">Updated • %s</string>
     <string name="time">%s • %s min</string>

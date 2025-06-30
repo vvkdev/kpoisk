@@ -2,7 +2,6 @@
 <resources>
 
     <string name="unknown_error">Неизвестная ошибка</string>
-    <string name="unknown_sign">"?"</string>
     <string name="id">ID • %d</string>
     <string name="updated">Обновлено • %s</string>
     <string name="time">%s • %s мин</string>

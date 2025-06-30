@@ -35,11 +35,7 @@ class FilmDetailsFragment : BaseStateFragment<ContentFilmDetailsBinding, Film>(
             nameTextView.text = film.name
             foreignNameTextView.text = film.foreignName
             foreignNameTextView.isGone = film.foreignName.isBlank()
-            timeTextView.text = getString(
-                R.string.time,
-                film.year,
-                film.length?.toString() ?: getString(R.string.unknown_sign)
-            )
+            timeTextView.text = getString(R.string.time, film.year, film.length)
             ratingTextView.text = getString(
                 R.string.rating,
                 String.format(Locale.getDefault(), "%.1f", film.rating),
