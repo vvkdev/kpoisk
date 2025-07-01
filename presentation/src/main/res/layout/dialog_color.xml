@@ -1,30 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingTop="@dimen/indent_large"
         >
 
-    <GridLayout
-            android:id="@+id/gridLayout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:columnCount="4"
-            >
-
-    </GridLayout>
-
-    <TextView
-            android:id="@+id/restartTextView"
+    <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_marginTop="@dimen/indent_normal"
-            android:text="@string/app_will_be_restarted"
-            android:visibility="invisible"
-            />
+            android:paddingStart="@dimen/indent_normal"
+            android:paddingEnd="@dimen/indent_normal"
+            android:orientation="vertical"
+            >
 
-</LinearLayout>
+        <GridLayout
+                android:id="@+id/gridLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:columnCount="4"
+                >
+
+        </GridLayout>
+
+        <TextView
+                android:id="@+id/restartTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/indent_medium"
+                android:gravity="center"
+                android:text="@string/app_will_be_restarted"
+                android:visibility="invisible"
+                />
+
+        <include
+                android:id="@+id/buttons"
+                layout="@layout/dialog_buttons"
+                />
+
+    </LinearLayout>
+
+</ScrollView>

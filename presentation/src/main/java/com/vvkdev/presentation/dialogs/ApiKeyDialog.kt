@@ -2,10 +2,9 @@ package com.vvkdev.presentation.dialogs
 
 import android.app.Dialog
 import android.os.Bundle
-import android.util.TypedValue
+import android.text.InputType
 import android.view.inputmethod.EditorInfo
-import androidx.appcompat.app.AlertDialog
-import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
@@ -25,47 +24,39 @@ class ApiKeyDialog : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val binding = DialogApikeyBinding.inflate(layoutInflater)
 
-        val textSize = when (resources.configuration.fontScale) {
-            1.15f -> 13f
-            1.3f -> 12f
-            1.5f -> 11f
-            1.8f -> 9f
-            2.0f -> 8f
-            else -> null
-        }
-        textSize?.let { binding.apiKeyEditText.setTextSize(TypedValue.COMPLEX_UNIT_SP, textSize) }
-
-        collectWhenStarted(viewModel.showError) { binding.errorTextView.isInvisible = !it }
-
         val dialog = MaterialAlertDialogBuilder(requireContext())
             .setTitle(R.string.enter_api_key)
             .setView(binding.root)
-            .setNegativeButton(R.string.cancel, null)
-            .setPositiveButton(R.string.save, null)
             .create()
 
+        collectWhenStarted(viewModel.showError) {
+            binding.formatTextView.isVisible = !it
+            binding.errorTextView.isVisible = it
+        }
+
         dialog.setOnShowListener {
-            val cancelButton = dialog.getButton(AlertDialog.BUTTON_NEGATIVE)
-            val saveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE)
+            binding.apiKeyEditText.doAfterTextChanged {
+                viewModel.showError(false)
+                setCancelable(false)
+            }
+        }
 
-            with(binding) {
-                apiKeyEditText.doAfterTextChanged {
-                    viewModel.showError(false)
-                    setCancelable(false)
-                }
-
-                cancelButton.setOnClickListener { dismiss() }
-                saveButton.setOnClickListener { saveApiKey(apiKeyEditText.text.toString()) }
-                apiKeyEditText.setOnEditorActionListener { _, actionId, _ ->
-                    if (actionId == EditorInfo.IME_ACTION_DONE) {
-                        saveApiKey(apiKeyEditText.text.toString())
-                        true
-                    } else {
-                        false
-                    }
+        with(binding) {
+            apiKeyEditText.setRawInputType(InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS) // for multiline IME_ACTION_DONE working
+            buttons.negativeButton.text = getString(R.string.cancel)
+            buttons.negativeButton.setOnClickListener { dismiss() }
+            buttons.positiveButton.text = getString(R.string.save)
+            buttons.positiveButton.setOnClickListener { saveApiKey(apiKeyEditText.text.toString()) }
+            apiKeyEditText.setOnEditorActionListener { _, actionId, _ ->
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    saveApiKey(apiKeyEditText.text.toString())
+                    true
+                } else {
+                    false
                 }
             }
         }
+
         return dialog
     }
 

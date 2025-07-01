@@ -5,7 +5,6 @@ import android.app.Dialog
 import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.widget.GridLayout
-import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.children
@@ -29,20 +28,21 @@ class ColorDialog : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val binding = DialogColorBinding.inflate(layoutInflater)
 
+        val dialog = MaterialAlertDialogBuilder(requireContext())
+            .setTitle(R.string.select_color)
+            .setView(binding.root)
+            .create()
+
         collectWhenStarted(viewModel.shouldRestart) { binding.restartTextView.isInvisible = !it }
 
         setupColorButtons(binding)
 
-        val dialog = MaterialAlertDialogBuilder(requireContext())
-            .setTitle(R.string.select_color)
-            .setView(binding.root)
-            .setNegativeButton(R.string.cancel, null)
-            .setPositiveButton(R.string.save, null)
-            .create()
+        with(binding) {
+            buttons.negativeButton.text = getString(R.string.cancel)
+            buttons.negativeButton.setOnClickListener { dismiss() }
 
-        dialog.setOnShowListener {
-            dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setOnClickListener { dismiss() }
-            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
+            buttons.positiveButton.text = getString(R.string.save)
+            buttons.positiveButton.setOnClickListener {
                 if (viewModel.shouldRestart.value) {
                     viewModel.saveAccentColor()
                     ActivityCompat.recreate(requireActivity())
@@ -50,6 +50,7 @@ class ColorDialog : DialogFragment() {
                 dismiss()
             }
         }
+
         return dialog
     }
 
