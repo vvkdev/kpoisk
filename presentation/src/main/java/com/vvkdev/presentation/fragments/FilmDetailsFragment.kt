@@ -8,9 +8,9 @@ import com.vvkdev.domain.model.Film
 import com.vvkdev.presentation.R
 import com.vvkdev.presentation.base.state.BaseStateFragment
 import com.vvkdev.presentation.databinding.ContentFilmDetailsBinding
+import com.vvkdev.presentation.mapper.toFilmScreen
 import com.vvkdev.presentation.viewmodels.FilmDetailsViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import java.util.Locale
 
 @AndroidEntryPoint
 class FilmDetailsFragment : BaseStateFragment<ContentFilmDetailsBinding, Film>(
@@ -28,24 +28,23 @@ class FilmDetailsFragment : BaseStateFragment<ContentFilmDetailsBinding, Film>(
     }
 
     override fun fillContentViews(data: Film) {
-        val film: Film = data
+        val filmScreen = data.toFilmScreen(resources)
         with(contentBinding) {
-            idTextView.text = getString(R.string.id, film.id)
-            updatedTextView.text = getString(R.string.updated, film.updated)
-            nameTextView.text = film.name
-            foreignNameTextView.text = film.foreignName
-            foreignNameTextView.isGone = film.foreignName.isBlank()
-            timeTextView.text = getString(R.string.time, film.year, film.length)
-            ratingTextView.text = getString(
-                R.string.rating,
-                String.format(Locale.getDefault(), "%.1f", film.rating),
-                resources.getQuantityString(R.plurals.votes, film.votes, film.votes)
-            )
-            genresTextView.text = film.genres
-            countriesTextView.text = film.countries
-            has3dTextView.isVisible = film.has3D
-            descriptionTextView.text = film.description
-            descriptionTextView.isGone = film.description.isBlank()
+            idTextView.text = filmScreen.id
+            updatedTextView.text = filmScreen.updated
+            nameTextView.text = filmScreen.name
+            foreignNameTextView.text = filmScreen.foreignName
+            foreignNameTextView.isGone = filmScreen.foreignName.isBlank()
+            timeTextView.text = filmScreen.time
+            ratingTextView.text = filmScreen.rating
+            genresTextView.text = filmScreen.genres
+            genresTextView.isGone = filmScreen.genres.isBlank()
+            countriesTextView.text = filmScreen.countries
+            countriesTextView.isGone = filmScreen.countries.isBlank()
+            genresCountriesLine.isGone = genresTextView.isGone && countriesTextView.isGone
+            has3dTextView.isVisible = filmScreen.has3D
+            descriptionTextView.text = filmScreen.description
+            descriptionTextView.isGone = filmScreen.description.isBlank()
             descriptionLine.visibility = descriptionTextView.visibility
         }
     }
