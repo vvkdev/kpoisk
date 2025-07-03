@@ -25,6 +25,13 @@ class FilmDetailsFragment : BaseStateFragment<ContentFilmDetailsBinding, Film>(
             contentBinding.idLinearLayout.orientation = LinearLayout.VERTICAL
             contentBinding.timeLinearLayout.orientation = LinearLayout.VERTICAL
         }
+
+        contentBinding.fab.setOnClickListener {
+            contentBinding.fabShare.isVisible = !contentBinding.fabShare.isVisible
+            contentBinding.fabWeb.isVisible = !contentBinding.fabWeb.isVisible
+            contentBinding.fabPoster.isVisible = !contentBinding.fabPoster.isVisible
+            contentBinding.fabUpdate.isVisible = !contentBinding.fabUpdate.isVisible
+        }
     }
 
     override fun fillContentViews(data: Film) {

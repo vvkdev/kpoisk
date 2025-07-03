@@ -20,6 +20,11 @@
     <string name="settings">Settings</string>
     <string name="app_will_be_restarted">Application will be restarted</string>
     <string name="apikey_format">Only digits and latin uppercase letters.</string>
+    <string name="options">Options</string>
+    <string name="force_update">Force update</string>
+    <string name="open_webpage">Open webpage</string>
+    <string name="show_poster">Show poster</string>
+    <string name="share">Share</string>
 
     <plurals name="votes">
         <item quantity="one">%,d vote</item>

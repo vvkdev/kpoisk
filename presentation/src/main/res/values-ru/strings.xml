@@ -18,6 +18,11 @@
     <string name="settings">Настройки</string>
     <string name="app_will_be_restarted">Приложение будет перезапущено</string>
     <string name="apikey_format">Только цифры и заглавные латинские буквы.</string>
+    <string name="options">Опции</string>
+    <string name="force_update">Загрузить заново</string>
+    <string name="open_webpage">Открыть на сайте</string>
+    <string name="show_poster">Показать постер</string>
+    <string name="share">Поделиться</string>
 
     <plurals name="votes">
         <item quantity="one">%,d голос</item>
