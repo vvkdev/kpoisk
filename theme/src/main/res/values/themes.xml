@@ -6,6 +6,7 @@
         <item name="android:navigationBarColor">@android:color/transparent</item>
         <!-- base theme attributes -->
         <item name="colorOnPrimary">@color/white</item>
+        <item name="colorError">@color/color_error</item>
         <item name="fontFamily">sans-serif-light</item>
         <!-- view custom styles -->
         <item name="textAppearanceTitleMedium">@style/App.TitleMedium.TextAppearance</item>
