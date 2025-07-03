@@ -3,9 +3,8 @@
         android:autoMirrored="true"
         android:width="@dimen/icon_small"
         android:height="@dimen/icon_small"
-        android:viewportHeight="24"
         android:viewportWidth="24"
-        android:tint="?attr/colorPrimary"
+        android:viewportHeight="24"
         >
 
     <path

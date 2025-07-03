@@ -1,11 +1,10 @@
 <vector
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:autoMirrored="true"
-        android:height="@dimen/icon_small"
         android:width="@dimen/icon_small"
-        android:viewportHeight="24"
+        android:height="@dimen/icon_small"
         android:viewportWidth="24"
-        android:tint="?attr/colorPrimary"
+        android:viewportHeight="24"
         >
 
     <path
