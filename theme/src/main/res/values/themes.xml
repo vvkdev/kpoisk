@@ -13,6 +13,7 @@
         <item name="textInputStyle">@style/App.TextInputLayout</item>
         <item name="materialButtonStyle">@style/App.Button</item>
         <item name="materialAlertDialogTheme">@style/App.MaterialDialog.ThemeOverlay</item>
+        <item name="floatingActionButtonStyle">@style/App.Fab</item>
     </style>
 
     <!-- Accent theme -->

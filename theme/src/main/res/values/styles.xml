@@ -62,4 +62,15 @@
         <item name="android:background">?attr/colorOutlineVariant</item>
     </style>
 
+    <style name="App.Fab" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="fabSize">mini</item>
+        <item name="tint">@color/white</item>
+        <item name="shapeAppearanceOverlay">@style/App.Fab.ShapeAppearanceOverlay</item>
+    </style>
+
+    <style name="App.Fab.ShapeAppearanceOverlay" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/indent_small</item>
+    </style>
+
 </resources>
