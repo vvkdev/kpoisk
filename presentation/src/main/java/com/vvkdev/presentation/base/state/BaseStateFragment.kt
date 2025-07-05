@@ -11,16 +11,20 @@ import com.vvkdev.presentation.R
 import com.vvkdev.presentation.base.BaseFragment
 import com.vvkdev.presentation.databinding.StateLayoutBinding
 import com.vvkdev.presentation.extensions.collectWhenStarted
+import kotlin.properties.Delegates
 
-abstract class BaseStateFragment<CVB : ViewBinding, D>(
+abstract class BaseStateFragment<CVB : ViewBinding, DM, UM : Any>(
     private val contentBindingBind: (View) -> CVB,
     @LayoutRes private val contentLayoutRes: Int,
 ) : BaseFragment<StateLayoutBinding>(StateLayoutBinding::inflate) {
 
-    protected abstract val viewModel: BaseStateViewModel<D>
+    protected abstract val viewModel: BaseStateViewModel<DM>
 
     private var _contentBinding: CVB? = null
     protected val contentBinding get() = _contentBinding!!
+
+    private var _uiModel: UM by Delegates.notNull()
+    protected val uiModel get() = _uiModel
 
     final override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -33,7 +37,8 @@ abstract class BaseStateFragment<CVB : ViewBinding, D>(
     }
 
     protected abstract fun onContentViewCreated()
-    protected abstract fun fillContentViews(data: D)
+    protected abstract fun mapDomainModelToUiModel(domainModel: DM): UM
+    protected abstract fun fillContentViews(uiModel: UM)
 
     private fun setStateObservers() {
         binding.retryButton.setOnClickListener { viewModel.retry() }
@@ -42,32 +47,33 @@ abstract class BaseStateFragment<CVB : ViewBinding, D>(
             binding.root.children.forEach { it.isGone = true }
             when (state) {
                 is UiState.Default -> {}
-                is UiState.Loading -> showLoading()
-                is UiState.Error -> showError(state.message)
-                is UiState.Success -> showContent(state.data)
+                is UiState.Loading -> handleLoading()
+                is UiState.Error -> handleError(state.message)
+                is UiState.Success -> handleSuccess(state.data)
             }
         }
     }
 
-    private fun showLoading() {
+    private fun handleLoading() {
         binding.progressBar.isVisible = true
     }
 
-    private fun showError(message: String?) {
+    private fun handleError(message: String?) {
         binding.errorMessage.text = message ?: getString(R.string.unknown_error)
         binding.errorLayout.isVisible = true
     }
 
-    private fun showContent(data: D) {
+    private fun handleSuccess(domainModel: DM) {
         if (_contentBinding == null) {
             binding.contentLayout.layoutResource = contentLayoutRes
             binding.contentLayout.setOnInflateListener { _, inflated ->
                 _contentBinding = contentBindingBind(inflated)
-                onContentViewCreated()
             }
             binding.contentLayout.inflate()
         }
-        fillContentViews(data)
+        _uiModel = mapDomainModelToUiModel(domainModel)
+        fillContentViews(uiModel)
+        onContentViewCreated()
         binding.contentLayout.isVisible = true
     }
 }

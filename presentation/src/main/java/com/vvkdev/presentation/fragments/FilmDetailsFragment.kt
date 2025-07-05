@@ -9,11 +9,12 @@ import com.vvkdev.presentation.R
 import com.vvkdev.presentation.base.state.BaseStateFragment
 import com.vvkdev.presentation.databinding.ContentFilmDetailsBinding
 import com.vvkdev.presentation.mapper.toFilmScreen
+import com.vvkdev.presentation.model.FilmScreen
 import com.vvkdev.presentation.viewmodels.FilmDetailsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class FilmDetailsFragment : BaseStateFragment<ContentFilmDetailsBinding, Film>(
+class FilmDetailsFragment : BaseStateFragment<ContentFilmDetailsBinding, Film, FilmScreen>(
     ContentFilmDetailsBinding::bind,
     R.layout.content_film_details,
 ) {
@@ -34,8 +35,11 @@ class FilmDetailsFragment : BaseStateFragment<ContentFilmDetailsBinding, Film>(
         }
     }
 
-    override fun fillContentViews(data: Film) {
-        val filmScreen = data.toFilmScreen(resources)
+    override fun mapDomainModelToUiModel(domainModel: Film): FilmScreen =
+        domainModel.toFilmScreen(resources)
+
+    override fun fillContentViews(uiModel: FilmScreen) {
+        val filmScreen = uiModel
         with(contentBinding) {
             idTextView.text = filmScreen.id
             updatedTextView.text = filmScreen.updated

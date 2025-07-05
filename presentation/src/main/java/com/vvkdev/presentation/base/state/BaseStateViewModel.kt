@@ -5,12 +5,12 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
-abstract class BaseStateViewModel<T> : BaseViewModel() {
+abstract class BaseStateViewModel<DM> : BaseViewModel() {
 
-    private val _uiState = MutableStateFlow<UiState<T>>(UiState.Default)
-    val uiState: StateFlow<UiState<T>> = _uiState.asStateFlow()
+    private val _uiState = MutableStateFlow<UiState<DM>>(UiState.Default)
+    val uiState: StateFlow<UiState<DM>> = _uiState.asStateFlow()
 
-    protected fun updateState(newState: UiState<T>) {
+    protected fun updateState(newState: UiState<DM>) {
         _uiState.value = newState
     }
 
