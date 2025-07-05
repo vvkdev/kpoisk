@@ -8,6 +8,8 @@ import com.vvkdev.domain.model.Film
 import com.vvkdev.presentation.R
 import com.vvkdev.presentation.base.state.BaseStateFragment
 import com.vvkdev.presentation.databinding.ContentFilmDetailsBinding
+import com.vvkdev.presentation.extensions.openInBrowser
+import com.vvkdev.presentation.extensions.shareText
 import com.vvkdev.presentation.mapper.toFilmScreen
 import com.vvkdev.presentation.model.FilmScreen
 import com.vvkdev.presentation.viewmodels.FilmDetailsViewModel
@@ -33,6 +35,9 @@ class FilmDetailsFragment : BaseStateFragment<ContentFilmDetailsBinding, Film, F
             contentBinding.fabPoster.isVisible = !contentBinding.fabPoster.isVisible
             contentBinding.fabUpdate.isVisible = !contentBinding.fabUpdate.isVisible
         }
+
+        contentBinding.fabShare.setOnClickListener { shareText(uiModel.url) }
+        contentBinding.fabWeb.setOnClickListener { openInBrowser(uiModel.url) }
     }
 
     override fun mapDomainModelToUiModel(domainModel: Film): FilmScreen =

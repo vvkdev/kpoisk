@@ -10,5 +10,6 @@ data class FilmScreen(
     val countries: String,
     val has3D: Boolean,
     val description: String,
+    val url: String,
     val updated: String,
 )

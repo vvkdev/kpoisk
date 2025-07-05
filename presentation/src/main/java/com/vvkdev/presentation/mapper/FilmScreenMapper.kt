@@ -3,6 +3,7 @@ package com.vvkdev.presentation.mapper
 import android.content.res.Resources
 import com.vvkdev.domain.model.Film
 import com.vvkdev.presentation.R
+import com.vvkdev.presentation.constants.Constants
 import com.vvkdev.presentation.model.FilmScreen
 import java.util.Locale
 
@@ -20,5 +21,6 @@ internal fun Film.toFilmScreen(res: Resources) = FilmScreen(
     countries = countries,
     has3D = has3D,
     description = description,
+    url = "${Constants.KP_BASE_URL}/film/$id",
     updated = res.getString(R.string.updated, updated),
 )
