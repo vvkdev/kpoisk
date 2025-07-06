@@ -18,15 +18,15 @@
                 tools:layout="@layout/fragment_films"
                 >
             <action
-                    android:id="@+id/action_filmsFragment_to_filmDetailsFragment"
-                    app:destination="@id/filmDetailsFragment"
+                    android:id="@+id/action_filmsFragment_to_filmFragment"
+                    app:destination="@id/filmFragment"
                     />
         </fragment>
 
         <fragment
-                android:id="@+id/filmDetailsFragment"
-                android:name="com.vvkdev.presentation.fragments.FilmDetailsFragment"
-                tools:layout="@layout/content_film_details"
+                android:id="@+id/filmFragment"
+                android:name="com.vvkdev.presentation.fragments.FilmFragment"
+                tools:layout="@layout/fragment_content_film"
                 >
             <argument
                     android:name="film_id"

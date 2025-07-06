@@ -7,18 +7,18 @@ import com.vvkdev.domain.model.Film
 import com.vvkdev.domain.repository.FilmsRepository
 import com.vvkdev.presentation.base.state.BaseStateViewModel
 import com.vvkdev.presentation.base.state.UiState
-import com.vvkdev.presentation.fragments.FilmDetailsFragmentArgs
+import com.vvkdev.presentation.fragments.FilmFragmentArgs
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class FilmDetailsViewModel @Inject constructor(
+class FilmViewModel @Inject constructor(
     private val repository: FilmsRepository,
     private val savedStateHandle: SavedStateHandle,
 ) : BaseStateViewModel<Film>() {
 
-    private val args = FilmDetailsFragmentArgs.fromSavedStateHandle(savedStateHandle)
+    private val args = FilmFragmentArgs.fromSavedStateHandle(savedStateHandle)
     private val filmId: Int = args.filmId
 
     init {

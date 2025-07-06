@@ -7,21 +7,21 @@ import androidx.fragment.app.viewModels
 import com.vvkdev.domain.model.Film
 import com.vvkdev.presentation.R
 import com.vvkdev.presentation.base.state.BaseStateFragment
-import com.vvkdev.presentation.databinding.ContentFilmDetailsBinding
+import com.vvkdev.presentation.databinding.FragmentContentFilmBinding
 import com.vvkdev.presentation.extensions.openInBrowser
 import com.vvkdev.presentation.extensions.shareText
 import com.vvkdev.presentation.mapper.toFilmScreen
 import com.vvkdev.presentation.model.FilmScreen
-import com.vvkdev.presentation.viewmodels.FilmDetailsViewModel
+import com.vvkdev.presentation.viewmodels.FilmViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class FilmDetailsFragment : BaseStateFragment<ContentFilmDetailsBinding, Film, FilmScreen>(
-    ContentFilmDetailsBinding::bind,
-    R.layout.content_film_details,
+class FilmFragment : BaseStateFragment<FragmentContentFilmBinding, Film, FilmScreen>(
+    FragmentContentFilmBinding::bind,
+    R.layout.fragment_content_film,
 ) {
 
-    override val viewModel: FilmDetailsViewModel by viewModels()
+    override val viewModel: FilmViewModel by viewModels()
 
     override fun onContentViewCreated() {
         if (resources.configuration.fontScale > FONT_SCALE_THRESHOLD) {

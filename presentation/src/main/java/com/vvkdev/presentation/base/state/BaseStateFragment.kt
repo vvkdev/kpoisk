@@ -9,14 +9,14 @@ import androidx.core.view.isVisible
 import androidx.viewbinding.ViewBinding
 import com.vvkdev.presentation.R
 import com.vvkdev.presentation.base.BaseFragment
-import com.vvkdev.presentation.databinding.StateLayoutBinding
+import com.vvkdev.presentation.databinding.BaseStateLayoutBinding
 import com.vvkdev.presentation.extensions.collectWhenStarted
 import kotlin.properties.Delegates
 
 abstract class BaseStateFragment<CVB : ViewBinding, DM, UM : Any>(
     private val contentBindingBind: (View) -> CVB,
     @LayoutRes private val contentLayoutRes: Int,
-) : BaseFragment<StateLayoutBinding>(StateLayoutBinding::inflate) {
+) : BaseFragment<BaseStateLayoutBinding>(BaseStateLayoutBinding::inflate) {
 
     protected abstract val viewModel: BaseStateViewModel<DM>
 

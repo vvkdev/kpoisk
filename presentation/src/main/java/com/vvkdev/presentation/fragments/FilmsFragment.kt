@@ -12,14 +12,14 @@ class FilmsFragment : BaseFragment<FragmentFilmsBinding>(FragmentFilmsBinding::i
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.openButton.setOnClickListener { openFilmDetails() }
-        binding.filmIdEditText.setOnDoneAction { openFilmDetails() }
+        binding.openButton.setOnClickListener { openFilm() }
+        binding.filmIdEditText.setOnDoneAction { openFilm() }
     }
 
-    private fun openFilmDetails() {
+    private fun openFilm() {
         val filmId = binding.filmIdEditText.text.toString().toIntOrNull() ?: 0
         val direction =
-            FilmsFragmentDirections.actionFilmsFragmentToFilmDetailsFragment(filmId)
+            FilmsFragmentDirections.actionFilmsFragmentToFilmFragment(filmId)
         findNavController().navigate(direction)
     }
 }
