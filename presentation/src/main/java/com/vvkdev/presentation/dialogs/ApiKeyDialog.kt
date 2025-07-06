@@ -3,7 +3,6 @@ package com.vvkdev.presentation.dialogs
 import android.app.Dialog
 import android.os.Bundle
 import android.text.InputType
-import android.view.inputmethod.EditorInfo
 import androidx.core.view.isVisible
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.DialogFragment
@@ -12,6 +11,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.vvkdev.presentation.R
 import com.vvkdev.presentation.databinding.DialogApikeyBinding
 import com.vvkdev.presentation.extensions.collectWhenStarted
+import com.vvkdev.presentation.extensions.setOnDoneAction
 import com.vvkdev.presentation.extensions.showShortToast
 import com.vvkdev.presentation.viewmodels.ApiKeyViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -47,14 +47,7 @@ class ApiKeyDialog : DialogFragment() {
             buttons.negativeButton.setOnClickListener { dismiss() }
             buttons.positiveButton.text = getString(R.string.save)
             buttons.positiveButton.setOnClickListener { saveApiKey(apiKeyEditText.text.toString()) }
-            apiKeyEditText.setOnEditorActionListener { _, actionId, _ ->
-                if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    saveApiKey(apiKeyEditText.text.toString())
-                    true
-                } else {
-                    false
-                }
-            }
+            apiKeyEditText.setOnDoneAction { saveApiKey(apiKeyEditText.text.toString()) }
         }
 
         return dialog
