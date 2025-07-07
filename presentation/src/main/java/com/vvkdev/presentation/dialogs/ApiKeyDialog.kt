@@ -1,15 +1,13 @@
 package com.vvkdev.presentation.dialogs
 
 import android.app.Dialog
-import android.os.Bundle
 import android.text.InputType
 import androidx.core.view.isVisible
 import androidx.core.widget.doAfterTextChanged
-import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.vvkdev.presentation.R
-import com.vvkdev.presentation.databinding.DialogApikeyBinding
+import com.vvkdev.presentation.base.BaseDialogFragment
+import com.vvkdev.presentation.databinding.DialogContentApikeyBinding
 import com.vvkdev.presentation.extensions.collectWhenStarted
 import com.vvkdev.presentation.extensions.setOnDoneAction
 import com.vvkdev.presentation.extensions.showShortToast
@@ -17,40 +15,35 @@ import com.vvkdev.presentation.viewmodels.ApiKeyViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ApiKeyDialog : DialogFragment() {
+class ApiKeyDialog : BaseDialogFragment<DialogContentApikeyBinding>() {
 
     private val viewModel: ApiKeyViewModel by viewModels()
 
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val binding = DialogApikeyBinding.inflate(layoutInflater)
+    override val contentBindingBind = DialogContentApikeyBinding::bind
+    override val contentLayoutRes = R.layout.dialog_content_apikey
+    override val titleRes = R.string.enter_api_key
 
-        val dialog = MaterialAlertDialogBuilder(requireContext())
-            .setTitle(R.string.enter_api_key)
-            .setView(binding.root)
-            .create()
-
-        collectWhenStarted(viewModel.showError) {
-            binding.formatTextView.isVisible = !it
-            binding.errorTextView.isVisible = it
-        }
-
-        dialog.setOnShowListener {
-            binding.apiKeyEditText.doAfterTextChanged {
-                viewModel.showError(false)
-                setCancelable(false)
+    override fun onDialogCreated(dialog: Dialog) {
+        with(contentBinding) {
+            collectWhenStarted(viewModel.showError) {
+                formatTextView.isVisible = !it
+                errorTextView.isVisible = it
             }
-        }
 
-        with(binding) {
+            dialog.setOnShowListener {
+                apiKeyEditText.doAfterTextChanged {
+                    viewModel.showError(false)
+                    setCancelable(false)
+                }
+            }
+
             apiKeyEditText.setRawInputType(InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS) // for multiline IME_ACTION_DONE working
-            buttons.negativeButton.text = getString(R.string.cancel)
-            buttons.negativeButton.setOnClickListener { dismiss() }
-            buttons.positiveButton.text = getString(R.string.save)
-            buttons.positiveButton.setOnClickListener { saveApiKey(apiKeyEditText.text.toString()) }
             apiKeyEditText.setOnDoneAction { saveApiKey(apiKeyEditText.text.toString()) }
         }
+    }
 
-        return dialog
+    override fun onPositiveAction() {
+        saveApiKey(contentBinding.apiKeyEditText.text.toString())
     }
 
     private fun saveApiKey(key: String) {
