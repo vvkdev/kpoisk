@@ -1,8 +1,9 @@
 package com.vvkdev.presentation.base.state
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
-import androidx.annotation.LayoutRes
+import android.view.ViewGroup
 import androidx.core.view.children
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
@@ -13,12 +14,20 @@ import com.vvkdev.presentation.databinding.BaseStateLayoutBinding
 import com.vvkdev.presentation.extensions.collectWhenStarted
 import kotlin.properties.Delegates
 
-abstract class BaseStateFragment<CVB : ViewBinding, DM, UM : Any>(
-    private val contentBindingBind: (View) -> CVB,
-    @LayoutRes private val contentLayoutRes: Int,
-) : BaseFragment<BaseStateLayoutBinding>(BaseStateLayoutBinding::inflate) {
+abstract class BaseStateFragment<CVB : ViewBinding, DM, UM : Any>() :
+    BaseFragment<BaseStateLayoutBinding>() {
 
     protected abstract val viewModel: BaseStateViewModel<DM>
+
+    protected abstract val contentBindingBind: (View) -> CVB
+    protected abstract val contentLayoutRes: Int
+
+    protected abstract fun onContentViewCreated()
+    protected abstract fun mapDomainModelToUiModel(domainModel: DM): UM
+    protected abstract fun fillContentViews(uiModel: UM)
+
+    override val inflate: (LayoutInflater, ViewGroup?, Boolean) -> BaseStateLayoutBinding =
+        BaseStateLayoutBinding::inflate
 
     private var _contentBinding: CVB? = null
     protected val contentBinding get() = _contentBinding!!
@@ -35,10 +44,6 @@ abstract class BaseStateFragment<CVB : ViewBinding, DM, UM : Any>(
         _contentBinding = null
         super.onDestroyView()
     }
-
-    protected abstract fun onContentViewCreated()
-    protected abstract fun mapDomainModelToUiModel(domainModel: DM): UM
-    protected abstract fun fillContentViews(uiModel: UM)
 
     private fun setStateObservers() {
         binding.retryButton.setOnClickListener { viewModel.retry() }

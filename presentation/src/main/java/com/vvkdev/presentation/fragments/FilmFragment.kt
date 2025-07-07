@@ -16,12 +16,12 @@ import com.vvkdev.presentation.viewmodels.FilmViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class FilmFragment : BaseStateFragment<FragmentContentFilmBinding, Film, FilmScreen>(
-    FragmentContentFilmBinding::bind,
-    R.layout.fragment_content_film,
-) {
+class FilmFragment : BaseStateFragment<FragmentContentFilmBinding, Film, FilmScreen>() {
 
     override val viewModel: FilmViewModel by viewModels()
+    
+    override val contentBindingBind = FragmentContentFilmBinding::bind
+    override val contentLayoutRes = R.layout.fragment_content_film
 
     override fun onContentViewCreated() {
         if (resources.configuration.fontScale > FONT_SCALE_THRESHOLD) {

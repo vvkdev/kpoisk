@@ -1,13 +1,18 @@
 package com.vvkdev.presentation.fragments
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.vvkdev.presentation.base.BaseFragment
 import com.vvkdev.presentation.databinding.FragmentFilmsBinding
 import com.vvkdev.presentation.extensions.setOnDoneAction
 
-class FilmsFragment : BaseFragment<FragmentFilmsBinding>(FragmentFilmsBinding::inflate) {
+class FilmsFragment : BaseFragment<FragmentFilmsBinding>() {
+
+    override val inflate: (LayoutInflater, ViewGroup?, Boolean) -> FragmentFilmsBinding =
+        FragmentFilmsBinding::inflate
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
