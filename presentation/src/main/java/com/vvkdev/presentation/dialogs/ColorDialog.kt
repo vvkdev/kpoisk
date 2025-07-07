@@ -3,58 +3,46 @@ package com.vvkdev.presentation.dialogs
 import AccentColor
 import android.app.Dialog
 import android.graphics.drawable.GradientDrawable
-import android.os.Bundle
 import android.widget.GridLayout
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.children
 import androidx.core.view.isInvisible
-import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
 import com.google.android.material.button.MaterialButton
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.vvkdev.presentation.R
-import com.vvkdev.presentation.databinding.DialogColorBinding
+import com.vvkdev.presentation.base.BaseDialogFragment
+import com.vvkdev.presentation.databinding.DialogContentColorBinding
 import com.vvkdev.presentation.extensions.collectWhenStarted
 import com.vvkdev.presentation.viewmodels.ColorViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import com.vvkdev.theme.R as ThemeR
 
 @AndroidEntryPoint
-class ColorDialog : DialogFragment() {
+class ColorDialog : BaseDialogFragment<DialogContentColorBinding>() {
 
     private val viewModel: ColorViewModel by viewModels()
 
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val binding = DialogColorBinding.inflate(layoutInflater)
+    override val contentBindingBind = DialogContentColorBinding::bind
+    override val contentLayoutRes = R.layout.dialog_content_color
+    override val titleRes = R.string.select_color
 
-        val dialog = MaterialAlertDialogBuilder(requireContext())
-            .setTitle(R.string.select_color)
-            .setView(binding.root)
-            .create()
-
-        collectWhenStarted(viewModel.shouldRestart) { binding.restartTextView.isInvisible = !it }
-
-        setupColorButtons(binding)
-
-        with(binding) {
-            buttons.negativeButton.text = getString(R.string.cancel)
-            buttons.negativeButton.setOnClickListener { dismiss() }
-
-            buttons.positiveButton.text = getString(R.string.save)
-            buttons.positiveButton.setOnClickListener {
-                if (viewModel.shouldRestart.value) {
-                    viewModel.saveAccentColor()
-                    ActivityCompat.recreate(requireActivity())
-                }
-                dismiss()
-            }
+    override fun onDialogCreated(dialog: Dialog) {
+        collectWhenStarted(viewModel.shouldRestart) {
+            contentBinding.restartTextView.isInvisible = !it
         }
-
-        return dialog
+        setupColorButtons()
     }
 
-    private fun setupColorButtons(binding: DialogColorBinding) {
+    override fun onPositiveAction() {
+        if (viewModel.shouldRestart.value) {
+            viewModel.saveAccentColor()
+            ActivityCompat.recreate(requireActivity())
+        }
+        dismiss()
+    }
+
+    private fun setupColorButtons() {
         val size = resources.getDimensionPixelSize(ThemeR.dimen.icon_medium)
         val margin = resources.getDimensionPixelSize(ThemeR.dimen.indent_medium)
 
@@ -79,14 +67,14 @@ class ColorDialog : DialogFragment() {
                 icon.alpha =
                     if (theme == viewModel.selectedColor) ALPHA_VISIBLE else ALPHA_INVISIBLE
 
-                setOnClickListener { button -> selectColor(button as MaterialButton, binding) }
+                setOnClickListener { button -> selectColor(button as MaterialButton) }
             }
-            binding.gridLayout.addView(button)
+            contentBinding.gridLayout.addView(button)
         }
     }
 
-    private fun selectColor(button: MaterialButton, binding: DialogColorBinding) {
-        binding.gridLayout.children.forEach { view ->
+    private fun selectColor(button: MaterialButton) {
+        contentBinding.gridLayout.children.forEach { view ->
             if (view is MaterialButton) view.icon.alpha = ALPHA_INVISIBLE
         }
         button.icon.alpha = ALPHA_VISIBLE
