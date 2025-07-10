@@ -16,7 +16,8 @@ dependencyResolutionManagement {
 
 rootProject.name = "kpoisk"
 include(":app")
-include(":theme")
-include(":presentation")
-include(":domain")
+include(":core")
 include(":data")
+include(":domain")
+include(":presentation")
+include(":theme")
