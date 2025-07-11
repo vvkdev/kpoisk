@@ -30,6 +30,7 @@ ksp {
 
 dependencies {
     implementation(project(":domain"))
+    implementation(project(":core"))
 
     // hilt
     ksp(libs.hilt.compiler)

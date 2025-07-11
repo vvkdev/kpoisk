@@ -1,5 +1,7 @@
 package com.vvkdev.data.repository
 
+import com.vvkdev.core.AppDispatchers
+import com.vvkdev.core.extensions.childScope
 import com.vvkdev.data.local.dao.FilmDao
 import com.vvkdev.data.local.mapper.toEntity
 import com.vvkdev.data.local.mapper.toFilm
@@ -10,7 +12,6 @@ import com.vvkdev.domain.LoadResult
 import com.vvkdev.domain.model.Film
 import com.vvkdev.domain.repository.FilmsRepository
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
 import javax.inject.Inject
@@ -21,6 +22,8 @@ class FilmsRepositoryImpl @Inject constructor(
     private val filmsService: FilmsService,
     private val filmDao: FilmDao,
     private val json: Json,
+    private val appDispatchers: AppDispatchers,
+    private val appScope: CoroutineScope,
 ) : FilmsRepository {
 
     override suspend fun getFilmById(id: Int): LoadResult<Film> {
@@ -29,8 +32,11 @@ class FilmsRepositoryImpl @Inject constructor(
                 val response = filmsService.getFilmById(id)
                 if (response.isSuccessful) {
                     val film = response.body()!!.toFilm()
-                    CoroutineScope(Dispatchers.IO).launch { filmDao.insert(film.toEntity()) }
-                    LoadResult.Success(film)
+                    LoadResult.Success(film).also {
+                        appScope.childScope(appDispatchers.io).launch {
+                            filmDao.insert(film.toEntity())
+                        }
+                    }
                 } else {
                     val errorBody = response.errorBody()?.string()
                     val errors = errorBody
