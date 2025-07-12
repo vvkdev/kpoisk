@@ -1,13 +1,14 @@
 [versions]
 # sdk
 minSdk = "21"
-targetSdk = "35"
-compileSdk = "35"
+targetSdk = "36"
+compileSdk = "36"
+buildTools = "36"
 jvm = "17"
 # plugins and libraries
-agp = "8.10.1"
-kotlin = "2.1.20"
-ksp = "2.1.20-1.0.31"
+agp = "8.11.1"
+kotlin = "2.2.0"
+ksp = "2.1.21-2.0.1"
 coreKtx = "1.16.0"
 appcompat = "1.7.1"
 material = "1.12.0"
