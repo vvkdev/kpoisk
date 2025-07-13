@@ -18,8 +18,7 @@ class FilmViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle,
 ) : BaseStateViewModel<Film>() {
 
-    private val args = FilmFragmentArgs.fromSavedStateHandle(savedStateHandle)
-    private val filmId: Int = args.filmId
+    private val filmId: Int = FilmFragmentArgs.fromSavedStateHandle(savedStateHandle).filmId
 
     init {
         loadFilm()
