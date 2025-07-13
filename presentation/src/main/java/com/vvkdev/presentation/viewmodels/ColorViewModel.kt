@@ -2,8 +2,8 @@ package com.vvkdev.presentation.viewmodels
 
 import AccentColor
 import androidx.lifecycle.SavedStateHandle
-import androidx.lifecycle.ViewModel
 import com.vvkdev.domain.repository.SettingsRepository
+import com.vvkdev.presentation.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -13,7 +13,7 @@ import javax.inject.Inject
 class ColorViewModel @Inject constructor(
     private val settingsRepository: SettingsRepository,
     private val savedStateHandle: SavedStateHandle,
-) : ViewModel() {
+) : BaseViewModel() {
 
     private val initialColor: AccentColor = settingsRepository.getColorAccent()
         ?.let { AccentColor.valueOf(it) }

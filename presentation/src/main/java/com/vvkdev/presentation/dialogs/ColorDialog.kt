@@ -21,7 +21,7 @@ import com.vvkdev.theme.R as ThemeR
 @AndroidEntryPoint
 class ColorDialog : BaseDialogFragment<DialogContentColorBinding>() {
 
-    private val viewModel: ColorViewModel by viewModels()
+    override val viewModel: ColorViewModel by viewModels()
 
     override val contentBindingBind = DialogContentColorBinding::bind
     override val contentLayoutRes = R.layout.dialog_content_color

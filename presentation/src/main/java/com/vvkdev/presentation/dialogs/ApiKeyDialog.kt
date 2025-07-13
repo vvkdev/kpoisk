@@ -10,14 +10,13 @@ import com.vvkdev.presentation.base.BaseDialogFragment
 import com.vvkdev.presentation.databinding.DialogContentApikeyBinding
 import com.vvkdev.presentation.extensions.collectWhenStarted
 import com.vvkdev.presentation.extensions.setOnDoneAction
-import com.vvkdev.presentation.extensions.showShortToast
 import com.vvkdev.presentation.viewmodels.ApiKeyViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ApiKeyDialog : BaseDialogFragment<DialogContentApikeyBinding>() {
 
-    private val viewModel: ApiKeyViewModel by viewModels()
+    override val viewModel: ApiKeyViewModel by viewModels()
 
     override val contentBindingBind = DialogContentApikeyBinding::bind
     override val contentLayoutRes = R.layout.dialog_content_apikey
@@ -38,19 +37,12 @@ class ApiKeyDialog : BaseDialogFragment<DialogContentApikeyBinding>() {
             }
 
             apiKeyEditText.setRawInputType(InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS) // for multiline IME_ACTION_DONE working
-            apiKeyEditText.setOnDoneAction { saveApiKey(apiKeyEditText.text.toString()) }
+            apiKeyEditText.setOnDoneAction { onPositiveAction() }
         }
     }
 
     override fun onPositiveAction() {
-        saveApiKey(contentBinding.apiKeyEditText.text.toString())
-    }
-
-    private fun saveApiKey(key: String) {
-        if (viewModel.saveApiKey(key)) {
-            showShortToast(R.string.saved)
-            dismiss()
-        }
+        viewModel.saveApiKey(contentBinding.apiKeyEditText.text.toString())
     }
 
     companion object {
