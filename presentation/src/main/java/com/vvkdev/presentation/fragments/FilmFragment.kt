@@ -10,16 +10,16 @@ import com.vvkdev.presentation.base.state.BaseStateFragment
 import com.vvkdev.presentation.databinding.FragmentContentFilmBinding
 import com.vvkdev.presentation.extensions.openInBrowser
 import com.vvkdev.presentation.extensions.shareText
-import com.vvkdev.presentation.mapper.toFilmScreen
-import com.vvkdev.presentation.model.FilmScreen
+import com.vvkdev.presentation.mapper.toFilmUi
+import com.vvkdev.presentation.model.FilmUi
 import com.vvkdev.presentation.viewmodels.FilmViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class FilmFragment : BaseStateFragment<FragmentContentFilmBinding, Film, FilmScreen>() {
+class FilmFragment : BaseStateFragment<FragmentContentFilmBinding, Film, FilmUi>() {
 
     override val viewModel: FilmViewModel by viewModels()
-    
+
     override val contentBindingBind = FragmentContentFilmBinding::bind
     override val contentLayoutRes = R.layout.fragment_content_film
 
@@ -40,27 +40,27 @@ class FilmFragment : BaseStateFragment<FragmentContentFilmBinding, Film, FilmScr
         contentBinding.fabWeb.setOnClickListener { openInBrowser(uiModel.url) }
     }
 
-    override fun mapDomainModelToUiModel(domainModel: Film): FilmScreen =
-        domainModel.toFilmScreen(resources)
+    override fun mapDomainModelToUiModel(domainModel: Film): FilmUi =
+        domainModel.toFilmUi(resources)
 
-    override fun fillContentViews(uiModel: FilmScreen) {
-        val filmScreen = uiModel
+    override fun fillContentViews(uiModel: FilmUi) {
+        val filmUi = uiModel
         with(contentBinding) {
-            idTextView.text = filmScreen.id
-            updatedTextView.text = filmScreen.updated
-            nameTextView.text = filmScreen.name
-            foreignNameTextView.text = filmScreen.foreignName
-            foreignNameTextView.isGone = filmScreen.foreignName.isBlank()
-            timeTextView.text = filmScreen.time
-            ratingTextView.text = filmScreen.rating
-            genresTextView.text = filmScreen.genres
-            genresTextView.isGone = filmScreen.genres.isBlank()
-            countriesTextView.text = filmScreen.countries
-            countriesTextView.isGone = filmScreen.countries.isBlank()
+            idTextView.text = filmUi.id
+            updatedTextView.text = filmUi.updated
+            nameTextView.text = filmUi.name
+            foreignNameTextView.text = filmUi.foreignName
+            foreignNameTextView.isGone = filmUi.foreignName.isBlank()
+            timeTextView.text = filmUi.time
+            ratingTextView.text = filmUi.rating
+            genresTextView.text = filmUi.genres
+            genresTextView.isGone = filmUi.genres.isBlank()
+            countriesTextView.text = filmUi.countries
+            countriesTextView.isGone = filmUi.countries.isBlank()
             genresCountriesLine.isGone = genresTextView.isGone && countriesTextView.isGone
-            has3dTextView.isVisible = filmScreen.has3D
-            descriptionTextView.text = filmScreen.description
-            descriptionTextView.isGone = filmScreen.description.isBlank()
+            has3dTextView.isVisible = filmUi.has3D
+            descriptionTextView.text = filmUi.description
+            descriptionTextView.isGone = filmUi.description.isBlank()
             descriptionLine.visibility = descriptionTextView.visibility
         }
     }

@@ -1,6 +1,6 @@
 package com.vvkdev.presentation.model
 
-data class FilmScreen(
+data class FilmUi(
     val id: String,
     val name: String,
     val foreignName: String,
