@@ -43,7 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/indent_medium"
             android:gravity="center"
-            android:text="@string/apikey_format"
+            android:text="@string/invalid_format"
             android:textColor="?attr/colorError"
             android:visibility="gone"
             />

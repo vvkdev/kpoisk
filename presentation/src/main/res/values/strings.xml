@@ -20,6 +20,7 @@
     <string name="settings">Settings</string>
     <string name="app_will_be_restarted">Application will be restarted</string>
     <string name="apikey_format">Only digits and latin uppercase letters.</string>
+    <string name="invalid_format">Invalid format.</string>
     <string name="options">Options</string>
     <string name="force_update">Force update</string>
     <string name="open_webpage">Open webpage</string>
