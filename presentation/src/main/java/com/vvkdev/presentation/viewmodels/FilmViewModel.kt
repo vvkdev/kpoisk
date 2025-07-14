@@ -21,18 +21,18 @@ class FilmViewModel @Inject constructor(
     private val filmId: Int = FilmFragmentArgs.fromSavedStateHandle(savedStateHandle).filmId
 
     init {
-        loadFilm()
+        loadFilm(forceRefresh = false)
     }
 
-    override fun retry() {
-        loadFilm()
-    }
+    override fun retry() = loadFilm(forceRefresh = false)
+    
+    fun forceRefresh() = loadFilm(forceRefresh = true)
 
-    private fun loadFilm() {
+    private fun loadFilm(forceRefresh: Boolean) {
         viewModelScope.launch {
             updateState(UiState.Loading)
             updateState(
-                when (val result = repository.getFilmById(filmId)) {
+                when (val result = repository.getFilmById(filmId, forceRefresh)) {
                     is LoadResult.Success -> UiState.Success(result.data)
                     is LoadResult.Error -> UiState.Error(result.message)
                 }

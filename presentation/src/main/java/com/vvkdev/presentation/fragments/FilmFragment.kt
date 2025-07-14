@@ -33,11 +33,12 @@ class FilmFragment : BaseStateFragment<FragmentContentFilmBinding, Film, FilmUi>
             contentBinding.fabShare.isVisible = !contentBinding.fabShare.isVisible
             contentBinding.fabWeb.isVisible = !contentBinding.fabWeb.isVisible
             contentBinding.fabPoster.isVisible = !contentBinding.fabPoster.isVisible
-            contentBinding.fabUpdate.isVisible = !contentBinding.fabUpdate.isVisible
+            contentBinding.fabRefresh.isVisible = !contentBinding.fabRefresh.isVisible
         }
 
         contentBinding.fabShare.setOnClickListener { shareText(uiModel.url) }
         contentBinding.fabWeb.setOnClickListener { openInBrowser(uiModel.url) }
+        contentBinding.fabRefresh.setOnClickListener { viewModel.forceRefresh() }
     }
 
     override fun mapDomainModelToUiModel(domainModel: Film): FilmUi =

@@ -26,8 +26,10 @@ class FilmsRepositoryImpl @Inject constructor(
     private val appScope: CoroutineScope,
 ) : FilmsRepository {
 
-    override suspend fun getFilmById(id: Int): LoadResult<Film> {
-        return filmDao.getById(id)?.let { LoadResult.Success(it.toFilm()) }
+    override suspend fun getFilmById(id: Int, forceRefresh: Boolean): LoadResult<Film> {
+        val cached = if (!forceRefresh) filmDao.getById(id) else null
+        return cached
+            ?.let { LoadResult.Success(it.toFilm()) }
             ?: try {
                 val response = filmsService.getFilmById(id)
                 if (response.isSuccessful) {
