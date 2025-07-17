@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
 
+    <style name="App.CornerShape" parent="">
+        <item name="cornerSize">@dimen/corner_radius</item>
+    </style>
+
     <style name="App.TitleMedium.TextAppearance" parent="TextAppearance.Material3.TitleMedium">
         <item name="android:lineHeight" tools:targetApi="28">16sp</item>
         <item name="lineHeight">16sp</item>
@@ -37,11 +41,7 @@
         <item name="backgroundInsetBottom">@dimen/indent_medium</item>
         <item name="backgroundInsetStart">@dimen/indent_medium</item>
         <item name="backgroundInsetEnd">@dimen/indent_medium</item>
-        <item name="shapeAppearance">@style/App.MaterialDialog.ShapeAppearance</item>
-    </style>
-
-    <style name="App.MaterialDialog.ShapeAppearance" parent="ShapeAppearance.Material3.MediumComponent">
-        <item name="cornerSize">@dimen/corner_medium</item>
+        <item name="shapeAppearanceOverlay">@style/App.CornerShape</item>
     </style>
 
     <style name="App.MaterialDialog.TitleText" parent="MaterialAlertDialog.Material3.Title.Text">
@@ -65,12 +65,7 @@
     <style name="App.Fab" parent="Widget.MaterialComponents.FloatingActionButton">
         <item name="fabSize">mini</item>
         <item name="tint">@color/white</item>
-        <item name="shapeAppearanceOverlay">@style/App.Fab.ShapeAppearanceOverlay</item>
-    </style>
-
-    <style name="App.Fab.ShapeAppearanceOverlay" parent="">
-        <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">@dimen/indent_small</item>
+        <item name="shapeAppearanceOverlay">@style/App.CornerShape</item>
     </style>
 
 </resources>

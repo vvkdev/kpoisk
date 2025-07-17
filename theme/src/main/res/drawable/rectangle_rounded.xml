@@ -8,7 +8,7 @@
             android:color="?attr/colorOutline"
             />
     <solid android:color="@android:color/transparent" />
-    <corners android:radius="@dimen/corner_small" />
+    <corners android:radius="@dimen/corner_radius" />
     <padding
             android:left="@dimen/indent_medium"
             android:top="@dimen/indent_medium"

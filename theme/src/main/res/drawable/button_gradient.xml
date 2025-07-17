@@ -14,7 +14,7 @@
                         android:endColor="?attr/colorPrimaryVariant"
                         android:angle="0"
                         />
-                <corners android:radius="@dimen/corner_small" />
+                <corners android:radius="@dimen/corner_radius" />
             </shape>
         </inset>
     </item>
