@@ -3,7 +3,7 @@ package com.vvkdev.data.local.mapper
 import com.vvkdev.data.local.model.FilmEntity
 import com.vvkdev.domain.model.Film
 
-fun Film.toEntity() = FilmEntity(
+fun Film.toFilmEntity() = FilmEntity(
     id,
     name,
     foreignName,

@@ -3,8 +3,8 @@ package com.vvkdev.data.repository
 import com.vvkdev.core.AppDispatchers
 import com.vvkdev.core.extensions.childScope
 import com.vvkdev.data.local.dao.FilmDao
-import com.vvkdev.data.local.mapper.toEntity
 import com.vvkdev.data.local.mapper.toFilm
+import com.vvkdev.data.local.mapper.toFilmEntity
 import com.vvkdev.data.parseErrorBody
 import com.vvkdev.data.remote.mapper.toFilm
 import com.vvkdev.data.remote.service.FilmsService
@@ -36,7 +36,7 @@ class FilmsRepositoryImpl @Inject constructor(
                     val film = response.body()!!.toFilm()
                     LoadResult.Success(film).also {
                         appScope.childScope(appDispatchers.io).launch {
-                            filmDao.insert(film.toEntity())
+                            filmDao.insert(film.toFilmEntity())
                         }
                     }
                 } else {
