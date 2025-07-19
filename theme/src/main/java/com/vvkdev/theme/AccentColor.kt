@@ -1,6 +1,7 @@
+package com.vvkdev.theme
+
 import androidx.annotation.ColorRes
 import androidx.annotation.StyleRes
-import com.vvkdev.theme.R
 
 enum class AccentColor(@StyleRes val themeRes: Int, @ColorRes val colorRes: Int) {
     BLUE(R.style.ThemeBlue, R.color.blue_primary),

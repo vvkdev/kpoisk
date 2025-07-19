@@ -1,9 +1,9 @@
 package com.vvkdev.presentation.viewmodels
 
-import AccentColor
 import androidx.lifecycle.SavedStateHandle
 import com.vvkdev.domain.repository.SettingsRepository
 import com.vvkdev.presentation.base.BaseViewModel
+import com.vvkdev.theme.AccentColor
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

@@ -1,6 +1,5 @@
 package com.vvkdev.presentation.dialogs
 
-import AccentColor
 import android.app.Dialog
 import android.graphics.drawable.GradientDrawable
 import android.widget.GridLayout
@@ -15,6 +14,7 @@ import com.vvkdev.presentation.base.BaseDialogFragment
 import com.vvkdev.presentation.databinding.DialogContentColorBinding
 import com.vvkdev.presentation.extensions.collectWhenStarted
 import com.vvkdev.presentation.viewmodels.ColorViewModel
+import com.vvkdev.theme.AccentColor
 import dagger.hilt.android.AndroidEntryPoint
 import com.vvkdev.theme.R as ThemeR
 

@@ -1,9 +1,9 @@
 package com.vvkdev.presentation.viewmodels
 
-import AccentColor
 import androidx.lifecycle.ViewModel
 import com.vvkdev.domain.repository.ApiKeyRepository
 import com.vvkdev.domain.repository.SettingsRepository
+import com.vvkdev.theme.AccentColor
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
