@@ -26,6 +26,7 @@
     <string name="open_webpage">Open webpage</string>
     <string name="show_poster">Show poster</string>
     <string name="share">Share</string>
+    <string name="search_name">Search name...</string>
 
     <plurals name="votes">
         <item quantity="one">%,d vote</item>

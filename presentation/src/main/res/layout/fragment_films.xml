@@ -1,46 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/indent_medium"
+        android:background="@drawable/rectangle_rounded_outlined"
         android:fitsSystemWindows="true"
         tools:context=".fragments.FilmsFragment"
         >
 
-    <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/filmIdTextInputLayout"
-            android:layout_width="96dp"
+    <SearchView
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:hintEnabled="false"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/openButton"
-            >
-
-        <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/filmIdEditText"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:maxLines="1"
-                android:inputType="number"
-                android:text="251733"
-                />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.button.MaterialButton
-            android:id="@+id/openButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Open"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_margin="@dimen/indent_medium"
+            android:queryHint="@string/search_name"
             />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

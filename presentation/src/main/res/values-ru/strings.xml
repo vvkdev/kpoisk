@@ -24,6 +24,7 @@
     <string name="open_webpage">Открыть на сайте</string>
     <string name="show_poster">Показать постер</string>
     <string name="share">Поделиться</string>
+    <string name="search_name">Искать название...</string>
 
     <plurals name="votes">
         <item quantity="one">%,d голос</item>
