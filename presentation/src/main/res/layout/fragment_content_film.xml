@@ -13,7 +13,6 @@
     <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="@dimen/indent_medium"
             >
 
         <LinearLayout
@@ -28,6 +27,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:background="@drawable/rectangle_rounded_outlined"
+                    android:padding="@dimen/indent_medium"
                     >
 
                 <TextView
@@ -54,6 +54,7 @@
                     android:orientation="vertical"
                     android:layout_marginTop="@dimen/indent_small"
                     android:background="@drawable/rectangle_rounded_outlined"
+                    android:padding="@dimen/indent_medium"
                     >
 
                 <LinearLayout

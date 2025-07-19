@@ -9,10 +9,5 @@
             />
     <solid android:color="@android:color/transparent" />
     <corners android:radius="@dimen/corner_radius" />
-    <padding
-            android:left="@dimen/indent_medium"
-            android:top="@dimen/indent_medium"
-            android:right="@dimen/indent_medium"
-            android:bottom="@dimen/indent_medium"
-            />
+    
 </shape>
