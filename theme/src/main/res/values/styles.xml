@@ -68,4 +68,12 @@
         <item name="shapeAppearanceOverlay">@style/App.CornerShape</item>
     </style>
 
+    <style name="App.SearchView" parent="Widget.Material3.SearchView">
+        <item name="android:background">@drawable/rectangle_rounded_filled</item>
+        <item name="android:elevation">@dimen/elevation</item>
+        <item name="android:iconifiedByDefault">false</item>
+        <item name="android:searchIcon">@drawable/ic_search</item>
+        <item name="android:closeIcon">@drawable/ic_close</item>
+    </style>
+
 </resources>

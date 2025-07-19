@@ -14,6 +14,7 @@
         <item name="materialButtonStyle">@style/App.Button</item>
         <item name="materialAlertDialogTheme">@style/App.MaterialDialog.ThemeOverlay</item>
         <item name="floatingActionButtonStyle">@style/App.Fab</item>
+        <item name="android:searchViewStyle">@style/App.SearchView</item>
     </style>
 
     <!-- Accent theme -->

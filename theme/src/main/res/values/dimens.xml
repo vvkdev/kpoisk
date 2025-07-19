@@ -3,6 +3,7 @@
     <dimen name="zero_size">0dp</dimen>
     <dimen name="stroke_thickness">1dp</dimen>
     <dimen name="corner_radius">4dp</dimen>
+    <dimen name="elevation">2dp</dimen>
     <dimen name="indent_min">2dp</dimen>
     <dimen name="indent_small">4dp</dimen>
     <dimen name="indent_medium">8dp</dimen>
