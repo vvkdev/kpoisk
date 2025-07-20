@@ -4,11 +4,11 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:layout_margin="@dimen/indent_medium"
+        android:orientation="vertical"
         android:background="@drawable/rectangle_rounded_outlined"
         android:fitsSystemWindows="true"
-        tools:context=".fragments.FilmsFragment"
+        tools:context=".fragments.FilmSearchFragment"
         >
 
     <SearchView

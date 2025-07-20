@@ -9,16 +9,16 @@
 
     <navigation
             android:id="@+id/nav_graph_films"
-            app:startDestination="@id/filmsFragment"
+            app:startDestination="@id/filmSearchFragment"
             >
 
         <fragment
-                android:id="@+id/filmsFragment"
-                android:name="com.vvkdev.presentation.fragments.FilmsFragment"
-                tools:layout="@layout/fragment_films"
+                android:id="@+id/filmSearchFragment"
+                android:name="com.vvkdev.presentation.fragments.FilmSearchFragment"
+                tools:layout="@layout/fragment_film_search"
                 >
             <action
-                    android:id="@+id/action_filmsFragment_to_filmFragment"
+                    android:id="@+id/action_filmSearchFragment_to_filmFragment"
                     app:destination="@id/filmFragment"
                     />
         </fragment>

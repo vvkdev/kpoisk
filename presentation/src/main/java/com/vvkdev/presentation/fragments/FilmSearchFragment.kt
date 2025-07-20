@@ -7,12 +7,12 @@ import android.view.ViewGroup
 import android.widget.SearchView
 import androidx.navigation.fragment.findNavController
 import com.vvkdev.presentation.base.BaseFragment
-import com.vvkdev.presentation.databinding.FragmentFilmsBinding
+import com.vvkdev.presentation.databinding.FragmentFilmSearchBinding
 
-class FilmsFragment : BaseFragment<FragmentFilmsBinding>() {
+class FilmSearchFragment : BaseFragment<FragmentFilmSearchBinding>() {
 
-    override val inflate: (LayoutInflater, ViewGroup?, Boolean) -> FragmentFilmsBinding =
-        FragmentFilmsBinding::inflate
+    override val inflate: (LayoutInflater, ViewGroup?, Boolean) -> FragmentFilmSearchBinding =
+        FragmentFilmSearchBinding::inflate
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -31,7 +31,7 @@ class FilmsFragment : BaseFragment<FragmentFilmsBinding>() {
 
     private fun openFilm(filmId: String) {
         val direction =
-            FilmsFragmentDirections.actionFilmsFragmentToFilmFragment(filmId.toInt())
+            FilmSearchFragmentDirections.actionFilmSearchFragmentToFilmFragment(filmId.toInt())
         findNavController().navigate(direction)
     }
 }
