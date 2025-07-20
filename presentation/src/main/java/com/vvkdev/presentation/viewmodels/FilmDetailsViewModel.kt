@@ -4,28 +4,28 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.vvkdev.domain.LoadResult
 import com.vvkdev.domain.model.Film
-import com.vvkdev.domain.repository.FilmsRepository
+import com.vvkdev.domain.repository.FilmRepository
 import com.vvkdev.presentation.base.state.BaseStateViewModel
 import com.vvkdev.presentation.base.state.UiState
-import com.vvkdev.presentation.fragments.FilmFragmentArgs
+import com.vvkdev.presentation.fragments.FilmDetailsFragmentArgs
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class FilmViewModel @Inject constructor(
-    private val repository: FilmsRepository,
+class FilmDetailsViewModel @Inject constructor(
+    private val repository: FilmRepository,
     private val savedStateHandle: SavedStateHandle,
 ) : BaseStateViewModel<Film>() {
 
-    private val filmId: Int = FilmFragmentArgs.fromSavedStateHandle(savedStateHandle).filmId
+    private val filmId: Int = FilmDetailsFragmentArgs.fromSavedStateHandle(savedStateHandle).filmId
 
     init {
         loadFilm(forceRefresh = false)
     }
 
     override fun retry() = loadFilm(forceRefresh = false)
-    
+
     fun forceRefresh() = loadFilm(forceRefresh = true)
 
     private fun loadFilm(forceRefresh: Boolean) {

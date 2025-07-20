@@ -1,10 +1,10 @@
 package com.vvkdev.kpoisk.di
 
 import com.vvkdev.data.repository.ApiKeyRepositoryImpl
-import com.vvkdev.data.repository.FilmsRepositoryImpl
+import com.vvkdev.data.repository.FilmRepositoryImpl
 import com.vvkdev.data.repository.SettingsRepositoryImpl
 import com.vvkdev.domain.repository.ApiKeyRepository
-import com.vvkdev.domain.repository.FilmsRepository
+import com.vvkdev.domain.repository.FilmRepository
 import com.vvkdev.domain.repository.SettingsRepository
 import dagger.Binds
 import dagger.Module
@@ -22,5 +22,5 @@ interface BindModule {
     fun bindSettingsRepository(impl: SettingsRepositoryImpl): SettingsRepository
 
     @Binds
-    fun provideFilmsRepository(impl: FilmsRepositoryImpl): FilmsRepository
+    fun provideFilmRepository(impl: FilmRepositoryImpl): FilmRepository
 }

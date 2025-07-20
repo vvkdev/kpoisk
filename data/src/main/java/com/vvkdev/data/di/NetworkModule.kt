@@ -1,6 +1,6 @@
 package com.vvkdev.data.di
 
-import com.vvkdev.data.remote.service.FilmsService
+import com.vvkdev.data.remote.service.FilmService
 import com.vvkdev.domain.repository.ApiKeyRepository
 import dagger.Module
 import dagger.Provides
@@ -43,6 +43,6 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideFilmsService(retrofit: Retrofit): FilmsService =
-        retrofit.create(FilmsService::class.java)
+    fun provideFilmService(retrofit: Retrofit): FilmService =
+        retrofit.create(FilmService::class.java)
 }

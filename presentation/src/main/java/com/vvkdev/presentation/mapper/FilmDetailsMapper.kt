@@ -4,10 +4,10 @@ import android.content.res.Resources
 import com.vvkdev.domain.model.Film
 import com.vvkdev.presentation.R
 import com.vvkdev.presentation.constants.Constants
-import com.vvkdev.presentation.model.FilmUi
+import com.vvkdev.presentation.model.FilmDetails
 import java.util.Locale
 
-internal fun Film.toFilmUi(res: Resources) = FilmUi(
+internal fun Film.toFilmDetails(res: Resources) = FilmDetails(
     id = res.getString(R.string.id, id),
     name = name,
     foreignName = foreignName,

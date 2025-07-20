@@ -12,5 +12,5 @@ interface FilmDao {
     suspend fun getById(id: Int): FilmEntity?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(film: FilmEntity)
+    suspend fun insert(filmEntity: FilmEntity)
 }

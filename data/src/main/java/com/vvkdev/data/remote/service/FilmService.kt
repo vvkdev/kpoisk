@@ -5,7 +5,7 @@ import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 
-interface FilmsService {
+interface FilmService {
     @GET("movie/{id}")
     suspend fun getFilmById(
         @Path("id") id: Int,

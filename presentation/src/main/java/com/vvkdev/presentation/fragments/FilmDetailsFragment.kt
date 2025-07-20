@@ -7,21 +7,22 @@ import androidx.fragment.app.viewModels
 import com.vvkdev.domain.model.Film
 import com.vvkdev.presentation.R
 import com.vvkdev.presentation.base.state.BaseStateFragment
-import com.vvkdev.presentation.databinding.FragmentContentFilmBinding
+import com.vvkdev.presentation.databinding.FragmentContentFilmDetailsBinding
 import com.vvkdev.presentation.extensions.openInBrowser
 import com.vvkdev.presentation.extensions.shareText
-import com.vvkdev.presentation.mapper.toFilmUi
-import com.vvkdev.presentation.model.FilmUi
-import com.vvkdev.presentation.viewmodels.FilmViewModel
+import com.vvkdev.presentation.mapper.toFilmDetails
+import com.vvkdev.presentation.model.FilmDetails
+import com.vvkdev.presentation.viewmodels.FilmDetailsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class FilmFragment : BaseStateFragment<FragmentContentFilmBinding, Film, FilmUi>() {
+class FilmDetailsFragment :
+    BaseStateFragment<FragmentContentFilmDetailsBinding, Film, FilmDetails>() {
 
-    override val viewModel: FilmViewModel by viewModels()
+    override val viewModel: FilmDetailsViewModel by viewModels()
 
-    override val contentBindingBind = FragmentContentFilmBinding::bind
-    override val contentLayoutRes = R.layout.fragment_content_film
+    override val contentBindingBind = FragmentContentFilmDetailsBinding::bind
+    override val contentLayoutRes = R.layout.fragment_content_film_details
 
     override fun onContentViewCreated() {
         if (resources.configuration.fontScale > FONT_SCALE_THRESHOLD) {
@@ -41,27 +42,27 @@ class FilmFragment : BaseStateFragment<FragmentContentFilmBinding, Film, FilmUi>
         contentBinding.fabRefresh.setOnClickListener { viewModel.forceRefresh() }
     }
 
-    override fun mapDomainModelToUiModel(domainModel: Film): FilmUi =
-        domainModel.toFilmUi(resources)
+    override fun mapDomainModelToUiModel(domainModel: Film): FilmDetails =
+        domainModel.toFilmDetails(resources)
 
-    override fun fillContentViews(uiModel: FilmUi) {
-        val filmUi = uiModel
+    override fun fillContentViews(uiModel: FilmDetails) {
+        val filmDetails = uiModel
         with(contentBinding) {
-            idTextView.text = filmUi.id
-            updatedTextView.text = filmUi.updated
-            nameTextView.text = filmUi.name
-            foreignNameTextView.text = filmUi.foreignName
-            foreignNameTextView.isGone = filmUi.foreignName.isBlank()
-            timeTextView.text = filmUi.time
-            ratingTextView.text = filmUi.rating
-            genresTextView.text = filmUi.genres
-            genresTextView.isGone = filmUi.genres.isBlank()
-            countriesTextView.text = filmUi.countries
-            countriesTextView.isGone = filmUi.countries.isBlank()
+            idTextView.text = filmDetails.id
+            updatedTextView.text = filmDetails.updated
+            nameTextView.text = filmDetails.name
+            foreignNameTextView.text = filmDetails.foreignName
+            foreignNameTextView.isGone = filmDetails.foreignName.isBlank()
+            timeTextView.text = filmDetails.time
+            ratingTextView.text = filmDetails.rating
+            genresTextView.text = filmDetails.genres
+            genresTextView.isGone = filmDetails.genres.isBlank()
+            countriesTextView.text = filmDetails.countries
+            countriesTextView.isGone = filmDetails.countries.isBlank()
             genresCountriesLine.isGone = genresTextView.isGone && countriesTextView.isGone
-            has3dTextView.isVisible = filmUi.has3D
-            descriptionTextView.text = filmUi.description
-            descriptionTextView.isGone = filmUi.description.isBlank()
+            has3dTextView.isVisible = filmDetails.has3D
+            descriptionTextView.text = filmDetails.description
+            descriptionTextView.isGone = filmDetails.description.isBlank()
             descriptionLine.visibility = descriptionTextView.visibility
         }
     }

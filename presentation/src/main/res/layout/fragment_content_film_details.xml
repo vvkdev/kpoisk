@@ -7,7 +7,7 @@
         android:layout_height="match_parent"
         android:animateLayoutChanges="true"
         android:fitsSystemWindows="true"
-        tools:context=".fragments.FilmFragment"
+        tools:context=".fragments.FilmDetailsFragment"
         >
 
     <androidx.core.widget.NestedScrollView

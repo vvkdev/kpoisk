@@ -7,10 +7,10 @@ import com.vvkdev.data.local.mapper.toFilm
 import com.vvkdev.data.local.mapper.toFilmEntity
 import com.vvkdev.data.parseErrorBody
 import com.vvkdev.data.remote.mapper.toFilm
-import com.vvkdev.data.remote.service.FilmsService
+import com.vvkdev.data.remote.service.FilmService
 import com.vvkdev.domain.LoadResult
 import com.vvkdev.domain.model.Film
-import com.vvkdev.domain.repository.FilmsRepository
+import com.vvkdev.domain.repository.FilmRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
@@ -18,20 +18,20 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class FilmsRepositoryImpl @Inject constructor(
-    private val filmsService: FilmsService,
+class FilmRepositoryImpl @Inject constructor(
+    private val filmService: FilmService,
     private val filmDao: FilmDao,
     private val json: Json,
     private val appDispatchers: AppDispatchers,
     private val appScope: CoroutineScope,
-) : FilmsRepository {
+) : FilmRepository {
 
     override suspend fun getFilmById(id: Int, forceRefresh: Boolean): LoadResult<Film> {
         val cached = if (!forceRefresh) filmDao.getById(id) else null
         return cached
             ?.let { LoadResult.Success(it.toFilm()) }
             ?: try {
-                val response = filmsService.getFilmById(id)
+                val response = filmService.getFilmById(id)
                 if (response.isSuccessful) {
                     val film = response.body()!!.toFilm()
                     LoadResult.Success(film).also {

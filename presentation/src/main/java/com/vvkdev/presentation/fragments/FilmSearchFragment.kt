@@ -19,7 +19,7 @@ class FilmSearchFragment : BaseFragment<FragmentFilmSearchBinding>() {
 
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
-                if (query.isNotBlank()) openFilm(query)
+                if (query.isNotBlank()) openFilmDetails(query)
                 return true
             }
 
@@ -29,9 +29,9 @@ class FilmSearchFragment : BaseFragment<FragmentFilmSearchBinding>() {
         })
     }
 
-    private fun openFilm(filmId: String) {
+    private fun openFilmDetails(filmId: String) {
         val direction =
-            FilmSearchFragmentDirections.actionFilmSearchFragmentToFilmFragment(filmId.toInt())
+            FilmSearchFragmentDirections.actionFilmSearchFragmentToFilmDetailsFragment(filmId.toInt())
         findNavController().navigate(direction)
     }
 }
