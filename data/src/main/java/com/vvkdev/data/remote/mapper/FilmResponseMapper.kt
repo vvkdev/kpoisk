@@ -3,6 +3,7 @@ package com.vvkdev.data.remote.mapper
 import com.vvkdev.data.remote.model.FilmResponse
 import com.vvkdev.data.remote.model.FilmYears
 import com.vvkdev.domain.model.Film
+import com.vvkdev.domain.model.FilmShort
 import org.jetbrains.annotations.VisibleForTesting
 import java.util.Date
 
