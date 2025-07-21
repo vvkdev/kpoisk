@@ -43,7 +43,7 @@
                         android:id="@+id/updatedTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        tools:text="Обновлено • 2025-04-28 14:17"
+                        tools:text="Updated • 2025-04-28 14:17"
                         />
 
             </LinearLayout>
@@ -69,7 +69,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:textAppearance="?attr/textAppearanceTitleMedium"
-                            tools:text="Ночь дня рассвета сына невесты возвращения мести ужаса атаки злобных мутировавших чужих плотоядных восставших из ада зомбированных живых мертвецов. Часть 2: в шокирующем 2-D формате (1991)"
+                            tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
                             />
 
                     <TextView
@@ -89,26 +89,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/indent_small"
-                        tools:text="Night of the Day of the Dawn of the Son of the Bride of the Return of the Revenge of the Terror of the Attack of the Evil, Mutant, Alien, Flesh Eating, Hellbound, Zombified Living Dead Part 2: In Shocking 2-D"
-                        />
-
-                <View
-                        android:id="@+id/genresCountriesLine"
-                        style="@style/App.DividerHorizontal"
-                        />
-
-                <TextView
-                        android:id="@+id/countriesTextView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        tools:text="criminal • drama • biopic"
-                        />
-
-                <TextView
-                        android:id="@+id/genresTextView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        tools:text="France • USA • Great Britain"
+                        tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
                         />
 
                 <View style="@style/App.DividerHorizontal" />
@@ -139,6 +120,25 @@
                 </LinearLayout>
 
                 <View
+                        android:id="@+id/countriesGenresLine"
+                        style="@style/App.DividerHorizontal"
+                        />
+
+                <TextView
+                        android:id="@+id/countriesTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:text="France • USA • Great Britain • Russia • Luxemburg"
+                        />
+
+                <TextView
+                        android:id="@+id/genresTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:text="criminal • drama • biopic • thriller • comedy"
+                        />
+
+                <View
                         android:id="@+id/descriptionLine"
                         style="@style/App.DividerHorizontal"
                         />
@@ -147,7 +147,7 @@
                         android:id="@+id/descriptionTextView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        tools:text="XML Description"
+                        tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n\nDuis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\n Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
                         />
 
             </LinearLayout>
@@ -237,6 +237,5 @@
             android:tooltipText="@string/options"
             tools:targetApi="26"
             />
-    />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
