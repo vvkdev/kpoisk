@@ -22,6 +22,21 @@ data class FilmResponse(
 )
 
 @Serializable
+data class FilmShortResponse(
+    val id: Int,
+    val name: String?,
+    val alternativeName: String?,
+    val enName: String?,
+    val rating: FilmRatingResponse?,
+    val year: Int?,
+    val releaseYears: List<FilmYearsResponse?>?,
+    val movieLength: Int?,
+    val totalSeriesLength: Int?,
+    val genres: List<GenreResponse?>?,
+    val countries: List<CountryResponse?>?,
+)
+
+@Serializable
 data class FilmRatingResponse(
     val kp: Float?,
 )

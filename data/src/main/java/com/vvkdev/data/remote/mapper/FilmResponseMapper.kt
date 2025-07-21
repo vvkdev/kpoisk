@@ -1,6 +1,7 @@
 package com.vvkdev.data.remote.mapper
 
 import com.vvkdev.data.remote.model.FilmResponse
+import com.vvkdev.data.remote.model.FilmShortResponse
 import com.vvkdev.data.remote.model.FilmYearsResponse
 import com.vvkdev.domain.model.Film
 import com.vvkdev.domain.model.FilmShort
@@ -21,6 +22,17 @@ fun FilmResponse.toFilm() = Film(
     genres = listToBulletedString(genres) { genre -> genre.name },
     countries = listToBulletedString(countries) { country -> country.name },
     updated = Date().toIsoString(),
+)
+
+private fun FilmShortResponse.toFilmShort() = FilmShort(
+    id = id,
+    name = name.orPlaceholderIfNullOrBlank("-"),
+    foreignName = mapForeignName(alternativeName, enName),
+    rating = rating?.kp ?: 0f,
+    year = mapYears(year, emptyList()),
+    length = totalSeriesLength?.toString() ?: movieLength?.toString() ?: "-",
+    genres = listToBulletedString(genres) { genre -> genre.name },
+    countries = listToBulletedString(countries) { country -> country.name },
 )
 
 private fun mapForeignName(alt: String?, en: String?): String =
