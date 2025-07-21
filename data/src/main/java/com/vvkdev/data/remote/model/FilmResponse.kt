@@ -8,42 +8,42 @@ data class FilmResponse(
     val name: String?,
     val alternativeName: String?,
     val enName: String?,
-    val rating: FilmRating?,
-    val votes: FilmVotes?,
+    val rating: FilmRatingResponse?,
+    val votes: FilmVotesResponse?,
     val year: Int?,
-    val releaseYears: List<FilmYears?>?,
+    val releaseYears: List<FilmYearsResponse?>?,
     val description: String?,
-    val poster: FilmPoster?,
+    val poster: FilmPosterResponse?,
     val movieLength: Int?,
     val totalSeriesLength: Int?,
-    val technology: FilmTechnology?,
+    val technology: FilmTechnologyResponse?,
     val genres: List<GenreResponse?>?,
     val countries: List<CountryResponse?>?,
 )
 
 @Serializable
-data class FilmRating(
+data class FilmRatingResponse(
     val kp: Float?,
 )
 
 @Serializable
-data class FilmVotes(
+data class FilmVotesResponse(
     val kp: Int?,
 )
 
 @Serializable
-data class FilmYears(
+data class FilmYearsResponse(
     val start: Int?,
     val end: Int?,
 )
 
 @Serializable
-data class FilmPoster(
+data class FilmPosterResponse(
     val previewUrl: String?,
 )
 
 @Serializable
-data class FilmTechnology(
+data class FilmTechnologyResponse(
     val has3D: Boolean?,
 )
 

@@ -1,7 +1,7 @@
 package com.vvkdev.data.remote.mapper
 
 import com.vvkdev.data.remote.model.FilmResponse
-import com.vvkdev.data.remote.model.FilmYears
+import com.vvkdev.data.remote.model.FilmYearsResponse
 import com.vvkdev.domain.model.Film
 import com.vvkdev.domain.model.FilmShort
 import org.jetbrains.annotations.VisibleForTesting
@@ -27,7 +27,7 @@ private fun mapForeignName(alt: String?, en: String?): String =
     alt?.takeIf { it.isNotBlank() } ?: en?.takeIf { it.isNotBlank() } ?: ""
 
 @VisibleForTesting
-internal fun mapYears(year: Int?, years: List<FilmYears?>?): String {
+internal fun mapYears(year: Int?, years: List<FilmYearsResponse?>?): String {
     val start = listOfNotNull(
         year?.takeIf { it > 0 },
         years?.firstOrNull()?.start?.takeIf { it > 0 },
