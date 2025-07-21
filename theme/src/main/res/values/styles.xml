@@ -76,4 +76,9 @@
         <item name="android:closeIcon">@drawable/ic_close</item>
     </style>
 
+    <style name="App.CardView" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardElevation">@dimen/elevation</item>
+        <item name="shapeAppearanceOverlay">@style/App.CornerShape</item>
+    </style>
+
 </resources>
