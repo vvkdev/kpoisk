@@ -7,9 +7,11 @@ import com.vvkdev.data.local.mapper.toFilm
 import com.vvkdev.data.local.mapper.toFilmEntity
 import com.vvkdev.data.parseErrorBody
 import com.vvkdev.data.remote.mapper.toFilm
+import com.vvkdev.data.remote.mapper.toFilmShortList
 import com.vvkdev.data.remote.service.FilmService
 import com.vvkdev.domain.LoadResult
 import com.vvkdev.domain.model.Film
+import com.vvkdev.domain.model.FilmShort
 import com.vvkdev.domain.repository.FilmRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -46,5 +48,20 @@ class FilmRepositoryImpl @Inject constructor(
             } catch (e: Exception) {
                 LoadResult.Error(e.message)
             }
+    }
+
+    override suspend fun findByName(name: String): LoadResult<List<FilmShort>> {
+        return try {
+            val response = filmService.findByName(name)
+            if (response.isSuccessful) {
+                val films = response.body()!!.toFilmShortList()
+                LoadResult.Success(films)
+            } else {
+                val errorMessage = parseErrorBody(response.errorBody(), json)
+                LoadResult.Error(errorMessage)
+            }
+        } catch (e: Exception) {
+            LoadResult.Error(e.message)
+        }
     }
 }

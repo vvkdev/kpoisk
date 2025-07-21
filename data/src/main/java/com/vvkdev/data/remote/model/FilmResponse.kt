@@ -1,6 +1,17 @@
 package com.vvkdev.data.remote.model
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+
+@Serializable
+data class FilmListResponse(
+    @SerialName("docs")
+    val films: List<FilmShortResponse>,
+    val total: Int?,
+    val limit: Int?,
+    val page: Int?,
+    val pages: Int?,
+)
 
 @Serializable
 data class FilmResponse(

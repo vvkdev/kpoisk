@@ -1,5 +1,6 @@
 package com.vvkdev.data.remote.mapper
 
+import com.vvkdev.data.remote.model.FilmListResponse
 import com.vvkdev.data.remote.model.FilmResponse
 import com.vvkdev.data.remote.model.FilmShortResponse
 import com.vvkdev.data.remote.model.FilmYearsResponse
@@ -7,6 +8,8 @@ import com.vvkdev.domain.model.Film
 import com.vvkdev.domain.model.FilmShort
 import org.jetbrains.annotations.VisibleForTesting
 import java.util.Date
+
+fun FilmListResponse.toFilmShortList() = films.map { it.toFilmShort() }
 
 fun FilmResponse.toFilm() = Film(
     id = id,
