@@ -24,7 +24,7 @@ class FilmDetailsViewModel @Inject constructor(
         loadFilm(forceRefresh = false)
     }
 
-    override fun retry() = loadFilm(forceRefresh = false)
+    override fun retry() = loadFilm(forceRefresh = true)
 
     fun forceRefresh() = loadFilm(forceRefresh = true)
 
