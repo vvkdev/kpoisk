@@ -15,7 +15,7 @@ data class FilmEntity(
     val poster: String,
     val length: String,
     val has3D: Boolean,
-    val genres: String,
     val countries: String,
+    val genres: String,
     val updated: String,
 )

@@ -17,8 +17,8 @@ internal fun Film.toFilmDetails(res: Resources) = FilmDetails(
         String.format(Locale.getDefault(), "%.1f", rating),
         res.getQuantityString(R.plurals.votes, votes, votes)
     ),
-    genres = genres,
     countries = countries,
+    genres = genres,
     has3D = has3D,
     description = description,
     url = "${Constants.KP_BASE_URL}/film/$id",

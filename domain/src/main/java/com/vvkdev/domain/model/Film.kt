@@ -11,8 +11,8 @@ data class Film(
     val poster: String,
     val length: String,
     val has3D: Boolean,
-    val genres: String,
     val countries: String,
+    val genres: String,
     val updated: String,
 )
 
@@ -23,6 +23,6 @@ data class FilmShort(
     val rating: Float,
     val year: String = "-",
     val length: String = "-",
-    val genres: String = "",
     val countries: String = "",
+    val genres: String = "",
 )

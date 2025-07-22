@@ -49,10 +49,10 @@ class FilmDetailsFragment :
             foreignNameTextView.isGone = filmDetails.foreignName.isBlank()
             timeTextView.text = filmDetails.time
             ratingTextView.text = filmDetails.rating
-            genresTextView.text = filmDetails.genres
-            genresTextView.isGone = filmDetails.genres.isBlank()
             countriesTextView.text = filmDetails.countries
             countriesTextView.isGone = filmDetails.countries.isBlank()
+            genresTextView.text = filmDetails.genres
+            genresTextView.isGone = filmDetails.genres.isBlank()
             countriesGenresDivider.isGone = genresTextView.isGone && countriesTextView.isGone
             has3dTextView.isVisible = filmDetails.has3D
             descriptionTextView.text = filmDetails.description

@@ -28,8 +28,8 @@ data class FilmResponse(
     val movieLength: Int?,
     val totalSeriesLength: Int?,
     val technology: FilmTechnologyResponse?,
-    val genres: List<GenreResponse?>?,
     val countries: List<CountryResponse?>?,
+    val genres: List<GenreResponse?>?,
 )
 
 @Serializable
@@ -43,8 +43,8 @@ data class FilmShortResponse(
     val releaseYears: List<FilmYearsResponse?>?,
     val movieLength: Int?,
     val totalSeriesLength: Int?,
-    val genres: List<GenreResponse?>?,
     val countries: List<CountryResponse?>?,
+    val genres: List<GenreResponse?>?,
 )
 
 @Serializable

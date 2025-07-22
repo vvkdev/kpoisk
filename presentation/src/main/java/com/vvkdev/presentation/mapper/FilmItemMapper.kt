@@ -11,6 +11,6 @@ internal fun FilmShort.toFilmItem(res: Resources) = FilmItem(
     foreignName = foreignName,
     rating = "%.1f".format(rating),
     time = res.getString(R.string.time, year, length),
-    genres = genres,
     countries = countries,
+    genres = genres,
 )

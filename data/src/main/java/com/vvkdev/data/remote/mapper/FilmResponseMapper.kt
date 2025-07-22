@@ -22,8 +22,8 @@ fun FilmResponse.toFilm() = Film(
     poster = poster?.previewUrl.orEmptyIfNullOrBlank(),
     length = totalSeriesLength?.toString() ?: movieLength?.toString() ?: "-",
     has3D = technology?.has3D ?: false,
-    genres = listToBulletedString(genres) { genre -> genre.name },
     countries = listToBulletedString(countries) { country -> country.name },
+    genres = listToBulletedString(genres) { genre -> genre.name },
     updated = Date().toIsoString(),
 )
 
@@ -34,8 +34,8 @@ private fun FilmShortResponse.toFilmShort() = FilmShort(
     rating = rating?.kp ?: 0f,
     year = mapYears(year, emptyList()),
     length = totalSeriesLength?.toString() ?: movieLength?.toString() ?: "-",
-    genres = listToBulletedString(genres) { genre -> genre.name },
     countries = listToBulletedString(countries) { country -> country.name },
+    genres = listToBulletedString(genres) { genre -> genre.name },
 )
 
 private fun mapForeignName(alt: String?, en: String?): String =

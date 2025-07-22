@@ -6,6 +6,6 @@ data class FilmItem(
     val foreignName: String,
     val rating: String,
     val time: String,
-    val genres: String,
     val countries: String,
+    val genres: String,
 )
