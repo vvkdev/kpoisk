@@ -31,7 +31,7 @@
                 <androidx.constraintlayout.helper.widget.Flow
                         android:id="@+id/idFlow"
                         app:constraint_referenced_ids="idTextView,updatedTextView"
-                        android:layout_width="@dimen/zero_size"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         app:flow_horizontalGap="@dimen/indent_medium"
                         app:flow_wrapMode="chain"
@@ -70,7 +70,7 @@
 
                 <TextView
                         android:id="@+id/nameTextView"
-                        android:layout_width="@dimen/zero_size"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:textAppearance="?attr/textAppearanceTitleMedium"
                         app:layout_constraintTop_toTopOf="parent"
@@ -114,7 +114,7 @@
                 <androidx.constraintlayout.helper.widget.Flow
                         android:id="@+id/timeRatingFlow"
                         app:constraint_referenced_ids="timeTextView,ratingTextView"
-                        android:layout_width="@dimen/zero_size"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         app:flow_horizontalGap="@dimen/indent_medium"
                         app:flow_wrapMode="chain"
