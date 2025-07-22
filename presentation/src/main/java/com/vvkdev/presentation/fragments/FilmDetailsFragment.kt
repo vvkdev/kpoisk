@@ -1,6 +1,5 @@
 package com.vvkdev.presentation.fragments
 
-import android.widget.LinearLayout
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
@@ -25,11 +24,6 @@ class FilmDetailsFragment :
     override val contentLayoutRes = R.layout.fragment_content_film_details
 
     override fun onContentViewCreated() {
-        if (resources.configuration.fontScale > FONT_SCALE_THRESHOLD) {
-            contentBinding.idLinearLayout.orientation = LinearLayout.VERTICAL
-            contentBinding.timeLinearLayout.orientation = LinearLayout.VERTICAL
-        }
-
         contentBinding.fab.setOnClickListener {
             contentBinding.fabShare.isVisible = !contentBinding.fabShare.isVisible
             contentBinding.fabWeb.isVisible = !contentBinding.fabWeb.isVisible
@@ -59,15 +53,11 @@ class FilmDetailsFragment :
             genresTextView.isGone = filmDetails.genres.isBlank()
             countriesTextView.text = filmDetails.countries
             countriesTextView.isGone = filmDetails.countries.isBlank()
-            countriesGenresLine.isGone = genresTextView.isGone && countriesTextView.isGone
+            countriesGenresDivider.isGone = genresTextView.isGone && countriesTextView.isGone
             has3dTextView.isVisible = filmDetails.has3D
             descriptionTextView.text = filmDetails.description
             descriptionTextView.isGone = filmDetails.description.isBlank()
-            descriptionLine.visibility = descriptionTextView.visibility
+            descriptionDivider.visibility = descriptionTextView.visibility
         }
-    }
-
-    companion object {
-        private const val FONT_SCALE_THRESHOLD = 1.3f
     }
 }

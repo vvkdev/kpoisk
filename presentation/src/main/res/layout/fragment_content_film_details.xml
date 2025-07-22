@@ -21,21 +21,33 @@
                 android:orientation="vertical"
                 >
 
-            <LinearLayout
-                    android:id="@+id/idLinearLayout"
+            <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:background="@drawable/rectangle_rounded_outlined"
                     android:padding="@dimen/indent_medium"
                     >
+
+                <androidx.constraintlayout.helper.widget.Flow
+                        android:id="@+id/idFlow"
+                        app:constraint_referenced_ids="idTextView,updatedTextView"
+                        android:layout_width="@dimen/zero_size"
+                        android:layout_height="wrap_content"
+                        app:flow_horizontalGap="@dimen/indent_medium"
+                        app:flow_wrapMode="chain"
+                        app:flow_firstHorizontalStyle="spread_inside"
+                        app:flow_lastHorizontalStyle="packed"
+                        app:flow_firstHorizontalBias="0"
+                        app:flow_lastHorizontalBias="0"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        />
 
                 <TextView
                         android:id="@+id/idTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginEnd="@dimen/indent_medium"
                         tools:text="ID • 253765"
                         />
 
@@ -46,88 +58,104 @@
                         tools:text="Updated • 2025-04-28 14:17"
                         />
 
-            </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:layout_marginTop="@dimen/indent_small"
                     android:background="@drawable/rectangle_rounded_outlined"
                     android:padding="@dimen/indent_medium"
                     >
 
-                <LinearLayout
-                        android:layout_width="match_parent"
+                <TextView
+                        android:id="@+id/nameTextView"
+                        android:layout_width="@dimen/zero_size"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        >
+                        android:textAppearance="?attr/textAppearanceTitleMedium"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/has3dTextView"
+                        tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+                        />
 
-                    <TextView
-                            android:id="@+id/nameTextView"
-                            android:layout_width="@dimen/zero_size"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:textAppearance="?attr/textAppearanceTitleMedium"
-                            tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-                            />
-
-                    <TextView
-                            android:id="@+id/has3dTextView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/indent_small"
-                            android:textStyle="bold"
-                            android:textColor="?attr/colorPrimary"
-                            android:text="@string/_3d"
-                            />
-
-                </LinearLayout>
+                <TextView
+                        android:id="@+id/has3dTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/indent_small"
+                        android:textStyle="bold"
+                        android:textColor="?attr/colorPrimary"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/nameTextView"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:text="@string/_3d"
+                        />
 
                 <TextView
                         android:id="@+id/foreignNameTextView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/indent_small"
+                        app:layout_constraintTop_toBottomOf="@id/nameTextView"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
                         tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
                         />
 
-                <View style="@style/App.DividerHorizontal" />
+                <View
+                        android:id="@+id/timeDivider"
+                        style="@style/App.DividerHorizontal"
+                        app:layout_constraintTop_toBottomOf="@id/foreignNameTextView"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        />
 
-                <LinearLayout
-                        android:id="@+id/timeLinearLayout"
-                        android:layout_width="match_parent"
+                <androidx.constraintlayout.helper.widget.Flow
+                        android:id="@+id/timeRatingFlow"
+                        app:constraint_referenced_ids="timeTextView,ratingTextView"
+                        android:layout_width="@dimen/zero_size"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        >
+                        app:flow_horizontalGap="@dimen/indent_medium"
+                        app:flow_wrapMode="chain"
+                        app:flow_firstHorizontalStyle="spread_inside"
+                        app:flow_lastHorizontalStyle="packed"
+                        app:flow_firstHorizontalBias="0"
+                        app:flow_lastHorizontalBias="0"
+                        app:layout_constraintTop_toBottomOf="@id/timeDivider"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        />
 
-                    <TextView
-                            android:id="@+id/timeTextView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_marginEnd="@dimen/indent_medium"
-                            tools:text="1999-2007 • 999 min"
-                            />
+                <TextView
+                        android:id="@+id/timeTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="1999-2007 • 999 min"
+                        />
 
-                    <TextView
-                            android:id="@+id/ratingTextView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            tools:text="8.9 • 1 780 560 votes"
-                            />
-
-                </LinearLayout>
+                <TextView
+                        android:id="@+id/ratingTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="8.9 • 1 780 560 votes"
+                        />
 
                 <View
-                        android:id="@+id/countriesGenresLine"
+                        android:id="@+id/countriesGenresDivider"
                         style="@style/App.DividerHorizontal"
+                        app:layout_constraintTop_toBottomOf="@id/timeRatingFlow"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
                         />
 
                 <TextView
                         android:id="@+id/countriesTextView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/countriesGenresDivider"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
                         tools:text="France • USA • Great Britain • Russia • Luxemburg"
                         />
 
@@ -135,22 +163,31 @@
                         android:id="@+id/genresTextView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/countriesTextView"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
                         tools:text="criminal • drama • biopic • thriller • comedy"
                         />
 
                 <View
-                        android:id="@+id/descriptionLine"
+                        android:id="@+id/descriptionDivider"
                         style="@style/App.DividerHorizontal"
+                        app:layout_constraintTop_toBottomOf="@id/genresTextView"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
                         />
 
                 <TextView
                         android:id="@+id/descriptionTextView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/descriptionDivider"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
                         tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n\nDuis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\n Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
                         />
 
-            </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
 
