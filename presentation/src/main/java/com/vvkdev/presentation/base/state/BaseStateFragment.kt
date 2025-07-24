@@ -22,9 +22,11 @@ abstract class BaseStateFragment<CVB : ViewBinding, DM, UM : Any>() :
     protected abstract val contentBindingBind: (View) -> CVB
     protected abstract val contentLayoutRes: Int
 
-    protected abstract fun onContentViewCreated()
     protected abstract fun mapDomainModelToUiModel(domainModel: DM): UM
-    protected abstract fun fillContentViews(uiModel: UM)
+    protected open fun setupListeners(uiModel: UM) {}
+    protected abstract fun onSuccess(uiModel: UM)
+    protected open fun onLoading() {}
+    protected open fun onError() {}
 
     override val inflate: (LayoutInflater, ViewGroup?, Boolean) -> BaseStateLayoutBinding =
         BaseStateLayoutBinding::inflate
@@ -35,17 +37,9 @@ abstract class BaseStateFragment<CVB : ViewBinding, DM, UM : Any>() :
     private var _uiModel: UM by Delegates.notNull()
     protected val uiModel get() = _uiModel
 
-    final override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setStateObservers()
-    }
 
-    override fun onDestroyView() {
-        _contentBinding = null
-        super.onDestroyView()
-    }
-
-    private fun setStateObservers() {
         binding.retryButton.setOnClickListener { viewModel.retry() }
 
         collectWhenStarted(viewModel.uiState) { state ->
@@ -59,26 +53,33 @@ abstract class BaseStateFragment<CVB : ViewBinding, DM, UM : Any>() :
         }
     }
 
+    override fun onDestroyView() {
+        _contentBinding = null
+        super.onDestroyView()
+    }
+
     private fun handleLoading() {
+        onLoading()
         binding.progressBar.isVisible = true
     }
 
     private fun handleError(message: String?) {
+        onError()
         binding.errorMessage.text = message ?: getString(R.string.unknown_error)
         binding.errorLayout.isVisible = true
     }
 
     private fun handleSuccess(domainModel: DM) {
+        _uiModel = mapDomainModelToUiModel(domainModel)
         if (_contentBinding == null) {
             binding.contentLayout.layoutResource = contentLayoutRes
             binding.contentLayout.setOnInflateListener { _, inflated ->
                 _contentBinding = contentBindingBind(inflated)
             }
             binding.contentLayout.inflate()
+            setupListeners(uiModel)
         }
-        _uiModel = mapDomainModelToUiModel(domainModel)
-        fillContentViews(uiModel)
-        onContentViewCreated()
+        onSuccess(uiModel)
         binding.contentLayout.isVisible = true
     }
 }

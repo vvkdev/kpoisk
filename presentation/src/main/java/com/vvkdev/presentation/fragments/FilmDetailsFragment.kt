@@ -23,23 +23,24 @@ class FilmDetailsFragment :
     override val contentBindingBind = FragmentContentFilmDetailsBinding::bind
     override val contentLayoutRes = R.layout.fragment_content_film_details
 
-    override fun onContentViewCreated() {
-        contentBinding.fab.setOnClickListener {
-            contentBinding.fabShare.isVisible = !contentBinding.fabShare.isVisible
-            contentBinding.fabWeb.isVisible = !contentBinding.fabWeb.isVisible
-            contentBinding.fabPoster.isVisible = !contentBinding.fabPoster.isVisible
-            contentBinding.fabRefresh.isVisible = !contentBinding.fabRefresh.isVisible
-        }
-
-        contentBinding.fabShare.setOnClickListener { shareText(uiModel.url) }
-        contentBinding.fabWeb.setOnClickListener { openInBrowser(uiModel.url) }
-        contentBinding.fabRefresh.setOnClickListener { viewModel.forceRefresh() }
-    }
-
     override fun mapDomainModelToUiModel(domainModel: Film): FilmDetails =
         domainModel.toFilmDetails(resources)
 
-    override fun fillContentViews(uiModel: FilmDetails) {
+    override fun setupListeners(uiModel: FilmDetails) {
+        with(contentBinding) {
+            fab.setOnClickListener {
+                fabShare.isVisible = !fabShare.isVisible
+                fabWeb.isVisible = !fabWeb.isVisible
+                fabPoster.isVisible = !fabPoster.isVisible
+                fabRefresh.isVisible = !fabRefresh.isVisible
+            }
+            fabShare.setOnClickListener { shareText(uiModel.url) }
+            fabWeb.setOnClickListener { openInBrowser(uiModel.url) }
+            fabRefresh.setOnClickListener { viewModel.forceRefresh() }
+        }
+    }
+
+    override fun onSuccess(uiModel: FilmDetails) {
         val filmDetails = uiModel
         with(contentBinding) {
             idTextView.text = filmDetails.id
