@@ -4,7 +4,7 @@ import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import android.widget.SearchView
 
-fun EditText.onDoneAction(action: () -> Unit) {
+internal fun EditText.onDoneAction(action: () -> Unit) {
     setOnEditorActionListener { _, actionId, _ ->
         if (actionId == EditorInfo.IME_ACTION_DONE) {
             action()
@@ -15,7 +15,7 @@ fun EditText.onDoneAction(action: () -> Unit) {
     }
 }
 
-fun SearchView.doOnQueryChanged(
+internal fun SearchView.doOnQueryChanged(
     onQuerySubmit: (String) -> Unit = {},
     onQueryChange: (String) -> Unit = {},
 ) {

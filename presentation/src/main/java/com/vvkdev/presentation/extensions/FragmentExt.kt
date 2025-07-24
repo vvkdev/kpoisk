@@ -12,11 +12,11 @@ import androidx.lifecycle.repeatOnLifecycle
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 
-fun Fragment.showShortToast(@StringRes messageRes: Int) {
+internal fun Fragment.showShortToast(@StringRes messageRes: Int) {
     Toast.makeText(requireContext(), messageRes, Toast.LENGTH_SHORT).show()
 }
 
-fun Fragment.shareText(text: String) {
+internal fun Fragment.shareText(text: String) {
     val intent = Intent(Intent.ACTION_SEND).apply {
         type = "text/plain"
         putExtra(Intent.EXTRA_TEXT, text)
@@ -24,18 +24,18 @@ fun Fragment.shareText(text: String) {
     startActivity(Intent.createChooser(intent, text))
 }
 
-fun Fragment.openInBrowser(url: String) {
+internal fun Fragment.openInBrowser(url: String) {
     val intent = Intent(Intent.ACTION_VIEW, url.toUri())
     startActivity(intent)
 }
 
-fun <T> Fragment.collectWhenStarted(flow: Flow<T>, action: suspend (T) -> Unit) {
+internal fun <T> Fragment.collectWhenStarted(flow: Flow<T>, action: suspend (T) -> Unit) {
     viewLifecycleOwner.lifecycleScope.launch {
         repeatOnLifecycle(Lifecycle.State.STARTED) { flow.collect(action) }
     }
 }
 
-fun <T> DialogFragment.collectWhenStarted(flow: Flow<T>, action: suspend (T) -> Unit) {
+internal fun <T> DialogFragment.collectWhenStarted(flow: Flow<T>, action: suspend (T) -> Unit) {
     lifecycleScope.launch {
         repeatOnLifecycle(Lifecycle.State.STARTED) { flow.collect(action) }
     }
