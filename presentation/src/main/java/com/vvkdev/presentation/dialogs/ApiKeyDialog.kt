@@ -9,7 +9,7 @@ import com.vvkdev.presentation.R
 import com.vvkdev.presentation.base.BaseDialogFragment
 import com.vvkdev.presentation.databinding.DialogContentApikeyBinding
 import com.vvkdev.presentation.extensions.collectWhenStarted
-import com.vvkdev.presentation.extensions.setOnDoneAction
+import com.vvkdev.presentation.extensions.onDoneAction
 import com.vvkdev.presentation.viewmodels.ApiKeyViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -37,7 +37,7 @@ class ApiKeyDialog : BaseDialogFragment<DialogContentApikeyBinding>() {
             }
 
             apiKeyEditText.setRawInputType(InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS) // for multiline IME_ACTION_DONE working
-            apiKeyEditText.setOnDoneAction { onPositiveAction() }
+            apiKeyEditText.onDoneAction { onPositiveAction() }
         }
     }
 
