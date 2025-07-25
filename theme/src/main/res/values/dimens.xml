@@ -11,5 +11,6 @@
     <dimen name="icon_small">24dp</dimen>
     <dimen name="icon_medium">48dp</dimen>
     <dimen name="button_height">40dp</dimen>
+    <dimen name="bar_size">48dp</dimen>
     <dimen name="navbar_height">56dp</dimen>
 </resources>
