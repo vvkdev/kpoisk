@@ -277,7 +277,7 @@
             android:layout_gravity="bottom|end"
             android:layout_marginEnd="@dimen/indent_normal"
             android:backgroundTint="?attr/colorPrimary"
-            android:src="@drawable/ic_menu"
+            android:src="@drawable/ic_fab"
             app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
             android:contentDescription="@string/options"
             android:tooltipText="@string/options"
