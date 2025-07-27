@@ -12,4 +12,20 @@ data class FilmDetails(
     val description: String,
     val url: String,
     val updated: String,
-)
+) {
+    companion object {
+        fun empty() = FilmDetails(
+            id = "",
+            name = "",
+            foreignName = "",
+            time = "",
+            rating = "",
+            countries = "",
+            genres = "",
+            has3D = false,
+            description = "",
+            url = "",
+            updated = ""
+        )
+    }
+}

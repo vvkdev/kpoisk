@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/indent_medium"
+        android:fitsSystemWindows="true"
+        tools:context=".fragments.FilmDetailsFragment"
+        >
+
+    <include layout="@layout/state_layout" />
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:id="@+id/successLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:animateLayoutChanges="true"
+            >
+
+        <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/rectangle_rounded_outlined"
+                        android:padding="@dimen/indent_medium"
+                        >
+
+                    <androidx.constraintlayout.helper.widget.Flow
+                            android:id="@+id/idFlow"
+                            app:constraint_referenced_ids="idTextView,updatedTextView"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:flow_horizontalGap="@dimen/indent_medium"
+                            app:flow_wrapMode="chain"
+                            app:flow_firstHorizontalStyle="spread_inside"
+                            app:flow_lastHorizontalStyle="packed"
+                            app:flow_firstHorizontalBias="0"
+                            app:flow_lastHorizontalBias="0"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            />
+
+                    <TextView
+                            android:id="@+id/idTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textIsSelectable="true"
+                            tools:text="ID • 253765"
+                            />
+
+                    <TextView
+                            android:id="@+id/updatedTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textIsSelectable="true"
+                            tools:text="Updated • 2025-04-28 14:17"
+                            />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/indent_small"
+                        android:background="@drawable/rectangle_rounded_outlined"
+                        android:padding="@dimen/indent_medium"
+                        >
+
+                    <TextView
+                            android:id="@+id/nameTextView"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?attr/textAppearanceTitleMedium"
+                            android:textIsSelectable="true"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toStartOf="@id/has3dTextView"
+                            tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+                            />
+
+                    <TextView
+                            android:id="@+id/has3dTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/indent_small"
+                            android:textStyle="bold"
+                            android:textColor="?attr/colorPrimary"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/nameTextView"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:text="@string/_3d"
+                            />
+
+                    <TextView
+                            android:id="@+id/foreignNameTextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/indent_small"
+                            android:textIsSelectable="true"
+                            app:layout_constraintTop_toBottomOf="@id/nameTextView"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+                            />
+
+                    <View
+                            android:id="@+id/timeDivider"
+                            style="@style/App.DividerHorizontal"
+                            app:layout_constraintTop_toBottomOf="@id/foreignNameTextView"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            />
+
+                    <androidx.constraintlayout.helper.widget.Flow
+                            android:id="@+id/timeRatingFlow"
+                            app:constraint_referenced_ids="timeTextView,ratingTextView"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:flow_horizontalGap="@dimen/indent_medium"
+                            app:flow_wrapMode="chain"
+                            app:flow_firstHorizontalStyle="spread_inside"
+                            app:flow_lastHorizontalStyle="packed"
+                            app:flow_firstHorizontalBias="0"
+                            app:flow_lastHorizontalBias="0"
+                            app:layout_constraintTop_toBottomOf="@id/timeDivider"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            />
+
+                    <TextView
+                            android:id="@+id/timeTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textIsSelectable="true"
+                            tools:text="1999-2007 • 999 min"
+                            />
+
+                    <TextView
+                            android:id="@+id/ratingTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textIsSelectable="true"
+                            tools:text="8.9 • 1 780 560 votes"
+                            />
+
+                    <View
+                            android:id="@+id/countriesGenresDivider"
+                            style="@style/App.DividerHorizontal"
+                            app:layout_constraintTop_toBottomOf="@id/timeRatingFlow"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            />
+
+                    <TextView
+                            android:id="@+id/countriesTextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textIsSelectable="true"
+                            app:layout_constraintTop_toBottomOf="@id/countriesGenresDivider"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            tools:text="France • USA • Great Britain • Russia • Luxemburg"
+                            />
+
+                    <TextView
+                            android:id="@+id/genresTextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textIsSelectable="true"
+                            app:layout_constraintTop_toBottomOf="@id/countriesTextView"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            tools:text="criminal • drama • biopic • thriller • comedy"
+                            />
+
+                    <View
+                            android:id="@+id/descriptionDivider"
+                            style="@style/App.DividerHorizontal"
+                            app:layout_constraintTop_toBottomOf="@id/genresTextView"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            />
+
+                    <TextView
+                            android:id="@+id/descriptionTextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textIsSelectable="true"
+                            app:layout_constraintTop_toBottomOf="@id/descriptionDivider"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n\nDuis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\n Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                            />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_share"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fabCustomSize="32dp"
+                android:layout_gravity="bottom|end"
+                android:layout_marginEnd="@dimen/indent_normal"
+                android:layout_marginBottom="164dp"
+                android:backgroundTint="?attr/colorPrimaryVariant"
+                android:src="@drawable/ic_share"
+                app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
+                android:contentDescription="@string/share"
+                android:tooltipText="@string/share"
+                tools:targetApi="26"
+                android:visibility="gone"
+                />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_web"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fabCustomSize="32dp"
+                android:layout_gravity="bottom|end"
+                android:layout_marginEnd="@dimen/indent_normal"
+                android:layout_marginBottom="84dp"
+                android:backgroundTint="?attr/colorPrimaryVariant"
+                android:src="@drawable/ic_browser"
+                app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
+                android:contentDescription="@string/open_webpage"
+                android:tooltipText="@string/open_webpage"
+                tools:targetApi="26"
+                android:visibility="gone"
+                />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_poster"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fabCustomSize="32dp"
+                android:layout_gravity="bottom|end"
+                android:layout_marginEnd="@dimen/indent_normal"
+                android:layout_marginBottom="124dp"
+                android:backgroundTint="?attr/colorPrimaryVariant"
+                android:src="@drawable/ic_image"
+                app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
+                android:contentDescription="@string/show_poster"
+                android:tooltipText="@string/show_poster"
+                tools:targetApi="26"
+                android:visibility="gone"
+                />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_refresh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fabCustomSize="32dp"
+                android:layout_gravity="bottom|end"
+                android:layout_marginEnd="@dimen/indent_normal"
+                android:layout_marginBottom="44dp"
+                android:backgroundTint="?attr/colorPrimaryVariant"
+                android:src="@drawable/ic_refresh"
+                app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
+                android:contentDescription="@string/force_update"
+                android:tooltipText="@string/force_update"
+                tools:targetApi="26"
+                android:visibility="gone"
+                />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_marginEnd="@dimen/indent_normal"
+                android:backgroundTint="?attr/colorPrimary"
+                android:src="@drawable/ic_fab"
+                app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
+                android:contentDescription="@string/options"
+                android:tooltipText="@string/options"
+                tools:targetApi="26"
+                />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</FrameLayout>

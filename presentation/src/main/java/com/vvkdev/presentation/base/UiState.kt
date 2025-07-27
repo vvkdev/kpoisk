@@ -1,4 +1,4 @@
-package com.vvkdev.presentation.base.state
+package com.vvkdev.presentation.base
 
 sealed class UiState<out T> {
     data object Default : UiState<Nothing>()
