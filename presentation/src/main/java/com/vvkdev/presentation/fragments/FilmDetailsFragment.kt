@@ -27,17 +27,10 @@ class FilmDetailsFragment :
         domainModel.toFilmDetails(resources)
 
     override fun setupListeners(uiModel: FilmDetails) {
-        with(contentBinding) {
-            fab.setOnClickListener {
-                fabShare.isVisible = !fabShare.isVisible
-                fabWeb.isVisible = !fabWeb.isVisible
-                fabPoster.isVisible = !fabPoster.isVisible
-                fabRefresh.isVisible = !fabRefresh.isVisible
-            }
-            fabShare.setOnClickListener { shareText(uiModel.url) }
-            fabWeb.setOnClickListener { openInBrowser(uiModel.url) }
-            fabRefresh.setOnClickListener { viewModel.forceRefresh() }
-        }
+        contentBinding.fab.setOnClickListener { onFabClick { } }
+        contentBinding.fabShare.setOnClickListener { onFabClick { shareText(uiModel.url) } }
+        contentBinding.fabWeb.setOnClickListener { onFabClick { openInBrowser(uiModel.url) } }
+        contentBinding.fabRefresh.setOnClickListener { onFabClick { viewModel.forceRefresh() } }
     }
 
     override fun onSuccess(uiModel: FilmDetails) {
@@ -60,5 +53,15 @@ class FilmDetailsFragment :
             descriptionTextView.isGone = filmDetails.description.isBlank()
             descriptionDivider.visibility = descriptionTextView.visibility
         }
+    }
+
+    private fun onFabClick(action: () -> Unit) {
+        with(contentBinding) {
+            fabShare.isVisible = !fabShare.isVisible
+            fabWeb.isVisible = !fabWeb.isVisible
+            fabPoster.isVisible = !fabPoster.isVisible
+            fabRefresh.isVisible = !fabRefresh.isVisible
+        }
+        action()
     }
 }
