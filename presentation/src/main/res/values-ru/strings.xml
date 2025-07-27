@@ -25,6 +25,7 @@
     <string name="show_poster">Показать постер</string>
     <string name="share">Поделиться</string>
     <string name="search_name">Искать название...</string>
+    <string name="search_query">Поиск: %s</string>
 
     <plurals name="votes">
         <item quantity="one">%,d голос</item>

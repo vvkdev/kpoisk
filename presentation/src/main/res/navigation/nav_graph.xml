@@ -18,7 +18,22 @@
                 tools:layout="@layout/fragment_film_search"
                 >
             <action
-                    android:id="@+id/action_filmSearchFragment_to_filmDetailsFragment"
+                    android:id="@+id/action_filmSearch_to_filmList"
+                    app:destination="@id/filmListFragment"
+                    />
+        </fragment>
+
+        <fragment
+                android:id="@+id/filmListFragment"
+                android:name="com.vvkdev.presentation.fragments.FilmListFragment"
+                tools:layout="@layout/fragment_film_list"
+                >
+            <argument
+                    android:name="film_name"
+                    app:argType="string"
+                    />
+            <action
+                    android:id="@+id/action_filmList_to_filmDetails"
                     app:destination="@id/filmDetailsFragment"
                     />
         </fragment>

@@ -17,12 +17,12 @@ class FilmSearchFragment : BaseFragment<FragmentFilmSearchBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.searchView.doOnQueryChanged(onQuerySubmit = { query -> openFilmDetails(query) })
+        binding.searchView.doOnQueryChanged(onQuerySubmit = { query -> openFilmList(query) })
     }
 
-    private fun openFilmDetails(filmId: String) {
+    private fun openFilmList(filmName: String) {
         val direction =
-            FilmSearchFragmentDirections.actionFilmSearchFragmentToFilmDetailsFragment(filmId.toInt())
+            FilmSearchFragmentDirections.actionFilmSearchToFilmList(filmName)
         findNavController().navigate(direction)
     }
 }

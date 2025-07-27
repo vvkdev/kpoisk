@@ -27,6 +27,7 @@
     <string name="show_poster">Show poster</string>
     <string name="share">Share</string>
     <string name="search_name">Search name...</string>
+    <string name="search_query">Search: %s</string>
 
     <plurals name="votes">
         <item quantity="one">%,d vote</item>
