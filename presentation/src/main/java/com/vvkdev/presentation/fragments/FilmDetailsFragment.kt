@@ -4,17 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.children
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import com.vvkdev.domain.model.Film
-import com.vvkdev.presentation.R
 import com.vvkdev.presentation.base.BaseFragment
-import com.vvkdev.presentation.base.UiState
 import com.vvkdev.presentation.databinding.FragmentFilmDetailsBinding
-import com.vvkdev.presentation.databinding.StateLayoutBinding
-import com.vvkdev.presentation.extensions.collectOnStarted
+import com.vvkdev.presentation.extensions.collectUiState
 import com.vvkdev.presentation.extensions.openInBrowser
 import com.vvkdev.presentation.extensions.shareText
 import com.vvkdev.presentation.mapper.toFilmDetails
@@ -35,22 +31,12 @@ class FilmDetailsFragment : BaseFragment<FragmentFilmDetailsBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val stateBinding = StateLayoutBinding.bind(binding.root)
-        stateBinding.retryButton.setOnClickListener { viewModel.loadFilm(forceRefresh = true) }
-
-        collectOnStarted(viewModel.uiState, viewLifecycleOwner) { state ->
-            binding.root.children.forEach { it.isGone = true }
-            when (state) {
-                is UiState.Default -> Unit
-                is UiState.Loading -> stateBinding.progressBar.isVisible = true
-                is UiState.Success -> onSuccess(state.data)
-                is UiState.Error -> {
-                    stateBinding.errorMessage.text =
-                        state.message ?: getString(R.string.unknown_error)
-                    stateBinding.errorLayout.isVisible = true
-                }
-            }
-        }
+        collectUiState(
+            uiState = viewModel.uiState,
+            rootViewGroup = binding.root,
+            onRetry = { viewModel.loadFilm(forceRefresh = true) },
+            onSuccess = { film -> onSuccess(film) },
+        )
 
         binding.fab.setOnClickListener { onFabClick { } }
         binding.fabShare.setOnClickListener { onFabClick { shareText(filmDetails.url) } }
