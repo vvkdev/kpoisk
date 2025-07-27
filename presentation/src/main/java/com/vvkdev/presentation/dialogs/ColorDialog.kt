@@ -12,7 +12,7 @@ import com.google.android.material.button.MaterialButton
 import com.vvkdev.presentation.R
 import com.vvkdev.presentation.base.BaseDialogFragment
 import com.vvkdev.presentation.databinding.DialogContentColorBinding
-import com.vvkdev.presentation.extensions.collectWhenStarted
+import com.vvkdev.presentation.extensions.collectOnStarted
 import com.vvkdev.presentation.viewmodels.ColorViewModel
 import com.vvkdev.theme.AccentColor
 import dagger.hilt.android.AndroidEntryPoint
@@ -28,7 +28,7 @@ class ColorDialog : BaseDialogFragment<DialogContentColorBinding>() {
     override val titleRes = R.string.select_color
 
     override fun onDialogCreated(dialog: Dialog) {
-        collectWhenStarted(viewModel.shouldRestart) {
+        collectOnStarted(viewModel.shouldRestart, this) {
             contentBinding.restartTextView.isInvisible = !it
         }
         setupColorButtons()

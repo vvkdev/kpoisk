@@ -4,9 +4,9 @@ import android.content.Intent
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.core.net.toUri
-import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import kotlinx.coroutines.flow.Flow
@@ -29,14 +29,12 @@ internal fun Fragment.openInBrowser(url: String) {
     startActivity(intent)
 }
 
-internal fun <T> Fragment.collectWhenStarted(flow: Flow<T>, action: suspend (T) -> Unit) {
-    viewLifecycleOwner.lifecycleScope.launch {
-        repeatOnLifecycle(Lifecycle.State.STARTED) { flow.collect(action) }
-    }
-}
-
-internal fun <T> DialogFragment.collectWhenStarted(flow: Flow<T>, action: suspend (T) -> Unit) {
-    lifecycleScope.launch {
-        repeatOnLifecycle(Lifecycle.State.STARTED) { flow.collect(action) }
+internal fun <T> Fragment.collectOnStarted(
+    flow: Flow<T>,
+    owner: LifecycleOwner,
+    action: suspend (T) -> Unit,
+) {
+    owner.lifecycleScope.launch {
+        owner.repeatOnLifecycle(Lifecycle.State.STARTED) { flow.collect(action) }
     }
 }

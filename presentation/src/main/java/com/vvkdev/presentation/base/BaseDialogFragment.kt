@@ -9,7 +9,7 @@ import androidx.viewbinding.ViewBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.vvkdev.presentation.R
 import com.vvkdev.presentation.databinding.BaseDialogLayoutBinding
-import com.vvkdev.presentation.extensions.collectWhenStarted
+import com.vvkdev.presentation.extensions.collectOnStarted
 import com.vvkdev.presentation.extensions.showShortToast
 
 abstract class BaseDialogFragment<CVB : ViewBinding>() : DialogFragment() {
@@ -51,7 +51,7 @@ abstract class BaseDialogFragment<CVB : ViewBinding>() : DialogFragment() {
         setupButtons()
         onDialogCreated(dialog)
 
-        collectWhenStarted(viewModel.effectFlow) { effect ->
+        collectOnStarted(viewModel.effectFlow, this) { effect ->
             when (effect) {
                 is UiEffect.ShowShortToast -> showShortToast(effect.messageRes)
                 is DialogUiEffect.Dismiss -> dismiss()

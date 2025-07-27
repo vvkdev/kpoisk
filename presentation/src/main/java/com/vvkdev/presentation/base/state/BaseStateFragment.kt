@@ -11,7 +11,7 @@ import androidx.viewbinding.ViewBinding
 import com.vvkdev.presentation.R
 import com.vvkdev.presentation.base.BaseFragment
 import com.vvkdev.presentation.databinding.BaseStateLayoutBinding
-import com.vvkdev.presentation.extensions.collectWhenStarted
+import com.vvkdev.presentation.extensions.collectOnStarted
 import kotlin.properties.Delegates
 
 abstract class BaseStateFragment<CVB : ViewBinding, DM, UM : Any>() :
@@ -42,7 +42,7 @@ abstract class BaseStateFragment<CVB : ViewBinding, DM, UM : Any>() :
 
         binding.retryButton.setOnClickListener { viewModel.retry() }
 
-        collectWhenStarted(viewModel.uiState) { state ->
+        collectOnStarted(viewModel.uiState, viewLifecycleOwner) { state ->
             binding.root.children.forEach { it.isGone = true }
             when (state) {
                 is UiState.Default -> {}
