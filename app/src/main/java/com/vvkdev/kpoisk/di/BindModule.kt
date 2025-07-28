@@ -1,11 +1,11 @@
 package com.vvkdev.kpoisk.di
 
-import com.vvkdev.data.repository.ApiKeyRepositoryImpl
-import com.vvkdev.data.repository.FilmRepositoryImpl
-import com.vvkdev.data.repository.SettingsRepositoryImpl
-import com.vvkdev.domain.repository.ApiKeyRepository
-import com.vvkdev.domain.repository.FilmRepository
-import com.vvkdev.domain.repository.SettingsRepository
+import com.vvkdev.data.repositories.ApiKeyRepositoryImpl
+import com.vvkdev.data.repositories.FilmRepositoryImpl
+import com.vvkdev.data.repositories.SettingsRepositoryImpl
+import com.vvkdev.domain.repositories.ApiKeyRepository
+import com.vvkdev.domain.repositories.FilmRepository
+import com.vvkdev.domain.repositories.SettingsRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

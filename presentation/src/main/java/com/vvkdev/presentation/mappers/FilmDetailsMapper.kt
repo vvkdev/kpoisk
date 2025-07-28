@@ -1,10 +1,10 @@
-package com.vvkdev.presentation.mapper
+package com.vvkdev.presentation.mappers
 
 import android.content.res.Resources
-import com.vvkdev.domain.model.Film
+import com.vvkdev.domain.models.Film
 import com.vvkdev.presentation.R
 import com.vvkdev.presentation.constants.Constants
-import com.vvkdev.presentation.model.FilmDetails
+import com.vvkdev.presentation.models.FilmDetails
 import java.util.Locale
 
 internal fun Film.toFilmDetails(res: Resources) = FilmDetails(

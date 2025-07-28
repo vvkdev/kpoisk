@@ -1,4 +1,4 @@
-package com.vvkdev.data.local.model
+package com.vvkdev.data.local.models
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

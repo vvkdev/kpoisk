@@ -7,14 +7,14 @@ import android.view.ViewGroup
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
-import com.vvkdev.domain.model.Film
+import com.vvkdev.domain.models.Film
 import com.vvkdev.presentation.base.BaseFragment
 import com.vvkdev.presentation.databinding.FragmentFilmDetailsBinding
 import com.vvkdev.presentation.extensions.collectUiState
 import com.vvkdev.presentation.extensions.openInBrowser
 import com.vvkdev.presentation.extensions.shareText
-import com.vvkdev.presentation.mapper.toFilmDetails
-import com.vvkdev.presentation.model.FilmDetails
+import com.vvkdev.presentation.mappers.toFilmDetails
+import com.vvkdev.presentation.models.FilmDetails
 import com.vvkdev.presentation.viewmodels.FilmDetailsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 

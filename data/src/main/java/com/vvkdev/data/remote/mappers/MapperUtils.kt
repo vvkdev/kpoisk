@@ -1,4 +1,4 @@
-package com.vvkdev.data.remote.mapper
+package com.vvkdev.data.remote.mappers
 
 import java.text.SimpleDateFormat
 import java.util.Date

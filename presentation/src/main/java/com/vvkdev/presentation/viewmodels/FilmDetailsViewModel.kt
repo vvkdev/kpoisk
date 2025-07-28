@@ -3,8 +3,8 @@ package com.vvkdev.presentation.viewmodels
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.vvkdev.domain.LoadResult
-import com.vvkdev.domain.model.Film
-import com.vvkdev.domain.repository.FilmRepository
+import com.vvkdev.domain.models.Film
+import com.vvkdev.domain.repositories.FilmRepository
 import com.vvkdev.presentation.base.BaseViewModel
 import com.vvkdev.presentation.base.UiState
 import com.vvkdev.presentation.fragments.FilmDetailsFragmentArgs

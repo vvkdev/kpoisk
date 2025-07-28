@@ -1,7 +1,7 @@
-package com.vvkdev.data.local.mapper
+package com.vvkdev.data.local.mappers
 
-import com.vvkdev.data.local.model.FilmEntity
-import com.vvkdev.domain.model.Film
+import com.vvkdev.data.local.models.FilmEntity
+import com.vvkdev.domain.models.Film
 
 fun Film.toFilmEntity() = FilmEntity(
     id,

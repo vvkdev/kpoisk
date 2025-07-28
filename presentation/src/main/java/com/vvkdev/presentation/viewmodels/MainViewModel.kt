@@ -1,8 +1,8 @@
 package com.vvkdev.presentation.viewmodels
 
 import androidx.lifecycle.ViewModel
-import com.vvkdev.domain.repository.ApiKeyRepository
-import com.vvkdev.domain.repository.SettingsRepository
+import com.vvkdev.domain.repositories.ApiKeyRepository
+import com.vvkdev.domain.repositories.SettingsRepository
 import com.vvkdev.theme.AccentColor
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject

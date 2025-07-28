@@ -1,4 +1,4 @@
-package com.vvkdev.presentation.model
+package com.vvkdev.presentation.models
 
 data class FilmItem(
     val id: Int,

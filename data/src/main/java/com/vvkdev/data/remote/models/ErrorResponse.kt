@@ -1,4 +1,4 @@
-package com.vvkdev.data.remote.model
+package com.vvkdev.data.remote.models
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -9,7 +9,7 @@ import kotlinx.serialization.json.jsonPrimitive
 @Serializable
 data class ErrorResponse(
     @SerialName("message")
-    private val _message: JsonElement? = null
+    private val _message: JsonElement? = null,
 ) {
     val messages: List<String>
         get() = when (_message) {
@@ -18,4 +18,3 @@ data class ErrorResponse(
             else -> listOf(_message.jsonPrimitive.content)
         }
 }
-

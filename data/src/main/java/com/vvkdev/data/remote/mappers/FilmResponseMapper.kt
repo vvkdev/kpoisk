@@ -1,11 +1,11 @@
-package com.vvkdev.data.remote.mapper
+package com.vvkdev.data.remote.mappers
 
-import com.vvkdev.data.remote.model.FilmListResponse
-import com.vvkdev.data.remote.model.FilmResponse
-import com.vvkdev.data.remote.model.FilmShortResponse
-import com.vvkdev.data.remote.model.FilmYearsResponse
-import com.vvkdev.domain.model.Film
-import com.vvkdev.domain.model.FilmShort
+import com.vvkdev.data.remote.models.FilmListResponse
+import com.vvkdev.data.remote.models.FilmResponse
+import com.vvkdev.data.remote.models.FilmShortResponse
+import com.vvkdev.data.remote.models.FilmYearsResponse
+import com.vvkdev.domain.models.Film
+import com.vvkdev.domain.models.FilmShort
 import org.jetbrains.annotations.VisibleForTesting
 import java.util.Date
 

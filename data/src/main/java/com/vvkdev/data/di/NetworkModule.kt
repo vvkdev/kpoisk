@@ -1,7 +1,7 @@
 package com.vvkdev.data.di
 
-import com.vvkdev.data.remote.service.FilmService
-import com.vvkdev.domain.repository.ApiKeyRepository
+import com.vvkdev.data.remote.services.FilmService
+import com.vvkdev.domain.repositories.ApiKeyRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

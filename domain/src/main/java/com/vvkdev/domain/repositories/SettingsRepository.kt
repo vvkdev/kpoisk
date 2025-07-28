@@ -1,4 +1,4 @@
-package com.vvkdev.domain.repository
+package com.vvkdev.domain.repositories
 
 interface SettingsRepository {
     fun setColorAccent(color: String)

@@ -1,7 +1,7 @@
-package com.vvkdev.data.remote.service
+package com.vvkdev.data.remote.services
 
-import com.vvkdev.data.remote.model.FilmListResponse
-import com.vvkdev.data.remote.model.FilmResponse
+import com.vvkdev.data.remote.models.FilmListResponse
+import com.vvkdev.data.remote.models.FilmResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path

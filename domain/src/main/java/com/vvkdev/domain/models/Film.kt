@@ -1,4 +1,4 @@
-package com.vvkdev.domain.model
+package com.vvkdev.domain.models
 
 data class Film(
     val id: Int,

@@ -13,7 +13,7 @@ import com.vvkdev.presentation.adapters.FilmsAdapter
 import com.vvkdev.presentation.base.BaseFragment
 import com.vvkdev.presentation.databinding.FragmentFilmListBinding
 import com.vvkdev.presentation.extensions.collectUiState
-import com.vvkdev.presentation.mapper.toFilmItem
+import com.vvkdev.presentation.mappers.toFilmItem
 import com.vvkdev.presentation.viewmodels.FilmListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 

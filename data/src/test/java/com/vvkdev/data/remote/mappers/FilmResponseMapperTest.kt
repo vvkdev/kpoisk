@@ -1,6 +1,6 @@
-package com.vvkdev.data.remote.mapper
+package com.vvkdev.data.remote.mappers
 
-import com.vvkdev.data.remote.model.FilmYearsResponse
+import com.vvkdev.data.remote.models.FilmYearsResponse
 import kotlin.test.Test
 import kotlin.test.assertEquals
 

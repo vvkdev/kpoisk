@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.vvkdev.presentation.databinding.ItemFilmBinding
-import com.vvkdev.presentation.model.FilmItem
+import com.vvkdev.presentation.models.FilmItem
 import com.vvkdev.presentation.viewholders.FilmItemViewHolder
 
 class FilmsAdapter(private val onRootClickListener: (FilmItem) -> Unit) :

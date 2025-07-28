@@ -1,8 +1,8 @@
-package com.vvkdev.data.repository
+package com.vvkdev.data.repositories
 
 import android.content.SharedPreferences
 import androidx.core.content.edit
-import com.vvkdev.domain.repository.SettingsRepository
+import com.vvkdev.domain.repositories.SettingsRepository
 import javax.inject.Inject
 import javax.inject.Singleton
 

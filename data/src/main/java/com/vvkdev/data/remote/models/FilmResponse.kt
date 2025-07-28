@@ -1,4 +1,4 @@
-package com.vvkdev.data.remote.model
+package com.vvkdev.data.remote.models
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

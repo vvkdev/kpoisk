@@ -2,7 +2,7 @@ package com.vvkdev.presentation.viewmodels
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
-import com.vvkdev.domain.repository.ApiKeyRepository
+import com.vvkdev.domain.repositories.ApiKeyRepository
 import com.vvkdev.domain.validation.ApiKeyValidator
 import com.vvkdev.presentation.R
 import com.vvkdev.presentation.base.BaseViewModel

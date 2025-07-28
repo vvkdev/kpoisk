@@ -1,6 +1,6 @@
 package com.vvkdev.data
 
-import com.vvkdev.data.remote.model.ErrorResponse
+import com.vvkdev.data.remote.models.ErrorResponse
 import kotlinx.serialization.json.Json
 import okhttp3.ResponseBody
 

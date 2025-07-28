@@ -1,18 +1,18 @@
-package com.vvkdev.data.repository
+package com.vvkdev.data.repositories
 
 import com.vvkdev.core.AppDispatchers
 import com.vvkdev.core.extensions.childScope
 import com.vvkdev.data.local.dao.FilmDao
-import com.vvkdev.data.local.mapper.toFilm
-import com.vvkdev.data.local.mapper.toFilmEntity
+import com.vvkdev.data.local.mappers.toFilm
+import com.vvkdev.data.local.mappers.toFilmEntity
 import com.vvkdev.data.parseErrorBody
-import com.vvkdev.data.remote.mapper.toFilm
-import com.vvkdev.data.remote.mapper.toFilmShortList
-import com.vvkdev.data.remote.service.FilmService
+import com.vvkdev.data.remote.mappers.toFilm
+import com.vvkdev.data.remote.mappers.toFilmShortList
+import com.vvkdev.data.remote.services.FilmService
 import com.vvkdev.domain.LoadResult
-import com.vvkdev.domain.model.Film
-import com.vvkdev.domain.model.FilmShort
-import com.vvkdev.domain.repository.FilmRepository
+import com.vvkdev.domain.models.Film
+import com.vvkdev.domain.models.FilmShort
+import com.vvkdev.domain.repositories.FilmRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
