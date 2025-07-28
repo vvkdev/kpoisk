@@ -2,7 +2,6 @@ package com.vvkdev.presentation.viewmodels
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
-import com.vvkdev.domain.LoadResult
 import com.vvkdev.domain.models.FilmShort
 import com.vvkdev.domain.repositories.FilmRepository
 import com.vvkdev.presentation.base.BaseViewModel
@@ -32,10 +31,10 @@ class FilmListViewModel @Inject constructor(
     fun loadFilms() {
         viewModelScope.launch {
             _uiState.value = UiState.Loading
-            _uiState.value = when (val result = filmRepository.findByName(filmName)) {
-                is LoadResult.Success -> UiState.Success(result.data)
-                is LoadResult.Error -> UiState.Error(result.message)
-            }
+            _uiState.value = filmRepository.findByName(filmName).fold(
+                onSuccess = { UiState.Success(it) },
+                onFailure = { UiState.Error(it.message) },
+            )
         }
     }
 }

@@ -9,7 +9,6 @@ import com.vvkdev.data.parseErrorBody
 import com.vvkdev.data.remote.mappers.toFilm
 import com.vvkdev.data.remote.mappers.toFilmShortList
 import com.vvkdev.data.remote.services.FilmService
-import com.vvkdev.domain.LoadResult
 import com.vvkdev.domain.models.Film
 import com.vvkdev.domain.models.FilmShort
 import com.vvkdev.domain.repositories.FilmRepository
@@ -28,40 +27,40 @@ class FilmRepositoryImpl @Inject constructor(
     private val appScope: CoroutineScope,
 ) : FilmRepository {
 
-    override suspend fun getFilmById(id: Int, forceRefresh: Boolean): LoadResult<Film> {
+    override suspend fun getFilmById(id: Int, forceRefresh: Boolean): Result<Film> {
         val cached = if (!forceRefresh) filmDao.getById(id) else null
         return cached
-            ?.let { LoadResult.Success(it.toFilm()) }
+            ?.let { Result.success(it.toFilm()) }
             ?: try {
                 val response = filmService.getFilmById(id)
                 if (response.isSuccessful) {
                     val film = response.body()!!.toFilm()
-                    LoadResult.Success(film).also {
+                    Result.success(film).also {
                         appScope.childScope(appDispatchers.io).launch {
                             filmDao.insert(film.toFilmEntity())
                         }
                     }
                 } else {
                     val errorMessage = parseErrorBody(response.errorBody(), json)
-                    LoadResult.Error(errorMessage)
+                    Result.failure(Exception(errorMessage))
                 }
             } catch (e: Exception) {
-                LoadResult.Error(e.message)
+                Result.failure(e)
             }
     }
 
-    override suspend fun findByName(name: String): LoadResult<List<FilmShort>> {
+    override suspend fun findByName(name: String): Result<List<FilmShort>> {
         return try {
             val response = filmService.findByName(name)
             if (response.isSuccessful) {
                 val films = response.body()!!.toFilmShortList()
-                LoadResult.Success(films)
+                Result.success(films)
             } else {
                 val errorMessage = parseErrorBody(response.errorBody(), json)
-                LoadResult.Error(errorMessage)
+                Result.failure(Exception(errorMessage))
             }
         } catch (e: Exception) {
-            LoadResult.Error(e.message)
+            Result.failure(e)
         }
     }
 }

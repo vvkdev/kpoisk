@@ -1,11 +1,10 @@
 package com.vvkdev.domain.repositories
 
-import com.vvkdev.domain.LoadResult
 import com.vvkdev.domain.models.Film
 import com.vvkdev.domain.models.FilmShort
 
 interface FilmRepository {
-    suspend fun getFilmById(id: Int, forceRefresh: Boolean): LoadResult<Film>
+    suspend fun getFilmById(id: Int, forceRefresh: Boolean): Result<Film>
 
-    suspend fun findByName(name: String): LoadResult<List<FilmShort>>
+    suspend fun findByName(name: String): Result<List<FilmShort>>
 }
