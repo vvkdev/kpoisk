@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.vvkdev.presentation.R
 import com.vvkdev.presentation.base.BaseFragment
 import com.vvkdev.presentation.databinding.FragmentFilmSearchBinding
 import com.vvkdev.presentation.extensions.doOnQueryChanged
@@ -21,8 +22,11 @@ class FilmSearchFragment : BaseFragment<FragmentFilmSearchBinding>() {
     }
 
     private fun openFilmList(filmName: String) {
-        val direction =
-            FilmSearchFragmentDirections.actionFilmSearchToFilmList(filmName)
-        findNavController().navigate(direction)
+        val navController = findNavController()
+        if (navController.currentDestination?.id == R.id.filmSearchFragment) {
+            navController.navigate(
+                FilmSearchFragmentDirections.actionFilmSearchToFilmList(filmName)
+            )
+        }
     }
 }
