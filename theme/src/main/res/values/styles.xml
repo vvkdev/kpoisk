@@ -25,9 +25,12 @@
         <item name="android:padding">@dimen/indent_small</item>
     </style>
 
-    <style name="App.Button" parent="Widget.MaterialComponents.Button">
+    <style name="App.Button" parent="Widget.Material3.Button">
+        <item name="android:minHeight">@dimen/button_height</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textAllCaps">true</item>
         <item name="backgroundTint">@null</item>
-        <item name="android:background">@drawable/button_gradient</item>
+        <item name="android:background">@drawable/button_background</item>
     </style>
 
     <style name="App.MaterialDialog.ThemeOverlay" parent="ThemeOverlay.Material3.MaterialAlertDialog">
