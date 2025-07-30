@@ -73,6 +73,7 @@
 
     <style name="App.SearchView" parent="Widget.Material3.SearchView">
         <item name="android:background">@drawable/rectangle_rounded_filled</item>
+        <item name="android:backgroundTint">?attr/colorSurfaceContainerHigh</item>
         <item name="android:elevation">@dimen/elevation</item>
         <item name="android:iconifiedByDefault">false</item>
         <item name="android:searchIcon">@drawable/ic_search</item>
@@ -82,6 +83,13 @@
     <style name="App.CardView" parent="Widget.Material3.CardView.Elevated">
         <item name="cardElevation">@dimen/elevation</item>
         <item name="shapeAppearanceOverlay">@style/App.CornerShape</item>
+    </style>
+
+    <style name="App.CardBackground" parent="">
+        <item name="android:background">@drawable/rectangle_rounded_filled</item>
+        <item name="android:backgroundTint">?attr/colorSurfaceContainerLow</item>
+        <item name="android:elevation">@dimen/elevation</item>
+        <item name="android:padding">@dimen/indent_medium</item>
     </style>
 
 </resources>

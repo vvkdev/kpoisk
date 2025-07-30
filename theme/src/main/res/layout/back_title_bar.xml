@@ -7,6 +7,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:background="@drawable/rectangle_rounded_filled"
+        android:backgroundTint="?attr/colorSurfaceContainerHigh"
         android:elevation="@dimen/elevation"
         >
 
