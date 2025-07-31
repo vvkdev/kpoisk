@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.vvkdev.domain.models.Film
+import com.vvkdev.presentation.R
 import com.vvkdev.presentation.base.BaseFragment
 import com.vvkdev.presentation.databinding.FragmentFilmDetailsBinding
 import com.vvkdev.presentation.extensions.collectUiState
@@ -41,6 +43,9 @@ class FilmDetailsFragment : BaseFragment<FragmentFilmDetailsBinding>() {
         binding.fab.setOnClickListener { onFabClick { } }
         binding.fabShare.setOnClickListener { onFabClick { shareText(filmDetails.url) } }
         binding.fabWeb.setOnClickListener { onFabClick { openInBrowser(filmDetails.url) } }
+        binding.fabPoster.setOnClickListener {
+            onFabClick { openPoster(filmDetails.name, filmDetails.poster) }
+        }
         binding.fabRefresh.setOnClickListener { onFabClick { viewModel.loadFilm(forceRefresh = true) } }
     }
 
@@ -75,5 +80,14 @@ class FilmDetailsFragment : BaseFragment<FragmentFilmDetailsBinding>() {
             fabRefresh.isVisible = !fabRefresh.isVisible
         }
         action()
+    }
+
+    private fun openPoster(filmName: String, url: String) {
+        val navController = findNavController()
+        if (navController.currentDestination?.id == R.id.filmDetailsFragment) {
+            navController.navigate(
+                FilmDetailsFragmentDirections.actionFilmDetailsToPoster(filmName, url)
+            )
+        }
     }
 }

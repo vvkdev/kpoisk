@@ -10,6 +10,7 @@ data class FilmDetails(
     val genres: String,
     val has3D: Boolean,
     val description: String,
+    val poster: String,
     val url: String,
     val updated: String,
 ) {
@@ -24,6 +25,7 @@ data class FilmDetails(
             genres = "",
             has3D = false,
             description = "",
+            poster = "",
             url = "",
             updated = ""
         )

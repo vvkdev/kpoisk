@@ -21,6 +21,7 @@ internal fun Film.toFilmDetails(res: Resources) = FilmDetails(
     genres = genres,
     has3D = has3D,
     description = description,
+    poster = poster,
     url = "${Constants.KP_BASE_URL}/film/$id",
     updated = res.getString(R.string.updated, updated),
 )
