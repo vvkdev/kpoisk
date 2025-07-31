@@ -40,9 +40,13 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
+    // nav component
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
     // hilt
     ksp(libs.hilt.compiler)
     implementation(libs.hilt.android)
+    // coil
+    implementation(libs.coil)
+    implementation(libs.coil.network)
 }
