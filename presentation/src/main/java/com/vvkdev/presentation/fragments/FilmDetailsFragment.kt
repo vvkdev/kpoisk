@@ -28,7 +28,8 @@ class FilmDetailsFragment : BaseFragment<FragmentFilmDetailsBinding>() {
 
     private val viewModel: FilmDetailsViewModel by viewModels()
 
-    private var filmDetails: FilmDetails = FilmDetails.empty()
+    private var _filmDetails: FilmDetails? = null
+    private val filmDetails: FilmDetails get() = checkNotNull(_filmDetails) { "Film is not initialized" }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -50,7 +51,7 @@ class FilmDetailsFragment : BaseFragment<FragmentFilmDetailsBinding>() {
     }
 
     private fun onSuccess(data: Film) {
-        filmDetails = data.toFilmDetails(resources)
+        _filmDetails = data.toFilmDetails(resources)
         with(binding) {
             idTextView.text = filmDetails.id
             updatedTextView.text = filmDetails.updated

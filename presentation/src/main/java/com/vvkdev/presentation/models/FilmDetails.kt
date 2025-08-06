@@ -13,21 +13,4 @@ data class FilmDetails(
     val poster: String,
     val url: String,
     val updated: String,
-) {
-    companion object {
-        fun empty() = FilmDetails(
-            id = "",
-            name = "",
-            foreignName = "",
-            time = "",
-            rating = "",
-            countries = "",
-            genres = "",
-            has3D = false,
-            description = "",
-            poster = "",
-            url = "",
-            updated = ""
-        )
-    }
-}
+)
