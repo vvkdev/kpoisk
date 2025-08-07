@@ -1,6 +1,7 @@
 package com.vvkdev.data.repositories
 
 import com.vvkdev.core.AppDispatchers
+import com.vvkdev.core.di.AppScope
 import com.vvkdev.data.local.dao.FilmDao
 import com.vvkdev.data.local.mappers.toFilm
 import com.vvkdev.data.local.mappers.toFilmEntity
@@ -21,7 +22,7 @@ class FilmRepositoryImpl @Inject constructor(
     private val filmService: FilmService,
     private val filmDao: FilmDao,
     json: Json,
-    appScope: CoroutineScope,
+    @AppScope appScope: CoroutineScope,
     appDispatchers: AppDispatchers,
 ) : BaseRepository(json, appScope, appDispatchers), FilmRepository {
 
