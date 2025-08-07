@@ -22,5 +22,5 @@ interface BindModule {
     fun bindSettingsRepository(impl: SettingsRepositoryImpl): SettingsRepository
 
     @Binds
-    fun provideFilmRepository(impl: FilmRepositoryImpl): FilmRepository
+    fun bindFilmRepository(impl: FilmRepositoryImpl): FilmRepository
 }
