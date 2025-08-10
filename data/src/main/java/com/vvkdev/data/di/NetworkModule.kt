@@ -15,7 +15,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object NetworkModule {
+internal object NetworkModule {
 
     private const val BASE_URL = "https://api.kinopoisk.dev/v1.4/"
     private const val API_KEY_HEADER = "X-API-KEY"

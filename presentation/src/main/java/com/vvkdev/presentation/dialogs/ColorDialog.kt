@@ -19,7 +19,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import com.vvkdev.theme.R as ThemeR
 
 @AndroidEntryPoint
-class ColorDialog : BaseDialogFragment<DialogContentColorBinding>() {
+internal class ColorDialog : BaseDialogFragment<DialogContentColorBinding>() {
 
     override val viewModel: ColorViewModel by viewModels()
 

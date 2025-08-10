@@ -2,10 +2,10 @@ package com.vvkdev.presentation.base
 
 import androidx.annotation.StringRes
 
-sealed class UiEffect {
-    data class ShowShortToast(@StringRes val messageRes: Int) : UiEffect()
+internal sealed class UiEffect {
+    internal data class ShowShortToast(@StringRes val messageRes: Int) : UiEffect()
 }
 
-sealed class DialogUiEffect : UiEffect() {
-    object Dismiss : DialogUiEffect()
+internal sealed class DialogUiEffect : UiEffect() {
+    internal object Dismiss : DialogUiEffect()
 }

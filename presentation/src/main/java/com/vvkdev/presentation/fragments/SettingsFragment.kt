@@ -9,7 +9,7 @@ import com.vvkdev.presentation.databinding.FragmentSettingsBinding
 import com.vvkdev.presentation.dialogs.ApiKeyDialog
 import com.vvkdev.presentation.dialogs.ColorDialog
 
-class SettingsFragment : BaseFragment<FragmentSettingsBinding>() {
+internal class SettingsFragment : BaseFragment<FragmentSettingsBinding>() {
 
     override val inflate: (LayoutInflater, ViewGroup?, Boolean) -> FragmentSettingsBinding =
         FragmentSettingsBinding::inflate

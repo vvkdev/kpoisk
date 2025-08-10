@@ -4,7 +4,7 @@ import com.vvkdev.data.remote.models.FilmYearsResponse
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-class FilmResponseMapperTest {
+internal class FilmResponseMapperTest {
     // mapYears
     @Test
     fun `mapYears with zero year and null years list returns empty string`() {

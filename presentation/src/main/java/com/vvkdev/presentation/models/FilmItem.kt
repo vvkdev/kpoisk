@@ -1,6 +1,6 @@
 package com.vvkdev.presentation.models
 
-data class FilmItem(
+internal data class FilmItem(
     val id: Int,
     val name: String,
     val foreignName: String,

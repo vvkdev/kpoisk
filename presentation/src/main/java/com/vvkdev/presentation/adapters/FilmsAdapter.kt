@@ -7,7 +7,7 @@ import com.vvkdev.presentation.databinding.ItemFilmBinding
 import com.vvkdev.presentation.models.FilmItem
 import com.vvkdev.presentation.viewholders.FilmItemViewHolder
 
-class FilmsAdapter(private val onRootClickListener: (FilmItem) -> Unit) :
+internal class FilmsAdapter(private val onRootClickListener: (FilmItem) -> Unit) :
     RecyclerView.Adapter<FilmItemViewHolder>() {
 
     var items: List<FilmItem> = emptyList()

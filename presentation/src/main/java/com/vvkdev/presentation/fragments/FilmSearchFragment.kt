@@ -10,7 +10,7 @@ import com.vvkdev.presentation.base.BaseFragment
 import com.vvkdev.presentation.databinding.FragmentFilmSearchBinding
 import com.vvkdev.presentation.extensions.doOnQueryChanged
 
-class FilmSearchFragment : BaseFragment<FragmentFilmSearchBinding>() {
+internal class FilmSearchFragment : BaseFragment<FragmentFilmSearchBinding>() {
 
     override val inflate: (LayoutInflater, ViewGroup?, Boolean) -> FragmentFilmSearchBinding =
         FragmentFilmSearchBinding::inflate

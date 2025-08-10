@@ -1,8 +1,8 @@
 package com.vvkdev.presentation.base
 
-sealed class UiState<out T> {
-    data object Default : UiState<Nothing>()
-    data object Loading : UiState<Nothing>()
-    data class Success<T>(val data: T) : UiState<T>()
-    data class Error(val message: String?) : UiState<Nothing>()
+internal sealed class UiState<out T> {
+    internal data object Default : UiState<Nothing>()
+    internal data object Loading : UiState<Nothing>()
+    internal data class Success<T>(val data: T) : UiState<T>()
+    internal data class Error(val message: String?) : UiState<Nothing>()
 }

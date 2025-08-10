@@ -18,7 +18,7 @@ import com.vvkdev.presentation.viewmodels.FilmListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class FilmListFragment : BaseFragment<FragmentFilmListBinding>() {
+internal class FilmListFragment : BaseFragment<FragmentFilmListBinding>() {
 
     override val inflate: (LayoutInflater, ViewGroup?, Boolean) -> FragmentFilmListBinding =
         FragmentFilmListBinding::inflate

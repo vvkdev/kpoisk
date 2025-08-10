@@ -9,9 +9,9 @@ import com.vvkdev.domain.models.FilmShort
 import org.jetbrains.annotations.VisibleForTesting
 import java.util.Date
 
-fun FilmListResponse.toFilmShortList() = films.map { it.toFilmShort() }
+internal fun FilmListResponse.toFilmShortList() = films.map { it.toFilmShort() }
 
-fun FilmResponse.toFilm() = Film(
+internal fun FilmResponse.toFilm() = Film(
     id = id,
     name = name.orPlaceholderIfNullOrBlank("-"),
     foreignName = mapForeignName(alternativeName, enName),

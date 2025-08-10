@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ApiKeyViewModel @Inject constructor(
+internal class ApiKeyViewModel @Inject constructor(
     private val apiKeyRepository: ApiKeyRepository,
     private val apiKeyValidator: ApiKeyValidator,
     private val savedStateHandle: SavedStateHandle,

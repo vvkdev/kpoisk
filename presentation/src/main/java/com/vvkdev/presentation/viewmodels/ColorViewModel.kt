@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import javax.inject.Inject
 
 @HiltViewModel
-class ColorViewModel @Inject constructor(
+internal class ColorViewModel @Inject constructor(
     private val settingsRepository: SettingsRepository,
     private val savedStateHandle: SavedStateHandle,
 ) : BaseViewModel() {

@@ -17,7 +17,7 @@ import com.vvkdev.presentation.databinding.StateLayoutBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class PosterFragment : BaseFragment<FragmentPosterBinding>() {
+internal class PosterFragment : BaseFragment<FragmentPosterBinding>() {
 
     override val inflate: (LayoutInflater, ViewGroup?, Boolean) -> FragmentPosterBinding =
         FragmentPosterBinding::inflate

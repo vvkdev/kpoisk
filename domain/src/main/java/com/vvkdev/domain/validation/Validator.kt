@@ -1,5 +1,5 @@
 package com.vvkdev.domain.validation
 
-interface Validator<T> {
+internal interface Validator<T> {
     fun isValid(input: T): Boolean
 }

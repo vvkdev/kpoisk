@@ -19,7 +19,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-interface CryptoBindModule {
+internal interface CryptoBindModule {
 
     @Binds
     fun bindCryptoService(impl: CryptoServiceImpl): CryptoService
@@ -27,7 +27,7 @@ interface CryptoBindModule {
 
 @Module
 @InstallIn(SingletonComponent::class)
-object CryptoProvideModule {
+internal object CryptoProvideModule {
 
     private const val KEYSET_NAME = "apikey_keyset"
     private const val MASTER_KEY_URI = "android-keystore://kpoisk_masterkey"

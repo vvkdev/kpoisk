@@ -14,7 +14,7 @@ import com.vvkdev.presentation.viewmodels.ApiKeyViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ApiKeyDialog : BaseDialogFragment<DialogContentApikeyBinding>() {
+internal class ApiKeyDialog : BaseDialogFragment<DialogContentApikeyBinding>() {
 
     override val viewModel: ApiKeyViewModel by viewModels()
 

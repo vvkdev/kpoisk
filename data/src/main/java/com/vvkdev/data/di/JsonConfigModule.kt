@@ -9,7 +9,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object JsonConfigModule {
+internal object JsonConfigModule {
 
     @Provides
     @Singleton

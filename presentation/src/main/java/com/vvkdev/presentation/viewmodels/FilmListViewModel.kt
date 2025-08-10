@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class FilmListViewModel @Inject constructor(
+internal class FilmListViewModel @Inject constructor(
     private val filmRepository: FilmRepository,
     private val savedStateHandle: SavedStateHandle,
 ) : BaseViewModel() {

@@ -6,7 +6,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class CryptoServiceImpl @Inject constructor(
+internal class CryptoServiceImpl @Inject constructor(
     private val aead: Aead,
 ) : CryptoService {
 

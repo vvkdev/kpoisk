@@ -12,7 +12,7 @@ import com.vvkdev.presentation.databinding.BaseDialogLayoutBinding
 import com.vvkdev.presentation.extensions.collectOnStarted
 import com.vvkdev.presentation.extensions.showShortToast
 
-abstract class BaseDialogFragment<CVB : ViewBinding>() : DialogFragment() {
+internal abstract class BaseDialogFragment<CVB : ViewBinding>() : DialogFragment() {
 
     protected abstract val viewModel: BaseViewModel
 
