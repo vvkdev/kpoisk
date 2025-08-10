@@ -13,7 +13,7 @@ import dagger.hilt.components.SingletonComponent
 
 @Module
 @InstallIn(SingletonComponent::class)
-interface BindModule {
+interface AppModule {
 
     @Binds
     fun bindApiKeyRepository(impl: ApiKeyRepositoryImpl): ApiKeyRepository
