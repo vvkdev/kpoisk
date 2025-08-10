@@ -18,17 +18,16 @@ internal class MainActivity : AppCompatActivity() {
     private val viewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
+
+        enableEdgeToEdge()
         setTheme(viewModel.getAccentColor().themeRes)
 
         binding = ActivityMainBinding.inflate(layoutInflater).also { setContentView(it.root) }
 
-        val navHostFragment = supportFragmentManager
-            .findFragmentById(R.id.fragmentContainer) as NavHostFragment
-
-        val navController = navHostFragment.navController
-        binding.bottomNavView.setupWithNavController(navController)
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.fragmentContainer) as NavHostFragment
+        binding.bottomNavView.setupWithNavController(navHostFragment.navController)
 
         if (viewModel.getApiKey() == null) {
             ApiKeyDialog().show(supportFragmentManager, ApiKeyDialog.TAG)
