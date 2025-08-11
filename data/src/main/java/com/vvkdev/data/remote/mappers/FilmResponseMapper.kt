@@ -12,18 +12,20 @@ import java.util.Date
 internal fun FilmListResponse.toFilmShortList() = films.map { it.toFilmShort() }
 
 internal fun FilmResponse.toFilm() = Film(
-    id = id,
-    name = name.orPlaceholderIfNullOrBlank("-"),
-    foreignName = mapForeignName(alternativeName, enName),
-    rating = rating?.kp ?: 0f,
+    short = FilmShort(
+        id = id,
+        name = name.orPlaceholderIfNullOrBlank("-"),
+        foreignName = mapForeignName(alternativeName, enName),
+        rating = rating?.kp ?: 0f,
+        year = mapYears(year, releaseYears),
+        length = totalSeriesLength?.toString() ?: movieLength?.toString() ?: "-",
+        countries = listToBulletedString(countries) { country -> country.name },
+        genres = listToBulletedString(genres) { genre -> genre.name },
+    ),
     votes = votes?.kp ?: 0,
-    year = mapYears(year, releaseYears),
     description = description.orEmptyIfNullOrBlank(),
     poster = poster?.previewUrl.orEmptyIfNullOrBlank(),
-    length = totalSeriesLength?.toString() ?: movieLength?.toString() ?: "-",
     has3D = technology?.has3D ?: false,
-    countries = listToBulletedString(countries) { country -> country.name },
-    genres = listToBulletedString(genres) { genre -> genre.name },
     updated = Date().toIsoString(),
 )
 

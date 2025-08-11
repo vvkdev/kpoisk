@@ -1,28 +1,32 @@
 package com.vvkdev.domain.models
 
-data class Film(
-    val id: Int,
-    val name: String,
-    val foreignName: String,
-    val rating: Float,
-    val votes: Int,
-    val year: String,
-    val description: String,
-    val poster: String,
-    val length: String,
-    val has3D: Boolean,
-    val countries: String,
-    val genres: String,
-    val updated: String,
-)
+private interface FilmBase {
+    val id: Int
+    val name: String
+    val foreignName: String
+    val rating: Float
+    val year: String
+    val length: String
+    val countries: String
+    val genres: String
+}
 
 data class FilmShort(
-    val id: Int,
-    val name: String,
-    val foreignName: String,
-    val rating: Float,
-    val year: String = "-",
-    val length: String = "-",
-    val countries: String = "",
-    val genres: String = "",
-)
+    override val id: Int,
+    override val name: String,
+    override val foreignName: String,
+    override val rating: Float,
+    override val year: String = "-",
+    override val length: String = "-",
+    override val countries: String = "",
+    override val genres: String = "",
+) : FilmBase
+
+data class Film(
+    val short: FilmShort,
+    val votes: Int,
+    val description: String,
+    val poster: String,
+    val has3D: Boolean,
+    val updated: String,
+) : FilmBase by short
