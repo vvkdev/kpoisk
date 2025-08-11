@@ -1,15 +1,15 @@
 package com.vvkdev.data.remote.mappers
 
-import com.vvkdev.data.remote.models.FilmListResponse
 import com.vvkdev.data.remote.models.FilmResponse
 import com.vvkdev.data.remote.models.FilmShortResponse
 import com.vvkdev.data.remote.models.FilmYearsResponse
+import com.vvkdev.data.remote.models.ListResponse
 import com.vvkdev.domain.models.Film
 import com.vvkdev.domain.models.FilmShort
 import org.jetbrains.annotations.VisibleForTesting
 import java.util.Date
 
-internal fun FilmListResponse.toFilmShortList() = films.map { it.toFilmShort() }
+internal fun ListResponse<FilmShortResponse>.toFilmShortList() = docs.map { it.toFilmShort() }
 
 internal fun FilmResponse.toFilm() = Film(
     short = FilmShort(

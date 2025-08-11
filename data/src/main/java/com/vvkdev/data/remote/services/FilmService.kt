@@ -1,7 +1,8 @@
 package com.vvkdev.data.remote.services
 
-import com.vvkdev.data.remote.models.FilmListResponse
 import com.vvkdev.data.remote.models.FilmResponse
+import com.vvkdev.data.remote.models.FilmShortResponse
+import com.vvkdev.data.remote.models.ListResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -18,5 +19,5 @@ interface FilmService {
         @Query("query") name: String,
         @Query("limit") limit: Int = 10,
         @Query("page") page: Int = 1,
-    ): Response<FilmListResponse>
+    ): Response<ListResponse<FilmShortResponse>>
 }
