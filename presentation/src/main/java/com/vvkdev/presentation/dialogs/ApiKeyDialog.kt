@@ -30,14 +30,14 @@ internal class ApiKeyDialog : BaseDialogFragment<DialogContentApikeyBinding>() {
     }
 
     override fun onDialogCreated(dialog: Dialog) {
-        collectOnStarted(viewModel.showError, this) {
+        collectOnStarted(viewModel.isErrorVisible, this) {
             contentBinding.formatTextView.isVisible = !it
             contentBinding.errorTextView.isVisible = it
         }
 
         dialog.setOnShowListener {
             contentBinding.apiKeyEditText.doAfterTextChanged {
-                viewModel.showError(false)
+                viewModel.setErrorVisibility(false)
                 setCancelable(false)
             }
         }

@@ -9,7 +9,6 @@ import com.vvkdev.presentation.base.BaseViewModel
 import com.vvkdev.presentation.base.DialogUiEffect
 import com.vvkdev.presentation.base.UiEffect
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -20,7 +19,7 @@ internal class ApiKeyViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle,
 ) : BaseViewModel() {
 
-    val showError: StateFlow<Boolean> = savedStateHandle.getStateFlow(SHOW_ERROR, false)
+    val isErrorVisible = savedStateHandle.getStateFlow(SHOW_ERROR, false)
 
     fun saveApiKey(key: String) {
         if (apiKeyValidator.isValid(key)) {
@@ -30,12 +29,12 @@ internal class ApiKeyViewModel @Inject constructor(
                 sendEffect(DialogUiEffect.Dismiss)
             }
         } else {
-            showError(true)
+            setErrorVisibility(true)
         }
     }
 
-    fun showError(shouldShow: Boolean) {
-        savedStateHandle[SHOW_ERROR] = shouldShow
+    fun setErrorVisibility(visible: Boolean) {
+        savedStateHandle[SHOW_ERROR] = visible
     }
 
     companion object {
