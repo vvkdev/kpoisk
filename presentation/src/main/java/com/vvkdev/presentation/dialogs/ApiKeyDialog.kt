@@ -7,6 +7,7 @@ import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.viewModels
 import com.vvkdev.presentation.R
 import com.vvkdev.presentation.base.BaseDialogFragment
+import com.vvkdev.presentation.base.DialogConfig
 import com.vvkdev.presentation.databinding.DialogContentApikeyBinding
 import com.vvkdev.presentation.extensions.collectOnStarted
 import com.vvkdev.presentation.extensions.onDoneAction
@@ -18,9 +19,15 @@ internal class ApiKeyDialog : BaseDialogFragment<DialogContentApikeyBinding>() {
 
     override val viewModel: ApiKeyViewModel by viewModels()
 
-    override val contentBindingBind = DialogContentApikeyBinding::bind
-    override val contentLayoutRes = R.layout.dialog_content_apikey
-    override val titleRes = R.string.enter_api_key
+    override fun getDialogConfig() = DialogConfig(
+        titleRes = R.string.enter_api_key,
+        contentLayoutRes = R.layout.dialog_content_apikey,
+        contentBindingBind = DialogContentApikeyBinding::bind,
+    )
+
+    override fun onPositiveAction() {
+        viewModel.saveApiKey(contentBinding.apiKeyEditText.text.toString())
+    }
 
     override fun onDialogCreated(dialog: Dialog) {
         collectOnStarted(viewModel.showError, this) {
@@ -37,10 +44,6 @@ internal class ApiKeyDialog : BaseDialogFragment<DialogContentApikeyBinding>() {
 
         contentBinding.apiKeyEditText.setRawInputType(InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS) // for multiline IME_ACTION_DONE working
         contentBinding.apiKeyEditText.onDoneAction { onPositiveAction() }
-    }
-
-    override fun onPositiveAction() {
-        viewModel.saveApiKey(contentBinding.apiKeyEditText.text.toString())
     }
 
     companion object {

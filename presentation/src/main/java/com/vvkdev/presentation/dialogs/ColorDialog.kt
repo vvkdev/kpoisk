@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import com.google.android.material.button.MaterialButton
 import com.vvkdev.presentation.R
 import com.vvkdev.presentation.base.BaseDialogFragment
+import com.vvkdev.presentation.base.DialogConfig
 import com.vvkdev.presentation.databinding.DialogContentColorBinding
 import com.vvkdev.presentation.extensions.collectOnStarted
 import com.vvkdev.presentation.viewmodels.ColorViewModel
@@ -23,16 +24,11 @@ internal class ColorDialog : BaseDialogFragment<DialogContentColorBinding>() {
 
     override val viewModel: ColorViewModel by viewModels()
 
-    override val contentBindingBind = DialogContentColorBinding::bind
-    override val contentLayoutRes = R.layout.dialog_content_color
-    override val titleRes = R.string.select_color
-
-    override fun onDialogCreated(dialog: Dialog) {
-        collectOnStarted(viewModel.shouldRestart, this) {
-            contentBinding.restartTextView.isInvisible = !it
-        }
-        setupColorButtons()
-    }
+    override fun getDialogConfig() = DialogConfig(
+        titleRes = R.string.select_color,
+        contentLayoutRes = R.layout.dialog_content_color,
+        contentBindingBind = DialogContentColorBinding::bind,
+    )
 
     override fun onPositiveAction() {
         if (viewModel.shouldRestart.value) {
@@ -40,6 +36,13 @@ internal class ColorDialog : BaseDialogFragment<DialogContentColorBinding>() {
             ActivityCompat.recreate(requireActivity())
         }
         dismiss()
+    }
+
+    override fun onDialogCreated(dialog: Dialog) {
+        collectOnStarted(viewModel.shouldRestart, this) {
+            contentBinding.restartTextView.isInvisible = !it
+        }
+        setupColorButtons()
     }
 
     private fun setupColorButtons() {
