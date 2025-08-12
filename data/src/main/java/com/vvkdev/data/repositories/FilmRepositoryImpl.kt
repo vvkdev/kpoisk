@@ -28,12 +28,12 @@ class FilmRepositoryImpl @Inject constructor(
 
     override suspend fun getFilmById(id: Int, forceRefresh: Boolean): Result<Film> {
         val cached = if (!forceRefresh) filmDao.getById(id) else null
-        return cached?.let { Result.success(it.toFilm()) }
+        return cached
+            ?.let { Result.success(it.toFilm()) }
             ?: safeApiCall { filmService.getFilmById(id) }
                 .map { filmResponse ->
-                    filmResponse.toFilm().also {
-                        launchDbOperation { filmDao.insert(it.toFilmEntity()) }
-                    }
+                    filmResponse.toFilm()
+                        .also { launchDbOperation { filmDao.insert(it.toFilmEntity()) } }
                 }
     }
 
