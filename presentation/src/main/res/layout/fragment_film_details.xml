@@ -223,7 +223,7 @@
         </androidx.core.widget.NestedScrollView>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fab_share"
+                android:id="@+id/fabShare"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:fabCustomSize="32dp"
@@ -240,7 +240,7 @@
                 />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fab_web"
+                android:id="@+id/fabWeb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:fabCustomSize="32dp"
@@ -257,7 +257,7 @@
                 />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fab_poster"
+                android:id="@+id/fabPoster"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:fabCustomSize="32dp"
@@ -274,7 +274,7 @@
                 />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fab_refresh"
+                android:id="@+id/fabRefresh"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:fabCustomSize="32dp"
