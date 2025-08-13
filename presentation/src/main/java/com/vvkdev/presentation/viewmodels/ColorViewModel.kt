@@ -35,7 +35,7 @@ internal class ColorViewModel @Inject constructor(
         settingsRepository.setColorAccent(selectedColor.name)
     }
 
-    companion object {
-        private const val SELECTED_COLOR = "selected_color"
+    private companion object {
+        const val SELECTED_COLOR = "selected_color"
     }
 }

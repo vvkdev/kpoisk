@@ -37,7 +37,7 @@ internal class ApiKeyViewModel @Inject constructor(
         savedStateHandle[SHOW_ERROR] = visible
     }
 
-    companion object {
-        private const val SHOW_ERROR = "show_error"
+    private companion object {
+        const val SHOW_ERROR = "show_error"
     }
 }

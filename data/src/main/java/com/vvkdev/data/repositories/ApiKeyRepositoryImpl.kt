@@ -25,7 +25,7 @@ class ApiKeyRepositoryImpl @Inject constructor(
         ?: sharedPreferences.getString(API_KEY, null)
             ?.let { encrypted -> cryptoService.decrypt(encrypted).also { cachedKey = it } }
 
-    companion object {
-        private const val API_KEY = "api_key"
+    private companion object {
+        const val API_KEY = "api_key"
     }
 }

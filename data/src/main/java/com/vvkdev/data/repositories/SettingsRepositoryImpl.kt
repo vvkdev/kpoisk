@@ -18,7 +18,7 @@ class SettingsRepositoryImpl @Inject constructor(
     override fun getColorAccent(): String? =
         sharedPreferences.getString(ACCENT_COLOR, null)
 
-    companion object {
-        private const val ACCENT_COLOR = "accent_color"
+    private companion object {
+        const val ACCENT_COLOR = "accent_color"
     }
 }
