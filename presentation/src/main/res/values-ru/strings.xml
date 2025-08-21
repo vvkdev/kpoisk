@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="unknown_error">Неизвестная ошибка</string>
+    <string name="id">ID • %d</string>
+    <string name="updated">Обновлено • %s</string>
+    <string name="time">%s • %s мин</string>
+    <string name="_3d">3D</string>
+    <string name="retry">Повторить</string>
+    <string name="cancel">Отмена</string>
+    <string name="save">Сохранить</string>
+    <string name="change_accent_color">Изменить цвет акцента</string>
+    <string name="select_color">Выберите цвет</string>
+    <string name="change_api_key">Изменить API ключ</string>
+    <string name="enter_api_key">Введите API ключ</string>
+    <string name="saved">Сохранено</string>
+    <string name="films">Фильмы</string>
+    <string name="settings">Настройки</string>
+    <string name="app_will_be_restarted">Приложение будет перезапущено</string>
+    <string name="apikey_format">Только цифры и заглавные латинские буквы.</string>
+    <string name="invalid_format">Неверный формат.</string>
+    <string name="options">Опции</string>
+    <string name="force_update">Загрузить заново</string>
+    <string name="open_webpage">Открыть на сайте</string>
+    <string name="show_poster">Показать постер</string>
+    <string name="share">Поделиться</string>
+    <string name="search_name">Искать название...</string>
+    <string name="search_query">Поиск: %s</string>
+
+    <plurals name="votes">
+        <item quantity="one">%,d голос</item>
+        <item quantity="few">%,d голоса</item>
+        <item quantity="many">%,d голосов</item>
+        <item quantity="other">%,d голосов</item>
+    </plurals>
+
+</resources>

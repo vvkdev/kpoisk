@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
@@ -6,6 +8,7 @@ plugins {
 android {
     namespace = "com.vvkdev.theme"
     compileSdk = libs.versions.compileSdk.get().toInt()
+    buildToolsVersion = libs.versions.buildTools.get()
 
     defaultConfig {
         minSdk = libs.versions.minSdk.get().toInt()
@@ -16,8 +19,14 @@ android {
         targetCompatibility = JavaVersion.toVersion(libs.versions.jvm.get())
     }
 
-    kotlinOptions {
-        jvmTarget = libs.versions.jvm.get()
+    buildFeatures {
+        viewBinding = true
+    }
+}
+
+kotlin {
+    compilerOptions {
+        jvmTarget = JvmTarget.fromTarget(libs.versions.jvm.get())
     }
 }
 

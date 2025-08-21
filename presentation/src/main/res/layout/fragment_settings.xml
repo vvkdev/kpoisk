@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/indent_medium"
+        android:padding="@dimen/indent_medium"
+        android:orientation="vertical"
+        android:layout_gravity="bottom"
+        android:background="@drawable/rectangle_rounded_outlined"
+        android:fitsSystemWindows="true"
+        tools:context=".fragments.SettingsFragment"
+        >
+
+    <TextView
+            android:id="@+id/colorTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/indent_medium"
+            android:text="@string/change_accent_color"
+            android:textAppearance="?attr/textAppearanceTitleMedium"
+            android:background="?attr/selectableItemBackground"
+            app:drawableLeftCompat="@drawable/ic_palette"
+            app:drawableTint="?attr/colorPrimary"
+            android:drawablePadding="@dimen/indent_medium"
+            android:clickable="true"
+            android:focusable="true"
+            />
+
+    <View style="@style/App.DividerHorizontal" />
+
+    <TextView
+            android:id="@+id/apikeyTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/indent_medium"
+            android:text="@string/change_api_key"
+            android:textAppearance="?attr/textAppearanceTitleMedium"
+            android:background="?attr/selectableItemBackground"
+            app:drawableLeftCompat="@drawable/ic_key"
+            app:drawableTint="?attr/colorPrimary"
+            android:drawablePadding="@dimen/indent_medium"
+            android:clickable="true"
+            android:focusable="true"
+            />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

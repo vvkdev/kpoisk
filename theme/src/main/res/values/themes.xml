@@ -1,25 +1,78 @@
 <resources>
+    <!-- Base application theme -->
+    <style name="BaseTheme" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- prevent color bars flickering on start app -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <!-- base theme attributes -->
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorError">@color/color_error</item>
+        <item name="fontFamily">sans-serif-light</item>
+        <!-- view custom styles -->
+        <item name="textAppearanceTitleMedium">@style/App.TitleMedium.TextAppearance</item>
+        <item name="textInputStyle">@style/App.TextInputLayout</item>
+        <item name="materialButtonStyle">@style/App.Button</item>
+        <item name="materialAlertDialogTheme">@style/App.MaterialDialog.ThemeOverlay</item>
+        <item name="floatingActionButtonStyle">@style/App.Fab</item>
+        <item name="android:searchViewStyle">@style/App.SearchView</item>
+        <item name="materialCardViewStyle">@style/App.CardView</item>
+    </style>
+
     <!-- Accent theme -->
-    <style name="Base.Accent.DayNight.V21.Theme.KPoisk" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="ThemeBlue" parent="BaseTheme">
         <item name="colorPrimary">@color/blue_primary</item>
         <item name="colorPrimaryVariant">@color/blue_primary_variant</item>
+        <item name="colorOutline">@color/blue_outline</item>
+        <item name="colorOutlineVariant">@color/blue_outline_variant</item>
     </style>
 
-    <!-- Base application theme. -->
-    <style name="Base.DayNight.V21.Theme.KPoisk" parent="Base.Accent.DayNight.V21.Theme.KPoisk">
-        <item name="colorOnPrimary">@color/white</item>
-        <item name="textInputStyle">@style/Widget.KPoisk.TextInputLayout</item>
-        <item name="materialButtonStyle">@style/Widget.KPoisk.Button</item>
+    <style name="ThemeGreen" parent="BaseTheme">
+        <item name="colorPrimary">@color/green_primary</item>
+        <item name="colorPrimaryVariant">@color/green_primary_variant</item>
+        <item name="colorOutline">@color/green_outline</item>
+        <item name="colorOutlineVariant">@color/green_outline_variant</item>
     </style>
 
-    <style name="Base.Day.V21.Theme.KPoisk" parent="Base.DayNight.V21.Theme.KPoisk">
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/secondary_day_pink</item>
-        <item name="colorOnSecondary">@color/white</item>
+    <style name="ThemeOrange" parent="BaseTheme">
+        <item name="colorPrimary">@color/orange_primary</item>
+        <item name="colorPrimaryVariant">@color/orange_primary_variant</item>
+        <item name="colorOutline">@color/orange_outline</item>
+        <item name="colorOutlineVariant">@color/orange_outline_variant</item>
     </style>
 
-    <style name="Base.V21.Theme.KPoisk" parent="Base.Day.V21.Theme.KPoisk" />
+    <style name="ThemeLilac" parent="BaseTheme">
+        <item name="colorPrimary">@color/lilac_primary</item>
+        <item name="colorPrimaryVariant">@color/lilac_primary_variant</item>
+        <item name="colorOutline">@color/lilac_outline</item>
+        <item name="colorOutlineVariant">@color/lilac_outline_variant</item>
+    </style>
 
-    <style name="Theme.KPoisk" parent="Base.V21.Theme.KPoisk" />
+    <style name="ThemeRed" parent="BaseTheme">
+        <item name="colorPrimary">@color/red_primary</item>
+        <item name="colorPrimaryVariant">@color/red_primary_variant</item>
+        <item name="colorOutline">@color/red_outline</item>
+        <item name="colorOutlineVariant">@color/red_outline_variant</item>
+    </style>
+
+    <style name="ThemeYellow" parent="BaseTheme">
+        <item name="colorPrimary">@color/yellow_primary</item>
+        <item name="colorPrimaryVariant">@color/yellow_primary_variant</item>
+        <item name="colorOutline">@color/yellow_outline</item>
+        <item name="colorOutlineVariant">@color/yellow_outline_variant</item>
+    </style>
+
+    <style name="ThemeBeige" parent="BaseTheme">
+        <item name="colorPrimary">@color/beige_primary</item>
+        <item name="colorPrimaryVariant">@color/beige_primary_variant</item>
+        <item name="colorOutline">@color/beige_outline</item>
+        <item name="colorOutlineVariant">@color/beige_outline_variant</item>
+    </style>
+
+    <style name="ThemeGrey" parent="BaseTheme">
+        <item name="colorPrimary">@color/grey_primary</item>
+        <item name="colorPrimaryVariant">@color/grey_primary_variant</item>
+        <item name="colorOutline">@color/grey_outline</item>
+        <item name="colorOutlineVariant">@color/grey_outline_variant</item>
+    </style>
 
 </resources>

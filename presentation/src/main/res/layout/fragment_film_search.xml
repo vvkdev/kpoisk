@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/indent_medium"
+        android:orientation="vertical"
+        android:background="@drawable/rectangle_rounded_outlined"
+        android:fitsSystemWindows="true"
+        tools:context=".fragments.FilmSearchFragment"
+        >
+
+    <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginVertical="@dimen/indent_small"
+            android:layout_weight="1"
+            />
+
+    <SearchView
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/indent_medium"
+            android:layout_marginBottom="@dimen/indent_medium"
+            android:queryHint="@string/search_name"
+            />
+
+</LinearLayout>

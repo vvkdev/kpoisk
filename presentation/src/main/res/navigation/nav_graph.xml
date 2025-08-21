@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/nav_graph"
+        app:startDestination="@id/nav_graph_films"
+        >
+
+    <navigation
+            android:id="@+id/nav_graph_films"
+            app:startDestination="@id/filmSearchFragment"
+            >
+
+        <fragment
+                android:id="@+id/filmSearchFragment"
+                android:name="com.vvkdev.presentation.fragments.FilmSearchFragment"
+                tools:layout="@layout/fragment_film_search"
+                >
+            <action
+                    android:id="@+id/action_filmSearch_to_filmList"
+                    app:destination="@id/filmListFragment"
+                    />
+        </fragment>
+
+        <fragment
+                android:id="@+id/filmListFragment"
+                android:name="com.vvkdev.presentation.fragments.FilmListFragment"
+                tools:layout="@layout/fragment_film_list"
+                >
+            <argument
+                    android:name="film_name"
+                    app:argType="string"
+                    />
+            <action
+                    android:id="@+id/action_filmList_to_filmDetails"
+                    app:destination="@id/filmDetailsFragment"
+                    />
+        </fragment>
+
+        <fragment
+                android:id="@+id/filmDetailsFragment"
+                android:name="com.vvkdev.presentation.fragments.FilmDetailsFragment"
+                tools:layout="@layout/fragment_film_details"
+                >
+            <argument
+                    android:name="film_id"
+                    app:argType="integer"
+                    />
+            <action
+                    android:id="@+id/action_filmDetails_to_poster"
+                    app:destination="@id/posterFragment"
+                    />
+        </fragment>
+
+        <fragment
+                android:id="@+id/posterFragment"
+                android:name="com.vvkdev.presentation.fragments.PosterFragment"
+                tools:layout="@layout/fragment_poster"
+                >
+            <argument
+                    android:name="film_name"
+                    app:argType="string"
+                    />
+            <argument
+                    android:name="poster_url"
+                    app:argType="string"
+                    />
+        </fragment>
+
+    </navigation>
+
+    <fragment
+            android:id="@+id/settingsFragment"
+            android:name="com.vvkdev.presentation.fragments.SettingsFragment"
+            tools:layout="@layout/fragment_settings"
+            />
+
+</navigation>

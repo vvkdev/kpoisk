@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="stroke_thickness">1dp</dimen>
+    <dimen name="corner_radius">4dp</dimen>
+    <dimen name="elevation">2dp</dimen>
+    <dimen name="indent_min">2dp</dimen>
+    <dimen name="indent_small">4dp</dimen>
+    <dimen name="indent_medium">8dp</dimen>
+    <dimen name="indent_normal">16dp</dimen>
+    <dimen name="indent_large">24dp</dimen>
+    <dimen name="icon_small">24dp</dimen>
+    <dimen name="icon_medium">48dp</dimen>
+    <dimen name="fab_indent">12dp</dimen>
+    <dimen name="fab_option_size">32dp</dimen>
+    <dimen name="button_height">40dp</dimen>
+    <dimen name="bar_size">48dp</dimen>
+    <dimen name="navbar_height">56dp</dimen>
+</resources>
